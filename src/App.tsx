@@ -1,7 +1,23 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import ReactGA from 'react-ga4';
+import { useEffect } from 'react';
+
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
+
+// Initialize GA
+ReactGA.initialize('G-TJXN6009WN');
+
+function AnalyticsTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: location.pathname + location.search });
+  }, [location]);
+
+  return null;
+}
 import MortgageCalculator from './pages/finance/MortgageCalculator';
 import InvestmentCalculator from './pages/finance/InvestmentCalculator';
 import AutoLoanCalculator from './pages/finance/AutoLoanCalculator';
@@ -16,6 +32,7 @@ function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
+        <AnalyticsTracker />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
