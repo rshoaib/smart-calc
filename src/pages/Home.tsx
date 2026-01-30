@@ -28,6 +28,14 @@ export function Home() {
       color: 'text-teal-500',
       bg: 'bg-teal-50 dark:bg-teal-900/20',
     },
+    {
+      name: 'Retirement Planner',
+      description: 'Visualize your 401k growth and plan for financial freedom.',
+      icon: TrendingUp, // Using existing icon import
+      path: '/finance/retirement',
+      color: 'text-indigo-500',
+      bg: 'bg-indigo-50 dark:bg-indigo-900/20',
+    },
   ];
 
   const healthTools = [

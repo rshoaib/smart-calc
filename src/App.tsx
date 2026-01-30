@@ -4,6 +4,8 @@ import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
 import MortgageCalculator from './pages/finance/MortgageCalculator';
 import InvestmentCalculator from './pages/finance/InvestmentCalculator';
+import AutoLoanCalculator from './pages/finance/AutoLoanCalculator';
+import RetirementCalculator from './pages/finance/RetirementCalculator';
 import BMICalculator from './pages/health/BMICalculator';
 import CalorieCalculator from './pages/health/CalorieCalculator';
 import Privacy from './pages/Privacy';
@@ -19,6 +21,8 @@ function App() {
             <Route index element={<Home />} />
             <Route path="finance/mortgage" element={<MortgageCalculator />} />
             <Route path="finance/investment" element={<InvestmentCalculator />} />
+            <Route path="finance/loan" element={<AutoLoanCalculator />} />
+            <Route path="finance/retirement" element={<RetirementCalculator />} />
             <Route path="health/bmi" element={<BMICalculator />} />
             <Route path="health/calories" element={<CalorieCalculator />} />
             <Route path="privacy" element={<Privacy />} />

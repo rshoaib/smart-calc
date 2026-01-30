@@ -7,7 +7,12 @@ interface AdSlotProps {
   label?: string;
 }
 
+// Toggle this to true when you are ready to show ads
+const SHOW_ADS = false;
+
 export function AdSlot({ className, slotId, label = 'Ad Space' }: AdSlotProps) {
+  if (!SHOW_ADS) return null;
+
   return (
     <div
       className={twMerge(
