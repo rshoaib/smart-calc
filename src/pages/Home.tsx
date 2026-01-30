@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { DollarSign, Activity, TrendingUp, HandCoins, Heart } from 'lucide-react';
+import { DollarSign, Activity, TrendingUp, HandCoins, Heart, ShieldCheck } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 export function Home() {
@@ -35,6 +35,14 @@ export function Home() {
       path: '/finance/retirement',
       color: 'text-indigo-500',
       bg: 'bg-indigo-50 dark:bg-indigo-900/20',
+    },
+    {
+      name: 'Debt Payoff Planner',
+      description: 'Snowball vs Avalanche. Create a structured plan to be debt-free.',
+      icon: ShieldCheck, // Need to import this
+      path: '/finance/debt-payoff',
+      color: 'text-rose-500',
+      bg: 'bg-rose-50 dark:bg-rose-900/20',
     },
   ];
 

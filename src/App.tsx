@@ -22,6 +22,7 @@ import MortgageCalculator from './pages/finance/MortgageCalculator';
 import InvestmentCalculator from './pages/finance/InvestmentCalculator';
 import AutoLoanCalculator from './pages/finance/AutoLoanCalculator';
 import RetirementCalculator from './pages/finance/RetirementCalculator';
+import DebtPayoffPlanner from './pages/finance/DebtPayoffPlanner';
 import BMICalculator from './pages/health/BMICalculator';
 import CalorieCalculator from './pages/health/CalorieCalculator';
 import Privacy from './pages/Privacy';
@@ -40,6 +41,7 @@ function App() {
             <Route path="finance/investment" element={<InvestmentCalculator />} />
             <Route path="finance/loan" element={<AutoLoanCalculator />} />
             <Route path="finance/retirement" element={<RetirementCalculator />} />
+            <Route path="finance/debt-payoff" element={<DebtPayoffPlanner />} />
             <Route path="health/bmi" element={<BMICalculator />} />
             <Route path="health/calories" element={<CalorieCalculator />} />
             <Route path="privacy" element={<Privacy />} />
