@@ -60,8 +60,7 @@ export default function DebtPayoffPlanner() {
 
   const calculatePayoff = () => {
     let currentDebts = debts.map(d => ({ ...d }));
-    let totalMinPayment = currentDebts.reduce((sum, d) => sum + d.minPayment, 0);
-
+    
     // If budget is less than mins, warn or just use mins
     let availableForExtra = monthlyBudget; 
     
