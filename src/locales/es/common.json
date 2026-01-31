@@ -51,6 +51,14 @@
       "calorie": {
         "name": "Calculadora de Calorías",
         "desc": "Calcula las necesidades calóricas diarias (TDEE) para tus metas."
+      },
+      "millionaire": {
+        "name": "Tiempo para ser Millonario",
+        "desc": "Mira cuánto tiempo tomará alcanzar tu primer millón."
+      },
+      "macro_split": {
+        "name": "Calculadora de Macros",
+        "desc": "Optimiza tu ingesta de nutrientes para ganar músculo o perder grasa."
       }
     },
     "forms": {
@@ -89,7 +97,11 @@
         "weight_kg": "Peso (kg)",
         "age": "Edad",
         "gender": "Género",
-        "activity_level": "Nivel de Actividad"
+        "activity_level": "Nivel de Actividad",
+        "current_balance": "Saldo Actual ($)",
+        "annual_interest": "Tasa de Interés Anual (%)",
+        "diet_type": "Preferencia de Dieta",
+        "goal": "Objetivo"
       },
       "options": {
         "snowball": "Bola de Nieve (Menor saldo primero)",
@@ -101,8 +113,16 @@
         "moderate": "Ejercicio Moderado (3-5 días/sem)",
         "active": "Activo (Ejercicio diario)",
         "very_active": "Muy Activo (Trabajo físico + entreno)",
+
         "heavy": "Ejercicio Pesado (6-7 días/sem)",
-        "athlete": "Atleta (2x por día)"
+        "athlete": "Atleta (2x por día)",
+        "balanced": "Balanceada (40/30/30)",
+        "low_carb": "Baja en Carbohidratos (40/40/20)",
+        "high_protein": "Alta en Proteína (50/30/20)",
+        "keto": "Keto (70/25/5)",
+        "lose_weight": "Perder Peso (-500 kcal)",
+        "maintain_weight": "Mantener Peso",
+        "gain_muscle": "Ganar Músculo (+500 kcal)"
       }
     },
     "results": {
@@ -112,6 +132,14 @@
       "payoff_date": "Fecha Libre de Deuda",
       "total_savings": "Ahorros Totales",
       "future_value": "Valor Futuro",
+      "time_to_1m": "Tiempo para $1 Millón",
+      "years": "Años",
+      "months": "Meses",
+      "macros": {
+        "protein": "Proteína",
+        "carbs": "Carbohidratos",
+        "fats": "Grasas"
+      },
       "bmi_score": "Tu Puntaje IMC",
       "category": "Categoría",
       "maintain_weight": "Mantener Peso",

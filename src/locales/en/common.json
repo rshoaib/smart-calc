@@ -51,6 +51,14 @@
       "calorie": {
         "name": "Calorie Calculator",
         "desc": "Calculate daily caloric needs (TDEE) for your goals."
+      },
+      "millionaire": {
+        "name": "Time to Millionaire",
+        "desc": "See how long it will take to reach your first million."
+      },
+      "macro_split": {
+        "name": "Macro Split Calculator",
+        "desc": "Optimize your nutrient intake for muscle gain or fat loss."
       }
     },
     "forms": {
@@ -89,7 +97,11 @@
         "weight_kg": "Weight (kg)",
         "age": "Age",
         "gender": "Gender",
-        "activity_level": "Activity Level"
+        "activity_level": "Activity Level",
+        "current_balance": "Current Balance ($)",
+        "annual_interest": "Annual Interest Rate (%)",
+        "diet_type": "Diet Preference",
+        "goal": "Goal"
       },
       "options": {
         "snowball": "Debt Snowball (Lowest Balance First)",
@@ -101,8 +113,16 @@
         "moderate": "Moderate Exercise (3-5 days/week)",
         "active": "Active (Daily exercise)",
         "very_active": "Very Active (Physical job + training)",
+
         "heavy": "Heavy Exercise (6-7 days/week)",
-        "athlete": "Athlete (2x per day)"
+        "athlete": "Athlete (2x per day)",
+        "balanced": "Balanced (40/30/30)",
+        "low_carb": "Low Carb (40/40/20)",
+        "high_protein": "High Protein (50/30/20)",
+        "keto": "Keto (70/25/5)",
+        "lose_weight": "Lose Weight (-500 kcal)",
+        "maintain_weight": "Maintain Weight",
+        "gain_muscle": "Gain Muscle (+500 kcal)"
       }
     },
     "results": {
@@ -112,6 +132,14 @@
       "payoff_date": "Debt Free Date",
       "total_savings": "Total Savings",
       "future_value": "Future Value",
+      "time_to_1m": "Time to $1 Million",
+      "years": "Years",
+      "months": "Months",
+      "macros": {
+        "protein": "Protein",
+        "carbs": "Carbs",
+        "fats": "Fats"
+      },
       "bmi_score": "Your BMI Score",
       "category": "Category",
       "maintain_weight": "Maintain Weight",

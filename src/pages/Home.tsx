@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { DollarSign, Activity, TrendingUp, HandCoins, Heart, ShieldCheck } from 'lucide-react';
+import { DollarSign, Activity, TrendingUp, HandCoins, Heart, ShieldCheck, Utensils } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 
@@ -47,6 +47,14 @@ export function Home() {
       color: 'text-rose-500',
       bg: 'bg-rose-50 dark:bg-rose-900/20',
     },
+    {
+      name: t('home.tools.millionaire.name'),
+      description: t('home.tools.millionaire.desc'),
+      icon: TrendingUp,
+      path: '/finance/time-to-millionaire',
+      color: 'text-blue-500',
+      bg: 'bg-blue-50 dark:bg-blue-900/20',
+    },
   ];
 
   const healthTools = [
@@ -65,6 +73,14 @@ export function Home() {
       path: '/health/calories',
       color: 'text-rose-500',
       bg: 'bg-rose-50 dark:bg-rose-900/20',
+    },
+    {
+      name: t('home.tools.macro_split.name'),
+      description: t('home.tools.macro_split.desc'),
+      icon: Utensils,
+      path: '/health/macro-split',
+      color: 'text-emerald-500',
+      bg: 'bg-emerald-50 dark:bg-emerald-900/20',
     },
   ];
 
