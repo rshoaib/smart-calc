@@ -33,10 +33,7 @@ export default function AutoLoanCalculator() {
   const [chartData, setChartData] = useState<PaymentSchedule[]>([]);
 
   useEffect(() => {
-    calculateLoan();
-  }, [carPrice, downPayment, tradeIn, interestRate, loanTerm, salesTax]);
-
-  const calculateLoan = () => {
+    const calculateLoan = () => {
     // 1. Calculate Tax
     const taxAmount = (carPrice * salesTax) / 100;
     
@@ -93,6 +90,8 @@ export default function AutoLoanCalculator() {
     setTotalCost(carPrice + taxAmount + accumulatedInterest);
     setChartData(schedule);
   };
+    calculateLoan();
+  }, [carPrice, downPayment, tradeIn, interestRate, loanTerm, salesTax]);
 
   return (
     <>
@@ -247,7 +246,7 @@ export default function AutoLoanCalculator() {
                     <YAxis tickFormatter={(value) => `$${value / 1000}k`} />
                     <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
                     <Tooltip 
-                      formatter={(value: any) => [`$${Number(value).toLocaleString()}`, '']}
+                      formatter={(value?: number) => [`$${Number(value).toLocaleString()}`, '']}
                       contentStyle={{ backgroundColor: '#1f2937', borderColor: '#374151', color: '#f3f4f6' }}
                     />
                     <Legend />

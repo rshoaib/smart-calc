@@ -13,9 +13,9 @@ export default function BMICalculator() {
   const [category, setCategory] = useState<string>('');
 
   const calculateBMI = () => {
-    let h = parseFloat(height);
-    let w = parseFloat(weight);
-    let h_in = parseFloat(heightInches);
+    const h = parseFloat(height);
+    const w = parseFloat(weight);
+    const h_in = parseFloat(heightInches);
 
     if (isNaN(w)) return;
 

@@ -31,10 +31,7 @@ export default function MortgageCalculator() {
   const [amortization, setAmortization] = useState<AmortizationData[]>([]);
 
   useEffect(() => {
-    calculateMortgage();
-  }, [amount, rate, years, downPayment]);
-
-  const calculateMortgage = () => {
+    const calculateMortgage = () => {
     const principal = amount - downPayment;
     const monthlyRate = rate / 100 / 12;
     const numberOfPayments = years * 12;
@@ -72,6 +69,8 @@ export default function MortgageCalculator() {
     setTotalPayment(principal + totalInt + downPayment);
     setAmortization(schedule);
   };
+    calculateMortgage();
+  }, [amount, rate, years, downPayment]);
 
   return (
     <>
@@ -193,7 +192,7 @@ export default function MortgageCalculator() {
                     <YAxis tickFormatter={(value) => `$${value / 1000}k`} />
                     <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
                     <Tooltip 
-                      formatter={(value: any) => [`$${Number(value).toLocaleString()}`, '']}
+                      formatter={(value?: number) => [`$${Number(value).toLocaleString()}`, '']}
                       contentStyle={{ backgroundColor: '#1f2937', borderColor: '#374151', color: '#f3f4f6' }}
                     />
                     <Legend />

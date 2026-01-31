@@ -31,10 +31,7 @@ export default function RetirementCalculator() {
   const [chartData, setChartData] = useState<GrowthData[]>([]);
 
   useEffect(() => {
-    calculateRetirement();
-  }, [currentAge, retirementAge, currentSavings, monthlyContribution, returnRate]);
-
-  const calculateRetirement = () => {
+    const calculateRetirement = () => {
     if (retirementAge <= currentAge) return;
 
     const yearsToGrow = retirementAge - currentAge;
@@ -73,6 +70,8 @@ export default function RetirementCalculator() {
     setTotalInterest(balance - totalContrib);
     setChartData(data);
   };
+    calculateRetirement();
+  }, [currentAge, retirementAge, currentSavings, monthlyContribution, returnRate]);
 
   return (
     <>
@@ -207,7 +206,7 @@ export default function RetirementCalculator() {
                     <YAxis tickFormatter={(value) => `$${value / 1000}k`} />
                     <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
                     <Tooltip 
-                      formatter={(value: any) => [`$${Number(value).toLocaleString()}`, '']}
+                      formatter={(value?: number) => [`$${Number(value).toLocaleString()}`, '']}
                       contentStyle={{ backgroundColor: '#1f2937', borderColor: '#374151', color: '#f3f4f6' }}
                     />
                     <Legend />

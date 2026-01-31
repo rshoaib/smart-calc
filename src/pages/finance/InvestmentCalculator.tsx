@@ -30,10 +30,7 @@ export default function InvestmentCalculator() {
   const [data, setData] = useState<InvestmentData[]>([]);
 
   useEffect(() => {
-    calculateInvestment();
-  }, [initial, monthly, rate, years]);
-
-  const calculateInvestment = () => {
+    const calculateInvestment = () => {
     let balance = initial;
     let totalInvested = initial;
     const monthlyRate = rate / 100 / 12;
@@ -66,6 +63,8 @@ export default function InvestmentCalculator() {
     setTotalInterest(balance - totalInvested);
     setData(schedule);
   };
+    calculateInvestment();
+  }, [initial, monthly, rate, years]);
 
   return (
     <>
@@ -185,7 +184,7 @@ export default function InvestmentCalculator() {
                     <YAxis tickFormatter={(value) => `$${value / 1000}k`} />
                     <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
                     <Tooltip 
-                      formatter={(value: any) => [`$${Number(value).toLocaleString()}`, '']}
+                      formatter={(value?: number) => [`$${Number(value).toLocaleString()}`, '']}
                       contentStyle={{ backgroundColor: '#1f2937', borderColor: '#374151', color: '#f3f4f6' }}
                     />
                     <Legend />

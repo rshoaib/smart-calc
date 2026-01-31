@@ -50,16 +50,13 @@ export default function DebtPayoffPlanner() {
   };
 
   // Update debt field
-  const updateDebt = (id: string, field: keyof Debt, value: any) => {
+  const updateDebt = (id: string, field: keyof Debt, value: string | number) => {
     setDebts(debts.map(d => d.id === id ? { ...d, [field]: value } : d));
   };
 
   useEffect(() => {
-    calculatePayoff();
-  }, [debts, monthlyBudget, strategy]);
-
-  const calculatePayoff = () => {
-    let currentDebts = debts.map(d => ({ ...d }));
+    const calculatePayoff = () => {
+    const currentDebts = debts.map(d => ({ ...d }));
     
     // If budget is less than mins, warn or just use mins
     let availableForExtra = monthlyBudget; 
@@ -73,11 +70,11 @@ export default function DebtPayoffPlanner() {
 
     let months = 0;
     let totalInterestPaid = 0;
-    let balanceHistory: PayoffData[] = [];
+    const balanceHistory: PayoffData[] = [];
     let activeDebts = [...currentDebts];
 
     // Initial Point
-    let totalInitialBalance = activeDebts.reduce((sum, d) => sum + d.balance, 0);
+    const totalInitialBalance = activeDebts.reduce((sum, d) => sum + d.balance, 0);
     balanceHistory.push({ month: 0, remainingBalance: totalInitialBalance, interestPaid: 0 });
 
     // Limit to 30 years to prevent infinite loops
@@ -85,16 +82,16 @@ export default function DebtPayoffPlanner() {
       months++;
       
       // 1. Accrue Interest
-      let monthlyInterest = 0;
+      // let monthlyInterest = 0; // Unused
       activeDebts.forEach(d => {
-        let interest = d.balance * (d.rate / 100 / 12);
+        const interest = d.balance * (d.rate / 100 / 12);
         d.balance += interest;
-        monthlyInterest += interest;
+        // monthlyInterest += interest; 
         totalInterestPaid += interest;
       });
 
       // 2. Make Payments
-      let extraMoney = availableForExtra;
+      const extraMoney = availableForExtra;
       
       // Pay minimums first
       activeDebts.forEach(d => {
@@ -111,7 +108,7 @@ export default function DebtPayoffPlanner() {
       // Pay extra money to the target debt (first in sorted list)
       if (extraMoney > 0 && activeDebts.length > 0) {
         // Find first non-paid debt
-        let target = activeDebts.find(d => d.balance > 0.01);
+        const target = activeDebts.find(d => d.balance > 0.01);
         if (target) {
             target.balance -= extraMoney;
         }
@@ -121,7 +118,7 @@ export default function DebtPayoffPlanner() {
       activeDebts = activeDebts.filter(d => d.balance > 0.01);
 
       // Record History
-      let currentTotalBalance = activeDebts.reduce((sum, d) => sum + d.balance, 0);
+      const currentTotalBalance = activeDebts.reduce((sum, d) => sum + d.balance, 0);
       if (months % 3 === 0 || activeDebts.length === 0) {
          balanceHistory.push({ 
            month: months, 
@@ -138,6 +135,8 @@ export default function DebtPayoffPlanner() {
     setTotalInterest(totalInterestPaid);
     setChartData(balanceHistory);
   };
+    calculatePayoff();
+  }, [debts, monthlyBudget, strategy]);
 
   return (
     <>
@@ -298,7 +297,7 @@ export default function DebtPayoffPlanner() {
                     <YAxis tickFormatter={(value) => `$${value / 1000}k`} />
                     <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
                     <Tooltip 
-                      formatter={(value: any) => [`$${Number(value).toLocaleString()}`, '']}
+                      formatter={(value?: number) => [`$${Number(value).toLocaleString()}`, '']}
                       contentStyle={{ backgroundColor: '#1f2937', borderColor: '#374151', color: '#f3f4f6' }}
                     />
                     <Legend />
