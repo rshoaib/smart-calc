@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Car, Percent, Calendar, DollarSign, PieChart } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import {
   AreaChart,
   Area,
@@ -20,6 +21,7 @@ interface PaymentSchedule {
 }
 
 export default function AutoLoanCalculator() {
+  const { t } = useTranslation();
   const [carPrice, setCarPrice] = useState<number>(35000);
   const [downPayment, setDownPayment] = useState<number>(5000);
   const [tradeIn, setTradeIn] = useState<number>(2000);
@@ -96,18 +98,18 @@ export default function AutoLoanCalculator() {
   return (
     <>
       <Helmet>
-        <title>Auto Loan Calculator - Car Payment Estimator</title>
-        <meta name="description" content="Calculate your monthly car payment with tax, trade-in, and interest. Instant results without login." />
+        <title>{t('home.tools.auto_loan.name')} - SmartCalc</title>
+        <meta name="description" content={t('home.tools.auto_loan.desc')} />
       </Helmet>
 
       <div className="space-y-8">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-2">
             <Car className="w-8 h-8 text-teal-500" />
-            Auto Loan Calculator
+            {t('home.tools.auto_loan.name')}
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-2">
-            Find out exactly how much that new car will cost you per month.
+            {t('home.tools.auto_loan.desc')}
           </p>
         </div>
 
@@ -116,7 +118,7 @@ export default function AutoLoanCalculator() {
           <div className="lg:col-span-1 space-y-5 bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 h-fit">
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Vehicle Price</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('forms.labels.vehicle_price')}</label>
               <div className="relative">
                 <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
@@ -130,7 +132,7 @@ export default function AutoLoanCalculator() {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Down Payment</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('forms.labels.down_payment')}</label>
                 <div className="relative">
                   <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
@@ -142,7 +144,7 @@ export default function AutoLoanCalculator() {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Trade-in Value</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('forms.labels.trade_in')}</label>
                 <div className="relative">
                   <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
@@ -156,7 +158,7 @@ export default function AutoLoanCalculator() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Sales Tax (%)</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('forms.labels.sales_tax')}</label>
               <div className="relative">
                 <Percent className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
@@ -170,7 +172,7 @@ export default function AutoLoanCalculator() {
 
             <div className="grid grid-cols-2 gap-4">
                <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Interest Rate (%)</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('forms.labels.interest_rate')}</label>
                 <div className="relative">
                   <Percent className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
@@ -183,7 +185,7 @@ export default function AutoLoanCalculator() {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Term (Months)</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('forms.labels.term_months')}</label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <select
@@ -208,19 +210,19 @@ export default function AutoLoanCalculator() {
             {/* Summary Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-teal-50 dark:bg-teal-900/20 p-6 rounded-2xl border border-teal-100 dark:border-teal-800 text-center">
-                <h3 className="text-sm font-semibold text-teal-600 dark:text-teal-400 uppercase tracking-wide">Monthly Payment</h3>
+                <h3 className="text-sm font-semibold text-teal-600 dark:text-teal-400 uppercase tracking-wide">{t('results.monthly_payment')}</h3>
                 <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
                   ${monthlyPayment.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                 </p>
               </div>
               <div className="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-2xl border border-purple-100 dark:border-purple-800 text-center">
-                <h3 className="text-sm font-semibold text-purple-600 dark:text-purple-400 uppercase tracking-wide">Total Interest</h3>
+                <h3 className="text-sm font-semibold text-purple-600 dark:text-purple-400 uppercase tracking-wide">{t('results.total_interest')}</h3>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white mt-2">
                   ${totalInterest.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                 </p>
               </div>
               <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-2xl border border-blue-100 dark:border-blue-800 text-center">
-                <h3 className="text-sm font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wide">Total Cost</h3>
+                <h3 className="text-sm font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wide">{t('results.total_cost')}</h3>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white mt-2">
                   ${totalCost.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                 </p>

@@ -3,9 +3,17 @@ import { Link, Outlet } from 'react-router-dom';
 import { Calculator, Menu, Moon, Sun, X, TrendingUp, Heart } from 'lucide-react';
 import { AdSlot } from './AdSlot';
 
+import { useTranslation } from 'react-i18next';
+
 export function Layout() {
+  const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'en' ? 'es' : 'en';
+    i18n.changeLanguage(newLang);
+  };
 
   useEffect(() => {
     if (isDark) {
@@ -29,15 +37,22 @@ export function Layout() {
           <nav className="hidden md:flex items-center gap-6">
             <Link to="/finance" className="flex items-center gap-2 hover:text-green-500 transition-colors">
               <TrendingUp className="w-4 h-4" />
-              <span>Finance</span>
+              <span>{t('nav.finance')}</span>
             </Link>
             <Link to="/health" className="flex items-center gap-2 hover:text-red-500 transition-colors">
               <Heart className="w-4 h-4" />
-              <span>Health</span>
+              <span>{t('nav.health')}</span>
             </Link>
           </nav>
 
           <div className="flex items-center gap-2">
+            <button
+              onClick={toggleLanguage}
+              className="px-3 py-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm font-medium border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
+              aria-label="Toggle Language"
+            >
+              {i18n.language === 'es' ? 'ES' : 'EN'}
+            </button>
             <button
               onClick={() => setIsDark(!isDark)}
               className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -61,11 +76,11 @@ export function Layout() {
           <nav className="flex flex-col p-4 gap-4">
             <Link to="/finance" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2">
               <TrendingUp className="w-4 h-4" />
-              Finance Tools
+              {t('nav.finance')}
             </Link>
             <Link to="/health" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2">
               <Heart className="w-4 h-4" />
-              Health Tools
+              {t('nav.health')}
             </Link>
           </nav>
         </div>
@@ -100,7 +115,7 @@ export function Layout() {
              <div className="p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
                 <h3 className="font-semibold mb-3 flex items-center gap-2">
                   <TrendingUp className="w-4 h-4 text-green-500" />
-                  Popular Finance
+                  {t('home.finance_title')}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                   <li><Link to="/finance/mortgage" className="hover:text-primary-500">Mortgage Calculator</Link></li>
@@ -112,7 +127,7 @@ export function Layout() {
              <div className="p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
                 <h3 className="font-semibold mb-3 flex items-center gap-2">
                   <Heart className="w-4 h-4 text-red-500" />
-                  Popular Health
+                  {t('home.health_title')}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                   <li><Link to="/health/bmi" className="hover:text-primary-500">BMI Calculator</Link></li>
@@ -130,7 +145,7 @@ export function Layout() {
       <footer className="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 mt-auto">
         <div className="container mx-auto px-4 py-8 text-center text-sm text-gray-500">
           <p className="mb-2">© {new Date().getFullYear()} SmartCalc. All rights reserved.</p>
-          <Link to="/privacy" className="hover:text-primary-500 transition-colors">Privacy Policy</Link>
+          <Link to="/privacy" className="hover:text-primary-500 transition-colors">{t('nav.privacy')}</Link>
         </div>
       </footer>
     </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { TrendingUp, User, DollarSign, Calendar, Target } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import {
   AreaChart,
   Area,
@@ -20,6 +21,7 @@ interface GrowthData {
 }
 
 export default function RetirementCalculator() {
+  const { t } = useTranslation();
   const [currentAge, setCurrentAge] = useState<number>(30);
   const [retirementAge, setRetirementAge] = useState<number>(65);
   const [currentSavings, setCurrentSavings] = useState<number>(50000);
@@ -76,18 +78,18 @@ export default function RetirementCalculator() {
   return (
     <>
       <Helmet>
-        <title>Retirement Calculator - 401k & Investment Planner</title>
-        <meta name="description" content="Plan your retirement with our free compound interest calculator. Visualize your 401k growth and future savings." />
+        <title>{t('home.tools.retirement.name')} - SmartCalc</title>
+        <meta name="description" content={t('home.tools.retirement.desc')} />
       </Helmet>
 
       <div className="space-y-8">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-2">
             <Target className="w-8 h-8 text-indigo-500" />
-            Retirement Planner
+            {t('home.tools.retirement.name')}
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-2">
-            See the magic of compound interest and plan for your financial freedom.
+            {t('home.tools.retirement.desc')}
           </p>
         </div>
 
@@ -97,7 +99,7 @@ export default function RetirementCalculator() {
             
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Current Age</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('forms.labels.current_age')}</label>
                 <div className="relative">
                   <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
@@ -109,7 +111,7 @@ export default function RetirementCalculator() {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Retire Age</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('forms.labels.retire_age')}</label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
@@ -123,7 +125,7 @@ export default function RetirementCalculator() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Current Savings</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('forms.labels.current_savings')}</label>
               <div className="relative">
                 <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
@@ -136,7 +138,7 @@ export default function RetirementCalculator() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Monthly Contribution</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('forms.labels.monthly_contrib')}</label>
               <div className="relative">
                 <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
@@ -149,7 +151,7 @@ export default function RetirementCalculator() {
             </div>
 
              <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Annual Return (%)</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('forms.labels.return_rate')}</label>
               <div className="relative">
                 <TrendingUp className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
@@ -170,13 +172,13 @@ export default function RetirementCalculator() {
             {/* Summary Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-indigo-50 dark:bg-indigo-900/20 p-6 rounded-2xl border border-indigo-100 dark:border-indigo-800 text-center">
-                <h3 className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide">Total at Age {retirementAge}</h3>
+                <h3 className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide">{t('results.total_savings')} ({retirementAge})</h3>
                 <p className="text-4xl font-bold text-gray-900 dark:text-white mt-2">
                   ${totalSavings.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                 </p>
               </div>
                <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-2xl border border-green-100 dark:border-green-800 text-center">
-                <h3 className="text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-wide">Total Interest Earned</h3>
+                <h3 className="text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-wide">{t('results.total_interest')}</h3>
                 <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
                   ${totalInterest.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                 </p>

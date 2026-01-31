@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-route
 import { HelmetProvider } from 'react-helmet-async';
 import ReactGA from 'react-ga4';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
@@ -15,6 +16,16 @@ function AnalyticsTracker() {
   useEffect(() => {
     ReactGA.send({ hitType: "pageview", page: location.pathname + location.search });
   }, [location]);
+
+  return null;
+}
+
+function GlobalLanguageSync() {
+  const { i18n } = useTranslation();
+  
+  useEffect(() => {
+    document.documentElement.lang = i18n.language;
+  }, [i18n.language]);
 
   return null;
 }
@@ -34,6 +45,7 @@ function App() {
     <HelmetProvider>
       <BrowserRouter>
         <AnalyticsTracker />
+        <GlobalLanguageSync />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />

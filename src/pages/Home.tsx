@@ -1,45 +1,48 @@
 import { Link } from 'react-router-dom';
 import { DollarSign, Activity, TrendingUp, HandCoins, Heart, ShieldCheck } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
 
 export function Home() {
+  const { t } = useTranslation();
+
   const financeTools = [
     {
-      name: 'Mortgage Calculator',
-      description: 'Calculate monthly payments, interest rates, and amortization.',
+      name: t('home.tools.mortgage.name'),
+      description: t('home.tools.mortgage.desc'),
       icon: DollarSign,
       path: '/finance/mortgage',
       color: 'text-green-500',
       bg: 'bg-green-50 dark:bg-green-900/20',
     },
     {
-      name: 'Investment Return',
-      description: 'Project your investment growth with compound interest.',
+      name: t('home.tools.investment.name'),
+      description: t('home.tools.investment.desc'),
       icon: TrendingUp,
       path: '/finance/investment',
       color: 'text-emerald-500',
       bg: 'bg-emerald-50 dark:bg-emerald-900/20',
     },
     {
-      name: 'Auto Loan Calculator',
-      description: 'Estimate monthly car payments and total loan costs.',
+      name: t('home.tools.auto_loan.name'),
+      description: t('home.tools.auto_loan.desc'),
       icon: HandCoins,
       path: '/finance/loan',
       color: 'text-teal-500',
       bg: 'bg-teal-50 dark:bg-teal-900/20',
     },
     {
-      name: 'Retirement Planner',
-      description: 'Visualize your 401k growth and plan for financial freedom.',
-      icon: TrendingUp, // Using existing icon import
+      name: t('home.tools.retirement.name'),
+      description: t('home.tools.retirement.desc'),
+      icon: TrendingUp, 
       path: '/finance/retirement',
       color: 'text-indigo-500',
       bg: 'bg-indigo-50 dark:bg-indigo-900/20',
     },
     {
-      name: 'Debt Payoff Planner',
-      description: 'Snowball vs Avalanche. Create a structured plan to be debt-free.',
-      icon: ShieldCheck, // Need to import this
+      name: t('home.tools.debt_payoff.name'),
+      description: t('home.tools.debt_payoff.desc'),
+      icon: ShieldCheck,
       path: '/finance/debt-payoff',
       color: 'text-rose-500',
       bg: 'bg-rose-50 dark:bg-rose-900/20',
@@ -48,16 +51,16 @@ export function Home() {
 
   const healthTools = [
     {
-      name: 'BMI Calculator',
-      description: 'Check your Body Mass Index and understand weight health.',
+      name: t('home.tools.bmi.name'),
+      description: t('home.tools.bmi.desc'),
       icon: Activity,
       path: '/health/bmi',
       color: 'text-red-500',
       bg: 'bg-red-50 dark:bg-red-900/20',
     },
     {
-      name: 'Calorie Calculator',
-      description: 'Calculate daily caloric needs (TDEE) for your goals.',
+      name: t('home.tools.calorie.name'),
+      description: t('home.tools.calorie.desc'),
       icon: Heart,
       path: '/health/calories',
       color: 'text-rose-500',
@@ -68,8 +71,8 @@ export function Home() {
   return (
     <>
       <Helmet>
-        <title>SmartCalc - Finance & Health Calculators</title>
-        <meta name="description" content="Free online financial and health calculators. Mortgage, Loan, BMI, Calorie calculators and more. No login required." />
+        <title>{t('home.meta.title')}</title>
+        <meta name="description" content={t('home.meta.desc')} />
       </Helmet>
 
       <div className="space-y-12">
@@ -78,15 +81,14 @@ export function Home() {
             Smart<span className="text-primary-600">Calc</span> Suite
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Powerful financial projections and health insights. 
-            Free, private, and instant.
+            {t('home.hero_subtitle')}
           </p>
         </div>
 
         <section>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
             <TrendingUp className="w-6 h-6 text-green-500" />
-            Finance Tools
+            {t('home.finance_title')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {financeTools.map((tool) => (
@@ -112,7 +114,7 @@ export function Home() {
         <section>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
             <Heart className="w-6 h-6 text-red-500" />
-            Health Tools
+            {t('home.health_title')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {healthTools.map((tool) => (

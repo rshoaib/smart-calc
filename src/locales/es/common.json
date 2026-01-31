@@ -1,0 +1,132 @@
+{
+  "welcome": "Bienvenido a SmartCalc",
+  "description": "Herramientas Inteligentes de Finanzas y Salud",
+  "common": {
+    "calculate": "Calcular",
+    "results": "Resultados",
+    "metric": "Métrico",
+    "imperial": "Imperial",
+    "clear": "Borrar",
+    "save": "Guardar"
+  },
+  "nav": {
+    "finance": "Finanzas",
+    "health": "Salud",
+    "privacy": "Política de Privacidad"
+  },
+  "home": {
+    "hero_title": "Calculadoras Inteligentes para Mejores Decisiones",
+    "hero_subtitle": "Herramientas gratuitas, instantáneas y privadas para tu dinero y salud.",
+    "finance_title": "Herramientas Financieras",
+    "health_title": "Herramientas de Salud",
+    "meta": {
+      "title": "SmartCalc - Calculadoras de Finanzas y Salud",
+      "desc": "Calculadoras financieras y de salud gratuitas en línea. Hipoteca, Préstamo, IMC, Calorías y más. No se requiere registro."
+    },
+    "tools": {
+      "mortgage": {
+        "name": "Calculadora de Hipoteca",
+        "desc": "Calcula pagos mensuales, tasas de interés y amortización."
+      },
+      "investment": {
+        "name": "Retorno de Inversión",
+        "desc": "Proyecta el crecimiento de tu inversión con interés compuesto."
+      },
+      "auto_loan": {
+        "name": "Calculadora de Préstamo de Auto",
+        "desc": "Estima pagos mensuales y costos totales del préstamo."
+      },
+      "retirement": {
+        "name": "Planificador de Jubilación",
+        "desc": "Visualiza el crecimiento de tu 401k y planifica tu libertad financiera."
+      },
+      "debt_payoff": {
+        "name": "Planificador de Pago de Deuda",
+        "desc": "Bola de nieve vs Avalancha. Crea un plan estructurado para estar libre de deudas."
+      },
+      "bmi": {
+        "name": "Calculadora de IMC",
+        "desc": "Verifica tu Índice de Masa Corporal y entiende la salud de tu peso."
+      },
+      "calorie": {
+        "name": "Calculadora de Calorías",
+        "desc": "Calcula las necesidades calóricas diarias (TDEE) para tus metas."
+      }
+    },
+    "forms": {
+      "sections": {
+        "loan": "Detalles del Préstamo",
+        "investment": "Detalles de Inversión",
+        "retirement": "Plan de Jubilación",
+        "debt": "Detalles de Deuda",
+        "personal": "Datos Personales"
+      },
+      "labels": {
+        "home_price": "Precio de Casa ($)",
+        "vehicle_price": "Precio del Vehículo ($)",
+        "down_payment": "Pago Inicial ($)",
+        "interest_rate": "Tasa de Interés (%)",
+        "loan_term": "Plazo (Años)",
+        "term_months": "Plazo (Meses)",
+        "trade_in": "Valor de Intercambio ($)",
+        "sales_tax": "Impuesto de Venta (%)",
+        "debt_name": "Nombre de Deuda",
+        "balance": "Saldo ($)",
+        "min_payment": "Pago Mín ($)",
+        "initial_inv": "Inversión Inicial ($)",
+        "monthly_contrib": "Contribución Mensual ($)",
+        "years_grow": "Años de Crecimiento",
+        "return_rate": "Retorno Esperado (%)",
+        "current_age": "Edad Actual",
+        "retire_age": "Edad de Jubilación",
+        "current_savings": "Ahorros Actuales ($)",
+        "monthly_budget": "Presupuesto Mensual ($)",
+        "payoff_strategy": "Estrategia de Pago",
+        "height_ft": "Altura (pies)",
+        "height_in": "Altura (pulgadas)",
+        "height_cm": "Altura (cm)",
+        "weight_lb": "Peso (lbs)",
+        "weight_kg": "Peso (kg)",
+        "age": "Edad",
+        "gender": "Género",
+        "activity_level": "Nivel de Actividad"
+      },
+      "options": {
+        "snowball": "Bola de Nieve (Menor saldo primero)",
+        "avalanche": "Avalancha (Mayor interés primero)",
+        "male": "Masculino",
+        "female": "Femenino",
+        "sedentary": "Sedentario (Trabajo de oficina)",
+        "light": "Ejercicio Ligero (1-2 días/sem)",
+        "moderate": "Ejercicio Moderado (3-5 días/sem)",
+        "active": "Activo (Ejercicio diario)",
+        "very_active": "Muy Activo (Trabajo físico + entreno)",
+        "heavy": "Ejercicio Pesado (6-7 días/sem)",
+        "athlete": "Atleta (2x por día)"
+      }
+    },
+    "results": {
+      "monthly_payment": "Pago Mensual",
+      "total_interest": "Interés Total",
+      "total_cost": "Costo Total",
+      "payoff_date": "Fecha Libre de Deuda",
+      "total_savings": "Ahorros Totales",
+      "future_value": "Valor Futuro",
+      "bmi_score": "Tu Puntaje IMC",
+      "category": "Categoría",
+      "maintain_weight": "Mantener Peso",
+      "mild_loss": "Pérdida Leve",
+      "loss": "Pérdida de Peso",
+      "extreme_loss": "Pérdida Extrema",
+      "mild_gain": "Ganancia Leve",
+      "gain": "Ganancia de Peso",
+      "extreme_gain": "Ganancia Extrema",
+       "categories": {
+        "underweight": "Bajo Peso",
+        "normal": "Peso Normal",
+        "overweight": "Sobrepeso",
+        "obese": "Obeso"
+      }
+    }
+  }
+}

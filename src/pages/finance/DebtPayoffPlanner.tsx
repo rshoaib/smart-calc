@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { CreditCard, Trash2, Plus, TrendingDown, ShieldCheck } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import {
   AreaChart,
   Area,
@@ -27,6 +28,7 @@ interface PayoffData {
 }
 
 export default function DebtPayoffPlanner() {
+  const { t } = useTranslation();
   const [debts, setDebts] = useState<Debt[]>([
     { id: '1', name: 'Credit Card', balance: 5000, rate: 18.9, minPayment: 100 },
     { id: '2', name: 'Car Loan', balance: 12000, rate: 6.5, minPayment: 250 },
@@ -141,18 +143,18 @@ export default function DebtPayoffPlanner() {
   return (
     <>
       <Helmet>
-        <title>Debt Payoff Planner - Snowball vs Avalanche Calculator</title>
-        <meta name="description" content="Create a custom plan to get out of debt faster. Compare Snowball vs Avalanche strategies and see your debt-free date." />
+        <title>{t('home.tools.debt_payoff.name')} - SmartCalc</title>
+        <meta name="description" content={t('home.tools.debt_payoff.desc')} />
       </Helmet>
 
       <div className="space-y-8">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-2">
             <ShieldCheck className="w-8 h-8 text-rose-500" />
-            Debt Payoff Planner
+            {t('home.tools.debt_payoff.name')}
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-2">
-             Stop stressing. Build a concrete plan to eliminate your debt forever.
+             {t('home.tools.debt_payoff.desc')}
           </p>
         </div>
 
@@ -162,30 +164,28 @@ export default function DebtPayoffPlanner() {
             
             {/* Strategy Toggle */}
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
-               <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">1. Choose Your Strategy</h3>
+               <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">{t('forms.sections.strategy')}</h3>
                <div className="flex gap-4">
                  <button
                    onClick={() => setStrategy('snowball')}
                    className={`flex-1 p-4 rounded-xl border-2 transition-all ${strategy === 'snowball' ? 'border-rose-500 bg-rose-50 dark:bg-rose-900/20' : 'border-gray-200 dark:border-gray-700 hover:border-rose-300'}`}
                  >
-                   <div className="font-bold text-gray-900 dark:text-white mb-1">❄️ Snowball Method</div>
-                   <p className="text-xs text-gray-500">Pay smallest balance first.</p>
-                   <span className="text-xs font-semibold text-rose-600">Best for Motivation due to quick wins.</span>
+                   <div className="font-bold text-gray-900 dark:text-white mb-1">❄️ {t('forms.options.snowball')}</div>
+                   <p className="text-xs text-gray-500">{t('forms.options.snowball_desc')}</p>
                  </button>
                  <button
                    onClick={() => setStrategy('avalanche')}
                    className={`flex-1 p-4 rounded-xl border-2 transition-all ${strategy === 'avalanche' ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' : 'border-gray-200 dark:border-gray-700 hover:border-blue-300'}`}
                  >
-                   <div className="font-bold text-gray-900 dark:text-white mb-1">🏔️ Avalanche Method</div>
-                   <p className="text-xs text-gray-500">Pay highest interest first.</p>
-                   <span className="text-xs font-semibold text-blue-600">Mathematically optimal. Saves most money.</span>
+                   <div className="font-bold text-gray-900 dark:text-white mb-1">🏔️ {t('forms.options.avalanche')}</div>
+                   <p className="text-xs text-gray-500">{t('forms.options.avalanche_desc')}</p>
                  </button>
                </div>
             </div>
 
              {/* Budget */}
              <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
-                <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">2. Extra Monthly Payment</h3>
+                <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">{t('forms.labels.monthly_budget')}</h3>
                 <p className="text-sm text-gray-500 mb-2">How much EXTRA can you pay per month on top of minimums?</p>
                 <div className="relative">
                   <CreditCard className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -201,7 +201,7 @@ export default function DebtPayoffPlanner() {
             {/* Debts List */}
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
               <div className="flex justify-between items-center mb-4">
-                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">3. Your Debts</h3>
+                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('forms.sections.debts')}</h3>
                  <button onClick={addDebt} className="text-sm flex items-center gap-1 text-primary-600 hover:text-primary-700 font-medium">
                    <Plus className="w-4 h-4" /> Add Debt
                  </button>
@@ -219,7 +219,7 @@ export default function DebtPayoffPlanner() {
                     
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                       <div className="md:col-span-1">
-                        <label className="text-xs font-medium text-gray-500 block mb-1">Name</label>
+                        <label className="text-xs font-medium text-gray-500 block mb-1">{t('forms.labels.debt_name')}</label>
                         <input 
                           type="text" 
                           value={debt.name}
@@ -228,7 +228,7 @@ export default function DebtPayoffPlanner() {
                         />
                       </div>
                       <div className="md:col-span-1">
-                        <label className="text-xs font-medium text-gray-500 block mb-1">Balance ($)</label>
+                        <label className="text-xs font-medium text-gray-500 block mb-1">{t('forms.labels.balance')}</label>
                          <input 
                           type="number" 
                           value={debt.balance}
@@ -237,7 +237,7 @@ export default function DebtPayoffPlanner() {
                         />
                       </div>
                       <div className="md:col-span-1">
-                        <label className="text-xs font-medium text-gray-500 block mb-1">Rate (%)</label>
+                        <label className="text-xs font-medium text-gray-500 block mb-1">{t('forms.labels.interest_rate')}</label>
                          <input 
                           type="number" 
                           step="0.1"
@@ -247,7 +247,7 @@ export default function DebtPayoffPlanner() {
                         />
                       </div>
                       <div className="md:col-span-1">
-                        <label className="text-xs font-medium text-gray-500 block mb-1">Min Pmt ($)</label>
+                        <label className="text-xs font-medium text-gray-500 block mb-1">{t('forms.labels.min_payment')}</label>
                          <input 
                           type="number" 
                           value={debt.minPayment}
@@ -267,13 +267,13 @@ export default function DebtPayoffPlanner() {
           <div className="space-y-6">
              <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-8 rounded-3xl border border-green-100 dark:border-green-800 text-center relative overflow-hidden">
                 <div className="relative z-10">
-                   <h3 className="text-lg font-semibold text-green-700 dark:text-green-400 uppercase tracking-widest mb-2">Debt Free Date</h3>
+                   <h3 className="text-lg font-semibold text-green-700 dark:text-green-400 uppercase tracking-widest mb-2">{t('results.payoff_date')}</h3>
                    <p className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">
                      {payoffDate || "Never"}
                    </p>
                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 dark:bg-black/20 rounded-full text-sm font-medium text-green-800 dark:text-green-300">
                      <TrendingDown className="w-4 h-4" />
-                     Total Interest Paid: ${totalInterest.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                     {t('results.total_interest')}: ${totalInterest.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                    </div>
                 </div>
              </div>

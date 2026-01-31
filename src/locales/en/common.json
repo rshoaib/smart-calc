@@ -1,0 +1,132 @@
+{
+  "welcome": "Welcome to SmartCalc",
+  "description": "Smart Financial & Health Tools",
+  "common": {
+    "calculate": "Calculate",
+    "results": "Results",
+    "metric": "Metric",
+    "imperial": "Imperial",
+    "clear": "Clear",
+    "save": "Save"
+  },
+  "nav": {
+    "finance": "Finance",
+    "health": "Health",
+    "privacy": "Privacy Policy"
+  },
+  "home": {
+    "hero_title": "Smart Calculators for Better Decisions",
+    "hero_subtitle": "Free, instant, and privacy-focused tools for your money and health.",
+    "finance_title": "Financial Tools",
+    "health_title": "Health Tools",
+    "meta": {
+      "title": "SmartCalc - Finance & Health Calculators",
+      "desc": "Free online financial and health calculators. Mortgage, Loan, BMI, Calorie calculators and more. No login required."
+    },
+    "tools": {
+      "mortgage": {
+        "name": "Mortgage Calculator",
+        "desc": "Calculate monthly payments, interest rates, and amortization."
+      },
+      "investment": {
+        "name": "Investment Return",
+        "desc": "Project your investment growth with compound interest."
+      },
+      "auto_loan": {
+        "name": "Auto Loan Calculator",
+        "desc": "Estimate monthly car payments and total loan costs."
+      },
+      "retirement": {
+        "name": "Retirement Planner",
+        "desc": "Visualize your 401k growth and plan for financial freedom."
+      },
+      "debt_payoff": {
+        "name": "Debt Payoff Planner",
+        "desc": "Snowball vs Avalanche. Create a structured plan to be debt-free."
+      },
+      "bmi": {
+        "name": "BMI Calculator",
+        "desc": "Check your Body Mass Index and understand weight health."
+      },
+      "calorie": {
+        "name": "Calorie Calculator",
+        "desc": "Calculate daily caloric needs (TDEE) for your goals."
+      }
+    },
+    "forms": {
+      "sections": {
+        "loan": "Loan Details",
+        "investment": "Investment Details",
+        "retirement": "Retirement Plan",
+        "debt": "Debt Details",
+        "personal": "Personal Details"
+      },
+      "labels": {
+        "home_price": "Home Price ($)",
+        "vehicle_price": "Vehicle Price ($)",
+        "down_payment": "Down Payment ($)",
+        "interest_rate": "Interest Rate (%)",
+        "loan_term": "Loan Term (Years)",
+        "term_months": "Term (Months)",
+        "trade_in": "Trade-In Value ($)",
+        "sales_tax": "Sales Tax (%)",
+        "debt_name": "Debt Name",
+        "balance": "Balance ($)",
+        "min_payment": "Min Payment ($)",
+        "initial_inv": "Initial Investment ($)",
+        "monthly_contrib": "Monthly Contribution ($)",
+        "years_grow": "Years to Grow",
+        "return_rate": "Expected Return (%)",
+        "current_age": "Current Age",
+        "retire_age": "Retirement Age",
+        "current_savings": "Current Savings ($)",
+        "monthly_budget": "Monthly Payoff Budget ($)",
+        "payoff_strategy": "Payoff Strategy",
+        "height_ft": "Height (ft)",
+        "height_in": "Height (in)",
+        "height_cm": "Height (cm)",
+        "weight_lb": "Weight (lbs)",
+        "weight_kg": "Weight (kg)",
+        "age": "Age",
+        "gender": "Gender",
+        "activity_level": "Activity Level"
+      },
+      "options": {
+        "snowball": "Debt Snowball (Lowest Balance First)",
+        "avalanche": "Debt Avalanche (Highest Interest First)",
+        "male": "Male",
+        "female": "Female",
+        "sedentary": "Sedentary (Office job)",
+        "light": "Light Exercise (1-2 days/week)",
+        "moderate": "Moderate Exercise (3-5 days/week)",
+        "active": "Active (Daily exercise)",
+        "very_active": "Very Active (Physical job + training)",
+        "heavy": "Heavy Exercise (6-7 days/week)",
+        "athlete": "Athlete (2x per day)"
+      }
+    },
+    "results": {
+      "monthly_payment": "Monthly Payment",
+      "total_interest": "Total Interest",
+      "total_cost": "Total Cost of Loan",
+      "payoff_date": "Debt Free Date",
+      "total_savings": "Total Savings",
+      "future_value": "Future Value",
+      "bmi_score": "Your BMI Score",
+      "category": "Category",
+      "maintain_weight": "Maintain Weight",
+      "mild_loss": "Mild Weight Loss",
+      "loss": "Weight Loss",
+      "extreme_loss": "Extreme Weight Loss",
+      "mild_gain": "Mild Weight Gain",
+      "gain": "Weight Gain",
+      "extreme_gain": "Extreme Weight Gain",
+      "categories": {
+        "underweight": "Underweight",
+        "normal": "Normal Weight",
+        "overweight": "Overweight",
+        "obese": "Obese"
+      }
+    }
+  }
+}

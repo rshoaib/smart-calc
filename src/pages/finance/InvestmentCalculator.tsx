@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { TrendingUp, DollarSign, Calendar, Percent } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import {
   AreaChart,
   Area,
@@ -20,6 +21,7 @@ interface InvestmentData {
 }
 
 export default function InvestmentCalculator() {
+  const { t } = useTranslation();
   const [initial, setInitial] = useState<number>(10000);
   const [monthly, setMonthly] = useState<number>(500);
   const [rate, setRate] = useState<number>(7);
@@ -69,28 +71,28 @@ export default function InvestmentCalculator() {
   return (
     <>
       <Helmet>
-        <title>Investment Calculator - Calculate Compound Interest & ROI</title>
-        <meta name="description" content="Calculate the future value of your investments with compound interest. See how your money grows over time with regular contributions." />
+        <title>{t('home.tools.investment.name')} - SmartCalc</title>
+        <meta name="description" content={t('home.tools.investment.desc')} />
       </Helmet>
 
       <div className="space-y-8">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-2">
             <TrendingUp className="w-8 h-8 text-emerald-500" />
-            Investment Calculator
+            {t('home.tools.investment.name')}
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-2">
-            Visualize the power of compound interest and plan your financial future.
+            {t('home.tools.investment.desc')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Input Section */}
           <div className="lg:col-span-1 space-y-6 bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 h-fit">
-            <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Investment Details</h2>
+            <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">{t('forms.sections.investment')}</h2>
             
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Starting Amount ($)</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('forms.labels.initial_inv')}</label>
               <div className="relative">
                 <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
@@ -103,7 +105,7 @@ export default function InvestmentCalculator() {
             </div>
 
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Monthly Contribution ($)</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('forms.labels.monthly_contrib')}</label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
@@ -116,7 +118,7 @@ export default function InvestmentCalculator() {
             </div>
 
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Annual Return Rate (%)</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('forms.labels.return_rate')}</label>
               <div className="relative">
                 <Percent className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
@@ -130,7 +132,7 @@ export default function InvestmentCalculator() {
             </div>
 
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Time Period (Years)</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('forms.labels.years_grow')}</label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
@@ -148,13 +150,13 @@ export default function InvestmentCalculator() {
             {/* Summary Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-emerald-50 dark:bg-emerald-900/20 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-800 text-center">
-                <h3 className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">Total Future Value</h3>
+                <h3 className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">{t('results.future_value')}</h3>
                 <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
                   ${totalValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                 </p>
               </div>
               <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-2xl border border-blue-100 dark:border-blue-800 text-center">
-                <h3 className="text-sm font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wide">Total Interest Earned</h3>
+                <h3 className="text-sm font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wide">{t('results.total_interest')}</h3>
                 <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
                   ${totalInterest.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                 </p>

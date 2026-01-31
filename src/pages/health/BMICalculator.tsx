@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Activity, Scale, Ruler } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
+import { useTranslation } from 'react-i18next';
 
 export default function BMICalculator() {
+  const { t } = useTranslation();
   const [unit, setUnit] = useState<'metric' | 'imperial'>('metric');
   const [height, setHeight] = useState<string>(''); // cm or ft
   const [heightInches, setHeightInches] = useState<string>(''); // inches for imperial
@@ -37,34 +39,34 @@ export default function BMICalculator() {
   };
 
   const determineCategory = (value: number) => {
-    if (value < 18.5) setCategory('Underweight');
-    else if (value < 25) setCategory('Normal weight');
-    else if (value < 30) setCategory('Overweight');
-    else setCategory('Obese');
+    if (value < 18.5) setCategory(t('results.categories.underweight'));
+    else if (value < 25) setCategory(t('results.categories.normal'));
+    else if (value < 30) setCategory(t('results.categories.overweight'));
+    else setCategory(t('results.categories.obese'));
   };
 
   const data = [
-    { name: 'Underweight', value: 18.5, color: '#3b82f6' },
-    { name: 'Normal', value: 6.5, color: '#22c55e' }, // 18.5-25 range size
-    { name: 'Overweight', value: 5, color: '#eab308' }, // 25-30 range size
-    { name: 'Obese', value: 10, color: '#ef4444' }, // 30+ range
+    { name: t('results.categories.underweight'), value: 18.5, color: '#3b82f6' },
+    { name: t('results.categories.normal'), value: 6.5, color: '#22c55e' }, // 18.5-25 range size
+    { name: t('results.categories.overweight'), value: 5, color: '#eab308' }, // 25-30 range size
+    { name: t('results.categories.obese'), value: 10, color: '#ef4444' }, // 30+ range
   ];
 
   return (
     <>
       <Helmet>
-        <title>BMI Calculator - Check Your Body Mass Index</title>
-        <meta name="description" content="Calculate your BMI (Body Mass Index) instantly. Understand your weight category with our free health tool." />
+        <title>{t('home.tools.bmi.name')} - SmartCalc</title>
+        <meta name="description" content={t('home.tools.bmi.desc')} />
       </Helmet>
 
       <div className="space-y-8">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-2">
             <Activity className="w-8 h-8 text-red-500" />
-            BMI Calculator
+            {t('home.tools.bmi.name')}
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-2">
-             Calculate your Body Mass Index (BMI) to understand your weight status.
+             {t('home.tools.bmi.desc')}
           </p>
         </div>
 
@@ -78,20 +80,20 @@ export default function BMICalculator() {
                 className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${unit === 'metric' ? 'bg-white dark:bg-gray-600 shadow text-primary-600 dark:text-primary-400' : 'text-gray-500 dark:text-gray-400'}`}
                 onClick={() => setUnit('metric')}
               >
-                Metric (kg/cm)
+                {t('common.metric')} (kg/cm)
               </button>
               <button
                 className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${unit === 'imperial' ? 'bg-white dark:bg-gray-600 shadow text-primary-600 dark:text-primary-400' : 'text-gray-500 dark:text-gray-400'}`}
                 onClick={() => setUnit('imperial')}
               >
-                Imperial (lbs/ft)
+                {t('common.imperial')} (lbs/ft)
               </button>
             </div>
 
             <div className="space-y-6">
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Height ({unit === 'metric' ? 'cm' : 'ft & in'})
+                  {unit === 'metric' ? t('forms.labels.height_cm') : t('forms.labels.height_ft')}
                 </label>
                 <div className="flex gap-4">
                   <div className="relative w-full">
@@ -121,7 +123,7 @@ export default function BMICalculator() {
 
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Weight ({unit === 'metric' ? 'kg' : 'lbs'})
+                  {unit === 'metric' ? t('forms.labels.weight_kg') : t('forms.labels.weight_lb')}
                 </label>
                 <div className="relative">
                   <Scale className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -139,7 +141,7 @@ export default function BMICalculator() {
                 onClick={calculateBMI}
                 className="w-full py-3 px-4 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-xl transition-colors shadow-lg shadow-primary-500/30"
               >
-                Calculate BMI
+                {t('common.calculate')}
               </button>
             </div>
           </div>
@@ -148,13 +150,13 @@ export default function BMICalculator() {
           <div className="flex flex-col justify-center space-y-6">
             {bmi !== null ? (
               <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm text-center relative overflow-hidden">
-                <h3 className="text-gray-500 dark:text-gray-400 uppercase tracking-widest text-sm font-semibold mb-2">Your BMI Score</h3>
+                <h3 className="text-gray-500 dark:text-gray-400 uppercase tracking-widest text-sm font-semibold mb-2">{t('results.bmi_score')}</h3>
                 <div className="text-6xl font-black text-gray-900 dark:text-white mb-2 relative z-10">
                   {bmi.toFixed(1)}
                 </div>
                 <div className={`inline-block px-4 py-1 rounded-full text-sm font-bold mb-4 ${
-                  category === 'Normal weight' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 
-                  category === 'Overweight' ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400' :
+                  category === t('results.categories.normal') ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 
+                  category === t('results.categories.overweight') ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400' :
                   'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
                 }`}>
                   {category}
@@ -185,7 +187,7 @@ export default function BMICalculator() {
                 </div>
                 
                 <p className="mt-4 text-gray-600 dark:text-gray-300 text-sm relative z-10">
-                  {category === 'Normal weight' 
+                  {category === t('results.categories.normal') 
                     ? "Great job! Your BMI indicates a healthy weight." 
                     : "Maintaining a healthy weight is important for reducing the risk of chronic diseases."}
                 </p>
@@ -202,10 +204,10 @@ export default function BMICalculator() {
                  <div className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
                     <h4 className="font-semibold text-sm mb-3 text-gray-700 dark:text-gray-300">BMI Categories</h4>
                     <div className="space-y-2 text-sm">
-                        <div className="flex justify-between"><span className="text-blue-500">Underweight</span> <span>&lt; 18.5</span></div>
-                        <div className="flex justify-between"><span className="text-green-500">Normal</span> <span>18.5 - 24.9</span></div>
-                        <div className="flex justify-between"><span className="text-yellow-500">Overweight</span> <span>25 - 29.9</span></div>
-                        <div className="flex justify-between"><span className="text-red-500">Obese</span> <span>&gt; 30</span></div>
+                        <div className="flex justify-between"><span className="text-blue-500">{t('results.categories.underweight')}</span> <span>&lt; 18.5</span></div>
+                        <div className="flex justify-between"><span className="text-green-500">{t('results.categories.normal')}</span> <span>18.5 - 24.9</span></div>
+                        <div className="flex justify-between"><span className="text-yellow-500">{t('results.categories.overweight')}</span> <span>25 - 29.9</span></div>
+                        <div className="flex justify-between"><span className="text-red-500">{t('results.categories.obese')}</span> <span>&gt; 30</span></div>
                     </div>
                  </div>
             )}
