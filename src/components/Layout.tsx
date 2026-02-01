@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { Calculator, Menu, Moon, Sun, X, TrendingUp, Heart } from 'lucide-react';
+import { Calculator, Menu, Moon, Sun, X, TrendingUp, Heart, BookOpen } from 'lucide-react';
 import { AdSlot } from './AdSlot';
 
 import { useTranslation } from 'react-i18next';
@@ -43,6 +43,10 @@ export function Layout() {
               <Heart className="w-4 h-4" />
               <span>{t('nav.health')}</span>
             </Link>
+            <Link to="/blog" className="flex items-center gap-2 hover:text-indigo-500 transition-colors">
+              <BookOpen className="w-4 h-4" />
+              <span>{t('nav.blog')}</span>
+            </Link>
           </nav>
 
           <div className="flex items-center gap-2">
@@ -81,6 +85,10 @@ export function Layout() {
             <Link to="/health" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2">
               <Heart className="w-4 h-4" />
               {t('nav.health')}
+            </Link>
+            <Link to="/blog" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2">
+              <BookOpen className="w-4 h-4" />
+              {t('nav.blog')}
             </Link>
           </nav>
         </div>
