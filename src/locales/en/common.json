@@ -59,6 +59,10 @@
       "macro_split": {
         "name": "Macro Split Calculator",
         "desc": "Optimize your nutrient intake for muscle gain or fat loss."
+      },
+      "rent_vs_buy": {
+        "name": "Rent vs. Buy Analyzer",
+        "desc": "Compare the total cost of renting vs buying over time."
       }
     },
     "forms": {
@@ -101,7 +105,13 @@
         "current_balance": "Current Balance ($)",
         "annual_interest": "Annual Interest Rate (%)",
         "diet_type": "Diet Preference",
-        "goal": "Goal"
+        "goal": "Goal",
+        "rent_monthly": "Monthly Rent ($)",
+        "rent_increase": "Annual Rent Increase (%)",
+        "home_appreciation": "Home Appreciation (%)",
+        "maintenance_cost": "Annual Maintenance (%)",
+        "buying_closing_costs": "Buying Closing Costs (%)",
+        "selling_closing_costs": "Selling Closing Costs (%)"
       },
       "options": {
         "snowball": "Debt Snowball (Lowest Balance First)",
@@ -154,7 +164,11 @@
         "normal": "Normal Weight",
         "overweight": "Overweight",
         "obese": "Obese"
-      }
+      },
+      "break_even_point": "Breakeven Point",
+      "buying_cheaper": "Buying becomes cheaper after",
+      "renting_cheaper": "Renting is cheaper for",
+      "forever": "forever"
     }
   }
 }

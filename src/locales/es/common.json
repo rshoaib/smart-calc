@@ -59,6 +59,10 @@
       "macro_split": {
         "name": "Calculadora de Macros",
         "desc": "Optimiza tu ingesta de nutrientes para ganar músculo o perder grasa."
+      },
+      "rent_vs_buy": {
+        "name": "Analizador Alquilar vs. Comprar",
+        "desc": "Compara el costo total de alquilar vs comprar en el tiempo."
       }
     },
     "forms": {
@@ -101,7 +105,13 @@
         "current_balance": "Saldo Actual ($)",
         "annual_interest": "Tasa de Interés Anual (%)",
         "diet_type": "Preferencia de Dieta",
-        "goal": "Objetivo"
+        "goal": "Objetivo",
+        "rent_monthly": "Alquiler Mensual ($)",
+        "rent_increase": "Aumento Alquiler Anual (%)",
+        "home_appreciation": "Apreciación de Casa (%)",
+        "maintenance_cost": "Mantenimiento Anual (%)",
+        "buying_closing_costs": "Costos de Cierre Compra (%)",
+        "selling_closing_costs": "Costos de Cierre Venta (%)"
       },
       "options": {
         "snowball": "Bola de Nieve (Menor saldo primero)",
@@ -154,7 +164,11 @@
         "normal": "Peso Normal",
         "overweight": "Sobrepeso",
         "obese": "Obeso"
-      }
+      },
+      "break_even_point": "Punto de Equilibrio",
+      "buying_cheaper": "Comprar es más barato después de",
+      "renting_cheaper": "Alquilar es más barato por",
+      "forever": "siempre"
     }
   }
 }

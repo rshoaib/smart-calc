@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { DollarSign, Activity, TrendingUp, HandCoins, Heart, ShieldCheck, Utensils } from 'lucide-react';
+import { DollarSign, Activity, TrendingUp, HandCoins, Heart, ShieldCheck, Utensils, Home as HomeIcon } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 
@@ -54,6 +54,14 @@ export function Home() {
       path: '/finance/time-to-millionaire',
       color: 'text-blue-500',
       bg: 'bg-blue-50 dark:bg-blue-900/20',
+    },
+    {
+      name: t('home.tools.rent_vs_buy.name'),
+      description: t('home.tools.rent_vs_buy.desc'),
+      icon: HomeIcon,
+      path: '/finance/rent-vs-buy',
+      color: 'text-indigo-500',
+      bg: 'bg-indigo-50 dark:bg-indigo-900/20',
     },
   ];
 
