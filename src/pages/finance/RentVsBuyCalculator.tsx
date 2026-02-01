@@ -192,136 +192,149 @@ export default function RentVsBuyCalculator() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-           {/* Inputs */}
-           <div className="lg:col-span-1 space-y-6 bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 h-fit">
-              <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
-                  <Building className="w-4 h-4" /> Buying Costs
-              </h3>
-              
-              <div className="space-y-4">
-                  <div>
-                      <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.home_price')}</label>
-                      <input type="number" value={homePrice} onChange={e => setHomePrice(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg" />
-                  </div>
-                  <div className="grid grid-cols-2 gap-2">
-                      <div>
-                          <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.down_payment')}</label>
-                          <input type="number" value={downPayment} onChange={e => setDownPayment(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg" />
+        <div className="flex flex-col gap-8">
+           {/* Inputs Panel */}
+           <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {/* Buying Inputs */}
+                  <div className="space-y-6">
+                      <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2 border-b pb-2 border-gray-100 dark:border-gray-700">
+                          <Building className="w-5 h-5 text-indigo-500" /> Buying Costs
+                      </h3>
+                      
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="col-span-1 sm:col-span-2">
+                              <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.home_price')}</label>
+                              <div className="relative">
+                                <span className="absolute left-3 top-2.5 text-gray-400">$</span>
+                                <input type="number" value={homePrice} onChange={e => setHomePrice(Number(e.target.value))} className="w-full pl-7 p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+                              </div>
+                          </div>
+                          <div>
+                              <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.down_payment')}</label>
+                              <div className="relative">
+                                <span className="absolute left-3 top-2.5 text-gray-400">$</span>
+                                <input type="number" value={downPayment} onChange={e => setDownPayment(Number(e.target.value))} className="w-full pl-7 p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+                              </div>
+                          </div>
+                          <div>
+                              <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.interest_rate')}</label>
+                              <div className="relative">
+                                <span className="absolute right-3 top-2.5 text-gray-400">%</span>
+                                <input type="number" value={interestRate} onChange={e => setInterestRate(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+                              </div>
+                          </div>
+                           <div>
+                              <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.loan_term')}</label>
+                              <input type="number" value={loanTerm} onChange={e => setLoanTerm(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+                           </div>
+                           <div>
+                              <label className="text-xs font-medium text-gray-500 uppercase">Closing Costs (%)</label>
+                              <input type="number" value={buyingClosingCosts} onChange={e => setBuyingClosingCosts(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+                           </div>
+                           <div>
+                              <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.home_appreciation')}</label>
+                              <input type="number" value={homeAppreciation} onChange={e => setHomeAppreciation(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+                           </div>
+                           <div>
+                              <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.maintenance_cost')}</label>
+                              <input type="number" value={maintenanceCost} onChange={e => setMaintenanceCost(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+                           </div>
+                           <div>
+                              <label className="text-xs font-medium text-gray-500 uppercase">Selling Costs (%)</label>
+                              <input type="number" value={sellingClosingCosts} onChange={e => setSellingClosingCosts(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+                           </div>
                       </div>
-                      <div>
-                          <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.interest_rate')}</label>
-                          <input type="number" value={interestRate} onChange={e => setInterestRate(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg" />
-                      </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-2">
-                       <div>
-                          <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.loan_term')}</label>
-                          <input type="number" value={loanTerm} onChange={e => setLoanTerm(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg" />
-                       </div>
-                       <div>
-                          <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.buying_closing_costs')}</label>
-                          <input type="number" value={buyingClosingCosts} onChange={e => setBuyingClosingCosts(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg" />
-                       </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2">
-                       <div>
-                          <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.home_appreciation')}</label>
-                          <input type="number" value={homeAppreciation} onChange={e => setHomeAppreciation(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg" />
-                       </div>
-                       <div>
-                          <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.maintenance_cost')}</label>
-                          <input type="number" value={maintenanceCost} onChange={e => setMaintenanceCost(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg" />
-                       </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2">
-                       <div>
-                          <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.selling_closing_costs')}</label>
-                          <input type="number" value={sellingClosingCosts} onChange={e => setSellingClosingCosts(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg" />
-                       </div>
-                  </div>
-              </div>
 
-              <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
-                  <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2 mb-4">
-                      <DollarSign className="w-4 h-4" /> Renting Costs
-                  </h3>
-                   <div className="space-y-4">
-                      <div>
-                          <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.rent_monthly')}</label>
-                          <input type="number" value={rentMonthly} onChange={e => setRentMonthly(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg" />
-                      </div>
-                      <div className="grid grid-cols-2 gap-2">
+                  {/* Renting Inputs */}
+                  <div className="space-y-6">
+                      <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2 border-b pb-2 border-gray-100 dark:border-gray-700">
+                          <DollarSign className="w-5 h-5 text-green-500" /> Renting Costs
+                      </h3>
+                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="col-span-1 sm:col-span-2">
+                              <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.rent_monthly')}</label>
+                              <div className="relative">
+                                <span className="absolute left-3 top-2.5 text-gray-400">$</span>
+                                <input type="number" value={rentMonthly} onChange={e => setRentMonthly(Number(e.target.value))} className="w-full pl-7 p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+                              </div>
+                          </div>
                           <div>
                               <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.rent_increase')}</label>
-                              <input type="number" value={rentIncrease} onChange={e => setRentIncrease(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg" />
+                               <div className="relative">
+                                <span className="absolute right-3 top-2.5 text-gray-400">%</span>
+                                <input type="number" value={rentIncrease} onChange={e => setRentIncrease(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+                              </div>
                           </div>
                           <div>
                               <label className="text-xs font-medium text-gray-500 uppercase">Rent Insurance ($/mo)</label>
-                              <input type="number" value={rentInsurance} onChange={e => setRentInsurance(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg" />
+                              <input type="number" value={rentInsurance} onChange={e => setRentInsurance(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
                           </div>
-                      </div>
-                      <div className="grid grid-cols-2 gap-2">
-                          <div>
+                          <div className="col-span-1 sm:col-span-2">
                               <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.return_rate')}</label>
-                              <input type="number" value={investmentReturn} onChange={e => setInvestmentReturn(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg" />
+                               <div className="relative">
+                                <span className="absolute right-3 top-2.5 text-gray-400">%</span>
+                                <input type="number" value={investmentReturn} onChange={e => setInvestmentReturn(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+                              </div>
+                              <p className="text-xs text-gray-400 mt-1">Expected return on investing the difference.</p>
                           </div>
-                      </div>
-                   </div>
+                       </div>
+                  </div>
               </div>
            </div>
 
            {/* Results and Chart */}
-           <div className="lg:col-span-2 space-y-6">
-               <div className="bg-indigo-50 dark:bg-indigo-900/20 p-8 rounded-2xl border border-indigo-100 dark:border-indigo-800 text-center">
-                   <h3 className="text-indigo-600 dark:text-indigo-400 uppercase tracking-widest text-sm font-semibold mb-2">{t('results.break_even_point')}</h3>
-                   {breakevenYear ? (
-                       <div className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white">
-                           {t('results.buying_cheaper')} <span className="text-indigo-600 dark:text-indigo-400">{breakevenYear} {t('results.years')}</span>
-                       </div>
-                   ) : (
-                       <div className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white">
-                           {t('results.renting_cheaper')} <span className="text-indigo-600 dark:text-indigo-400">{t('results.forever')}</span>
-                       </div>
-                   )}
-               </div>
-
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
-                        <TrendingUp className="w-5 h-5 text-gray-500" />
-                        Net Worth Comparison
-                    </h3>
-                    <div className="h-[400px] w-full">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <LineChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                                <XAxis dataKey="year" label={{ value: 'Years', position: 'insideBottomRight', offset: -5 }} />
-                                <YAxis tickFormatter={(value) => `$${value / 1000}k`} />
-                                <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
-                                <Tooltip 
-                                    formatter={(value: any) => [`$${Number(value).toLocaleString()}`, '']}
-                                    contentStyle={{ backgroundColor: '#1f2937', borderColor: '#374151', color: '#f3f4f6' }}
-                                />
-                                <Legend />
-                                <Line 
-                                    type="monotone" 
-                                    dataKey="buyNetWorth" 
-                                    name="Buying Net Worth" 
-                                    stroke="#4f46e5" 
-                                    strokeWidth={3}
-                                    dot={false}
-                                />
-                                <Line 
-                                    type="monotone" 
-                                    dataKey="rentNetWorth" 
-                                    name="Renting Net Worth" 
-                                    stroke="#10b981" 
-                                    strokeWidth={3} 
-                                    dot={false}
-                                />
-                            </LineChart>
-                        </ResponsiveContainer>
-                    </div>
+           <div className="space-y-6">
+                <div className="bg-indigo-50 dark:bg-indigo-900/20 p-8 rounded-2xl border border-indigo-100 dark:border-indigo-800 text-center">
+                    <h3 className="text-indigo-600 dark:text-indigo-400 uppercase tracking-widest text-sm font-semibold mb-2">{t('results.break_even_point')}</h3>
+                    {breakevenYear ? (
+                        <div className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white">
+                            {t('results.buying_cheaper')} <span className="text-indigo-600 dark:text-indigo-400">{breakevenYear} {t('results.years')}</span>
+                        </div>
+                    ) : (
+                        <div className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white">
+                            {t('results.renting_cheaper')} <span className="text-indigo-600 dark:text-indigo-400">{t('results.forever')}</span>
+                        </div>
+                    )}
                 </div>
+
+                 <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
+                     <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
+                         <TrendingUp className="w-5 h-5 text-gray-500" />
+                         Net Worth Comparison
+                     </h3>
+                     <div className="h-[400px] w-full">
+                         <ResponsiveContainer width="100%" height="100%">
+                             <LineChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                                 <XAxis dataKey="year" label={{ value: 'Years', position: 'insideBottomRight', offset: -5 }} />
+                                 <YAxis tickFormatter={(value) => `$${value / 1000}k`} />
+                                 <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
+                                 <Tooltip 
+                                     formatter={(value: any) => [`$${Number(value).toLocaleString()}`, '']}
+                                     contentStyle={{ backgroundColor: '#1f2937', borderColor: '#374151', color: '#f3f4f6' }}
+                                 />
+                                 <Legend />
+                                 <Line 
+                                     type="monotone" 
+                                     dataKey="buyNetWorth" 
+                                     name="Buying Net Worth" 
+                                     stroke="#4f46e5" 
+                                     strokeWidth={3}
+                                     dot={false}
+                                 />
+                                 <Line 
+                                     type="monotone" 
+                                     dataKey="rentNetWorth" 
+                                     name="Renting Net Worth" 
+                                     stroke="#10b981" 
+                                     strokeWidth={3} 
+                                     dot={false}
+                                 />
+                             </LineChart>
+                         </ResponsiveContainer>
+                     </div>
+                 </div>
            </div>
         </div>
       </div>
