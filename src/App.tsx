@@ -39,8 +39,10 @@ import CalorieCalculator from './pages/health/CalorieCalculator';
 import MacroCalculator from './pages/health/MacroCalculator';
 import TimeToMillionaireCalculator from './pages/finance/TimeToMillionaireCalculator';
 import RentVsBuyCalculator from './pages/finance/RentVsBuyCalculator';
+import FireCalculator from './pages/finance/FireCalculator';
 import BlogList from './pages/blog/BlogList';
 import BlogPost from './pages/blog/BlogPost';
+import Dashboard from './pages/Dashboard';
 import Privacy from './pages/Privacy';
 
 // Placeholders handled by real components now
@@ -61,11 +63,13 @@ function App() {
             <Route path="finance/debt-payoff" element={<DebtPayoffPlanner />} />
           <Route path="finance/time-to-millionaire" element={<TimeToMillionaireCalculator />} />
           <Route path="finance/rent-vs-buy" element={<RentVsBuyCalculator />} />
+          <Route path="finance/fire" element={<FireCalculator />} />
           <Route path="health/bmi" element={<BMICalculator />} />
             <Route path="health/calories" element={<CalorieCalculator />} />
             <Route path="health/macro-split" element={<MacroCalculator />} />
             <Route path="blog" element={<BlogList />} />
             <Route path="blog/:slug" element={<BlogPost />} />
+            <Route path="dashboard" element={<Dashboard />} />
             <Route path="privacy" element={<Privacy />} />
             {/* Redirects to keep structure clean */}
             <Route path="*" element={<Navigate to="/" replace />} />

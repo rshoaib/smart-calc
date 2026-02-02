@@ -85,7 +85,7 @@ export default function BlogPost() {
                     return (
                         <div key={index} className="flex gap-2 ml-4">
                            <span className="text-indigo-600 font-bold">•</span>
-                           <span>{parseBold(line.replace('- ', ''))}</span>
+                           <span>{parseContent(line.replace('- ', ''))}</span>
                         </div>
                     );
                 }
@@ -94,14 +94,14 @@ export default function BlogPost() {
                      return (
                         <div key={index} className="flex gap-2 ml-4">
                            <span className="text-indigo-600 font-bold">{line.split(' ')[0]}</span>
-                           <span>{parseBold(line.replace(/^\d+\. /, ''))}</span>
+                           <span>{parseContent(line.replace(/^\d+\. /, ''))}</span>
                         </div>
                      );
                 }
                 if (line.trim() === '') {
                     return <div key={index} className="h-4"></div>;
                 }
-                return <p key={index} className="leading-7">{parseBold(line)}</p>;
+                return <p key={index} className="leading-7">{parseContent(line)}</p>;
             })}
         </article>
 
@@ -121,7 +121,45 @@ export default function BlogPost() {
   );
 }
 
-// Helper to bold text wrapped in **
+// Helper to parse Markdown-ish inline styles (Bold, Links)
+function parseContent(text: string) {
+  // Regex for links: [text](url)
+  const linkRegex = /\[(.*?)\]\((.*?)\)/g;
+
+  // We need to split by the most complex pattern first (links)
+  // then processing the parts for bold.
+  // Actually, a simple way without recusion hell for MVP:
+  
+  // 1. Split by Links
+  const parts = text.split(linkRegex);
+  
+  // If no links, just check bold
+  if (parts.length === 1) return parseBold(text);
+
+  // If match, split results in: [pre, text, url, post, text, url, post...]
+  const elements: React.ReactNode[] = [];
+  
+  for (let i = 0; i < parts.length; i += 3) {
+      // The text before the link (or the end)
+      if (parts[i]) {
+          elements.push(<span key={`text-${i}`}>{parseBold(parts[i])}</span>);
+      }
+      
+      // The link itself (groups 1 and 2 from regex)
+      if (i + 1 < parts.length) {
+          const linkText = parts[i + 1];
+          const linkUrl = parts[i + 2];
+          elements.push(
+              <Link key={`link-${i}`} to={linkUrl} className="text-indigo-600 font-bold hover:underline">
+                  {parseBold(linkText)}
+              </Link>
+          );
+      }
+  }
+
+  return elements;
+}
+
 function parseBold(text: string) {
     const parts = text.split(/(\*\*.*?\*\*)/);
     return parts.map((part, i) => {

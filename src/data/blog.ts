@@ -141,5 +141,120 @@ In 12 weeks, Mark didn't lose much *weight* on the scale, but his waist dropped 
 
 It wasn't about eating *less*. It was about eating *right*.
     `
+    },
+    {
+        id: '4',
+        slug: 'how-to-retire-15-years-early-fire-calculator',
+        title: 'How to Retire 15 Years Early (The Math Behind FIRE)',
+        excerpt: "The 'Financial Independence, Retire Early' movement isn't just for tech millionaires. It's simple math. We show you how increasing your savings rate by 10% can buy you decades of freedom.",
+        date: 'February 3, 2026',
+        readTime: '7 min read',
+        category: 'Finance',
+        relatedToolLink: '/finance/fire',
+        relatedToolName: 'FIRE Calculator',
+        content: `
+## The "Standard" Path
+
+Most people follow this script:
+1. Graduate at 22.
+2. Save 10% of their income.
+3. Retire at 65.
+
+That is **43 years** of working.
+
+But what if you hate the script? What if you want out at 50? Or 40?
+
+## The Only Number That Matters
+
+It's not your income. It's not your investment returns.
+
+**It is your Savings Rate.**
+
+Here is the math (assuming a 5% real return):
+- **Save 10%:** Working inputs for 51 years.
+- **Save 20%:** Working inputs for 37 years.
+- **Save 50%:** Working inputs for **17 years**.
+
+By simply living on half of what you make, you can cut **34 years** off your mandatory working career.
+
+## The 4% Rule
+
+How do you know when you are done? The "4% Rule" suggests that if you invest in a diversified portfolio (stocks/bonds), you can safely withdraw 4% of your total balance every year, adjust for inflation, and likely never run out of money.
+
+This means your "FIRE Number" is: **Annual Spending / 0.04** (or Annual Spending x 25).
+
+- Spend $40k/year? You need $1M.
+- Spend $100k/year? You need $2.5M.
+
+## Run Your Own Numbers
+
+We built the **FIRE Calculator** to visualize this exact journey.
+
+You can toggle:
+1. **Your Spending:** See how cutting $500/mo impacts your freedom date.
+2. **Withdrawal Rate:** More conservative? Try 3.5%.
+3. **Compound Growth:** See the curve explode over time.
+
+Don't guess with your life. [Check your Freedom Date now](/finance/fire).
+    `
+    },
+    {
+        id: '5',
+        slug: 'mortgage-freedom-math',
+        title: 'The Math of Mortgage Freedom: How $100 Extra Saves You Thousands',
+        excerpt: "Most people just pay their monthly bill and don't think about it. But your mortgage amortization schedule is hiding a secret: small extra payments can destroy huge amounts of interest.",
+        date: 'February 5, 2026',
+        readTime: '6 min read',
+        category: 'Finance',
+        relatedToolLink: '/finance/mortgage',
+        relatedToolName: 'Mortgage Calculator',
+        content: `
+## The Silent Wealth Killer
+
+When you take out a **$300,000** mortgage at **6.5%** for 30 years, do you know how much you actually pay back?
+
+**$682,000.**
+
+That is **$382,000** in interest alone. You are buying one house for yourself and one for the bank.
+
+## How Amortization Works Against You
+
+In the first few years of your loan, almost your entire payment goes to interest.
+- **Year 1 Payment:** $22,700
+- **Principal Paid:** $3,300
+- **Interest Paid:** $19,400
+
+You pay $22k, but your loan balance only goes down by $3k. It feels like running on a treadmill.
+
+## The Power of Extra Basic Payments
+
+But here is the secret: **Pre-payment destroys interest.**
+
+Because interest is calculated on your *current* balance, every dollar you pay down early stops that dollar from generating interest for the next 30 years.
+
+### The $100 Hack
+
+Let's say you pay just **$100 extra** per month on that same loan.
+1. **Interest Saved:** $48,000
+2. **Time Saved:** 3 years and 6 months.
+
+You turn a 30-year mortgage into a 26.5-year mortgage, just by skipping one nice dinner a month.
+
+### The "Bi-Weekly" Trick
+
+Another common strategy is to pay half your monthly mortgage usage every 2 weeks.
+- This results in **26 half-payments** per year (= 13 full payments).
+- You trick yourself into making one extra full payment a year.
+
+## Run Your Own Scenario
+
+Everyone's numbers are different.
+1. Go to our **Mortgage Calculator**.
+2. Enter your loan details.
+3. Look at the "Total Interest" number.
+4. Try shortening the term or increasing the monthly payment.
+
+See how much time you can buy back. [Calculate your savings now](/finance/mortgage).
+    `
     }
 ];

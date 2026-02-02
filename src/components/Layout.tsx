@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { Calculator, Menu, Moon, Sun, X, TrendingUp, Heart, BookOpen } from 'lucide-react';
+import { Calculator, Menu, Moon, Sun, X, TrendingUp, Heart, BookOpen, User } from 'lucide-react';
 import { AdSlot } from './AdSlot';
 
 import { useTranslation } from 'react-i18next';
@@ -47,6 +47,10 @@ export function Layout() {
               <BookOpen className="w-4 h-4" />
               <span>{t('nav.blog')}</span>
             </Link>
+            <Link to="/dashboard" className="flex items-center gap-2 hover:text-orange-500 transition-colors">
+              <User className="w-4 h-4" />
+              <span>Dashboard</span>
+            </Link>
           </nav>
 
           <div className="flex items-center gap-2">
@@ -90,6 +94,10 @@ export function Layout() {
               <BookOpen className="w-4 h-4" />
               {t('nav.blog')}
             </Link>
+            <Link to="/dashboard" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2">
+              <User className="w-4 h-4" />
+              Dashboard
+            </Link>
           </nav>
         </div>
       )}
@@ -129,6 +137,7 @@ export function Layout() {
                   <li><Link to="/finance/mortgage" className="hover:text-primary-500">Mortgage Calculator</Link></li>
                   <li><Link to="/finance/investment" className="hover:text-primary-500">Investment Return</Link></li>
                   <li><Link to="/finance/loan" className="hover:text-primary-500">Auto Loan Calculator</Link></li>
+                  <li><Link to="/finance/fire" className="hover:text-primary-500">FIRE Calculator</Link></li>
                 </ul>
              </div>
 

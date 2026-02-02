@@ -78,7 +78,7 @@ export default function RentVsBuyCalculator() {
       for (let year = 1; year <= years; year++) {
           // RENT PATH CALCS
           let yearlyRent = 0;
-          let yearlyRentInsurance = rentInsurance * 12;
+          const yearlyRentInsurance = rentInsurance * 12;
           // Rent increases each year
           const currentMonthlyRent = rentMonthly * Math.pow(1 + rentIncrease / 100, year - 1);
           yearlyRent = currentMonthlyRent * 12;
@@ -97,14 +97,12 @@ export default function RentVsBuyCalculator() {
           // BUY PATH CALCS
           // 1. Mortgage Paydown
           let interestPaid = 0;
-          let principalPaid = 0;
           
           for (let m = 0; m < 12; m++) {
               if (mortgageBalance > 0) {
                   const interest = mortgageBalance * monthlyRate;
                   const principal = monthlyMortgage - interest;
                   interestPaid += interest;
-                  principalPaid += principal;
                   mortgageBalance -= principal;
               }
           }
@@ -311,7 +309,7 @@ export default function RentVsBuyCalculator() {
                                  <YAxis tickFormatter={(value) => `$${value / 1000}k`} />
                                  <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
                                  <Tooltip 
-                                     formatter={(value: any) => [`$${Number(value).toLocaleString()}`, '']}
+                                     formatter={(value: number | undefined) => [value !== undefined ? `$${Number(value).toLocaleString()}` : '', '']}
                                      contentStyle={{ backgroundColor: '#1f2937', borderColor: '#374151', color: '#f3f4f6' }}
                                  />
                                  <Legend />
