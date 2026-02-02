@@ -36,6 +36,7 @@ export default function Dashboard() {
     <>
       <Helmet>
         <title>{t('nav.dashboard', 'My Smart Profile')} - SmartCalc</title>
+        <meta name="description" content="Manage your financial profile, track your net worth, and sync data across all SmartCalc financial tools." />
       </Helmet>
 
       <div className="space-y-8">
