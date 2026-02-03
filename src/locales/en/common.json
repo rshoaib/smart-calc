@@ -57,6 +57,10 @@
         "name": "Time to Millionaire",
         "desc": "See how long it will take to reach your first million."
       },
+      "emergency": {
+        "name": "Emergency Fund",
+        "desc": "Calculate how much you need to save for a rainy day."
+      },
       "macro_split": {
         "name": "Macro Split Calculator",
         "desc": "Optimize your nutrient intake for muscle gain or fat loss."
@@ -77,7 +81,28 @@
       "investment": "Investment Details",
       "retirement": "Retirement Plan",
       "debt": "Debt Details",
+      "expenses": "Monthly Expenses",
       "personal": "Personal Details"
+    },
+    "options": {
+      "snowball": "Debt Snowball (Lowest Balance First)",
+      "avalanche": "Debt Avalanche (Highest Interest First)",
+      "male": "Male",
+      "female": "Female",
+      "sedentary": "Sedentary (Office job)",
+      "light": "Light Exercise (1-2 days/week)",
+      "moderate": "Moderate Exercise (3-5 days/week)",
+      "active": "Active (Daily exercise)",
+      "very_active": "Very Active (Physical job + training)",
+      "heavy": "Heavy Exercise (6-7 days/week)",
+      "athlete": "Athlete (2x per day)",
+      "balanced": "Balanced (40/30/30)",
+      "low_carb": "Low Carb (40/40/20)",
+      "high_protein": "High Protein (50/30/20)",
+      "keto": "Keto (70/25/5)",
+      "lose_weight": "Lose Weight (-500 kcal)",
+      "maintain_weight": "Maintain Weight",
+      "gain_muscle": "Gain Muscle (+500 kcal)"
     },
     "labels": {
       "home_price": "Home Price ($)",
@@ -121,27 +146,10 @@
       "current_net_worth": "Current Net Worth ($)",
       "annual_income": "Annual Income ($)",
       "annual_spending": "Annual Spending ($)",
-      "withdrawal_rate": "Safe Withdrawal Rate (%)"
-    },
-    "options": {
-      "snowball": "Debt Snowball (Lowest Balance First)",
-      "avalanche": "Debt Avalanche (Highest Interest First)",
-      "male": "Male",
-      "female": "Female",
-      "sedentary": "Sedentary (Office job)",
-      "light": "Light Exercise (1-2 days/week)",
-      "moderate": "Moderate Exercise (3-5 days/week)",
-      "active": "Active (Daily exercise)",
-      "very_active": "Very Active (Physical job + training)",
-      "heavy": "Heavy Exercise (6-7 days/week)",
-      "athlete": "Athlete (2x per day)",
-      "balanced": "Balanced (40/30/30)",
-      "low_carb": "Low Carb (40/40/20)",
-      "high_protein": "High Protein (50/30/20)",
-      "keto": "Keto (70/25/5)",
-      "lose_weight": "Lose Weight (-500 kcal)",
-      "maintain_weight": "Maintain Weight",
-      "gain_muscle": "Gain Muscle (+500 kcal)"
+      "withdrawal_rate": "Safe Withdrawal Rate (%)",
+      "essential_expenses": "Essential Expenses ($)",
+      "optional_expenses": "Optional Expenses ($)",
+      "risk_level": "Job Stability / Liability Risk"
     }
   },
   "results": {
@@ -178,5 +186,29 @@
     "buying_cheaper": "Buying becomes cheaper after",
     "renting_cheaper": "Renting is cheaper for",
     "forever": "forever"
+  },
+  "emergency": {
+    "target_fund": "Target Emergency Fund",
+    "months_freedom": "Months of Freedom",
+    "status_danger": "Dangerous: You have less than 1 month of runway.",
+    "status_warning": "Warning: Aim for at least 3-6 months.",
+    "status_good": "Good: You have a solid safety net.",
+    "progress": "Fund Progress",
+    "gap_message": "You need another ${{amount}} to reach your goal.",
+    "expense_breakdown": "Monthly Breakdown",
+    "essential": "Essential",
+    "optional": "Optional",
+    "essential_hint": "Food, Rent, Debt, Utilities",
+    "optional_hint": "Dining out, Subscriptions, Fun",
+    "risk": {
+      "low": "Stable",
+      "medium": "Average",
+      "high": "High Risk"
+    },
+    "risk_desc": {
+      "low": "Stable 9-5, Dual Income, Low Liabilities",
+      "medium": "Standard 9-5, Single Income",
+      "high": "Volatile Income or Dependents"
+    }
   }
 }

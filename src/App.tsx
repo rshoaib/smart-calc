@@ -40,6 +40,7 @@ import MacroCalculator from './pages/health/MacroCalculator';
 import TimeToMillionaireCalculator from './pages/finance/TimeToMillionaireCalculator';
 import RentVsBuyCalculator from './pages/finance/RentVsBuyCalculator';
 import FireCalculator from './pages/finance/FireCalculator';
+import EmergencyFundCalculator from './pages/finance/EmergencyFundCalculator';
 import BlogList from './pages/blog/BlogList';
 import BlogPost from './pages/blog/BlogPost';
 import Dashboard from './pages/Dashboard';
@@ -64,6 +65,7 @@ function App() {
           <Route path="finance/time-to-millionaire" element={<TimeToMillionaireCalculator />} />
           <Route path="finance/rent-vs-buy" element={<RentVsBuyCalculator />} />
           <Route path="finance/fire" element={<FireCalculator />} />
+          <Route path="finance/emergency" element={<EmergencyFundCalculator />} />
           <Route path="health/bmi" element={<BMICalculator />} />
             <Route path="health/calories" element={<CalorieCalculator />} />
             <Route path="health/macro-split" element={<MacroCalculator />} />

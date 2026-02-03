@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { DollarSign, Activity, TrendingUp, HandCoins, Heart, ShieldCheck, Utensils, Home as HomeIcon } from 'lucide-react';
+import { DollarSign, Activity, TrendingUp, HandCoins, Heart, ShieldCheck, Utensils, Home as HomeIcon, ShieldAlert } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 
@@ -62,6 +62,14 @@ export function Home() {
       path: '/finance/rent-vs-buy',
       color: 'text-indigo-500',
       bg: 'bg-indigo-50 dark:bg-indigo-900/20',
+    },
+    {
+      name: t('home.tools.emergency.name'),
+      description: t('home.tools.emergency.desc'),
+      icon: ShieldAlert,
+      path: '/finance/emergency',
+      color: 'text-amber-500',
+      bg: 'bg-amber-50 dark:bg-amber-900/20',
     },
   ];
 
