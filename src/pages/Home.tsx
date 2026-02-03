@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { DollarSign, Activity, TrendingUp, HandCoins, Heart, ShieldCheck, Utensils, Home as HomeIcon, ShieldAlert } from 'lucide-react';
+import { DollarSign, Activity, TrendingUp, HandCoins, Heart, ShieldCheck, Utensils, Home as HomeIcon, ShieldAlert, Dumbbell } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 
@@ -97,6 +97,14 @@ export function Home() {
       path: '/health/macro-split',
       color: 'text-emerald-500',
       bg: 'bg-emerald-50 dark:bg-emerald-900/20',
+    },
+    {
+      name: t('home.tools.orm.name'),
+      description: t('home.tools.orm.desc'),
+      icon: Dumbbell,
+      path: '/health/1rm',
+      color: 'text-indigo-500',
+      bg: 'bg-indigo-50 dark:bg-indigo-900/20',
     },
   ];
 

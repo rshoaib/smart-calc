@@ -72,6 +72,10 @@
       "fire": {
         "name": "FIRE Calculator",
         "desc": "Calculate your Financial Independence, Retire Early date."
+      },
+      "orm": {
+        "name": "1 Rep Max",
+        "desc": "Estimate your maximum lifting strength and training zones."
       }
     }
   },
@@ -210,5 +214,17 @@
       "medium": "Standard 9-5, Single Income",
       "high": "Volatile Income or Dependents"
     }
+  },
+  "orm": {
+    "lift_details": "Lift Details",
+    "weight_lifted": "Weight Lifted",
+    "repetitions": "Repetitions",
+    "reps_hint": "How many reps did you perform?",
+    "formula": "Calculation Formula",
+    "estimated_max": "Estimated One Rep Max",
+    "training_percentages": "Training Percentages",
+    "percentage": "Intensity",
+    "weight": "Weight",
+    "reps": "Est. Reps"
   }
 }
