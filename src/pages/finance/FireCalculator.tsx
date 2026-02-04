@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { TrendingUp, DollarSign, Target } from 'lucide-react';
+import { TrendingUp, DollarSign, Target, Percent } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useUserStore } from '../../store/userStore';
 import {
@@ -11,9 +11,10 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  ReferenceLine,
   Legend
 } from 'recharts';
+import { CalculatorInput } from '../../components/CalculatorInput';
+import type { NameType, ValueType } from 'recharts/types/component/DefaultTooltipContent';
 
 interface FireData {
   age: number;
@@ -24,16 +25,19 @@ interface FireData {
 
 export default function FireCalculator() {
   const { t } = useTranslation();
-
   const profile = useUserStore();
 
   // Inputs initialized from store or fallback
   const [currentAge, setCurrentAge] = useState<number>(profile.age);
   const [currentNetWorth, setCurrentNetWorth] = useState<number>(profile.currentSavings);
   const [annualIncome, setAnnualIncome] = useState<number>(profile.annualIncome); // Post-tax
-  const [annualSpending, setAnnualSpending] = useState<number>(60000); // Default, store doesn't track spending yet
+  const [annualSpending, setAnnualSpending] = useState<number>(60000); 
   const [returnRate, setReturnRate] = useState<number>(7.0);
   const [withdrawalRate, setWithdrawalRate] = useState<number>(profile.safeWithdrawalRate);
+  
+  // New: Inflation Logic
+  const [inflationRate, setInflationRate] = useState<number>(2.5);
+  const [isInflationAdjusted, setIsInflationAdjusted] = useState<boolean>(true);
 
   // Outputs
   const [fireNumber, setFireNumber] = useState<number>(0);
@@ -43,70 +47,85 @@ export default function FireCalculator() {
 
   useEffect(() => {
     const calculateFire = () => {
-      // 1. Calculate FIRE Number
-      // FIRE Number = Annual Spending / Safe Withdrawal Rate
-      const target = annualSpending / (withdrawalRate / 100);
-      setFireNumber(target);
+      // 1. Calculate Base FIRE Number (in today's dollars)
+      const baseTarget = annualSpending / (withdrawalRate / 100);
+      
+      // 2. Determine Effective Growth Rate
+      // Real Return = (1 + Nominal) / (1 + Inflation) - 1
+      const realReturn = ((1 + returnRate / 100) / (1 + inflationRate / 100)) - 1;
+      const effectiveGrowthRate = isInflationAdjusted ? realReturn : (returnRate / 100);
 
-      // 2. Project Growth
+      // In Nominal mode, the target grows by inflation. In Real mode, it stays key.
+      const initialTarget = baseTarget;
+      
+      // 3. Project Growth
       const annualSavings = annualIncome - annualSpending;
       let balance = currentNetWorth;
       let age = currentAge;
       const data: FireData[] = [];
       let found = false;
-      let years = 0;
+      let calculatedYears = -1;
 
-      // Limit projection to 50 years max or age 90
+      // Limit projection
       const maxYears = 50;
       
       data.push({
         age: age,
         netWorth: Math.round(balance),
-        fireNumber: Math.round(target),
+        fireNumber: Math.round(initialTarget),
         passiveIncome: Math.round(balance * (withdrawalRate / 100))
       });
 
       for (let i = 1; i <= maxYears; i++) {
-        // Growth: Balance * (1 + rate) + Savings
-        balance = balance * (1 + returnRate / 100) + annualSavings;
-        age++;
-        years++;
+        // Growth logic
+        let yearlySavings = annualSavings;
+        if (!isInflationAdjusted) {
+             yearlySavings = annualSavings * Math.pow(1 + inflationRate/100, i);
+        }
 
-        // Passive Income = Balance * Withdrawal Rate
+        balance = balance * (1 + effectiveGrowthRate) + yearlySavings;
+        
+        // Target Logic
+        let currentTarget = initialTarget;
+        if (!isInflationAdjusted) {
+             currentTarget = initialTarget * Math.pow(1 + inflationRate/100, i);
+        }
+
+        age++;
+
+        // Passive Income
         const passive = balance * (withdrawalRate / 100);
 
         data.push({
           age: Number(age.toFixed(1)),
           netWorth: Math.round(balance),
-          fireNumber: Math.round(target),
+          fireNumber: Math.round(currentTarget),
           passiveIncome: Math.round(passive)
         });
 
-        if (!found && balance >= target) {
+        if (!found && balance >= currentTarget) {
           found = true;
-          setYearsToFire(Number((i - (1 - (target - (data[i-1].netWorth)) / (balance - data[i-1].netWorth))).toFixed(1))); // Interpolate roughly
+          calculatedYears = i;
         }
       }
 
       setChartData(data);
-      
+      setFireNumber(data[0].fireNumber); // Display Today's Target
+      setYearsToFire(found ? calculatedYears : -1);
+
       // Calculate Date
       const today = new Date();
-      const freedom = new Date(today.setFullYear(today.getFullYear() + (found ? Math.floor(yearsToFire) : 99)));
-      // Add fractional months
+      const freedom = new Date(today.setFullYear(today.getFullYear() + (found ? Math.floor(calculatedYears) : 99)));
       if (found) {
-         const fractionalYears = yearsToFire % 1;
-         freedom.setMonth(freedom.getMonth() + Math.round(fractionalYears * 12));
+         freedom.setMonth(freedom.getMonth() + Math.round((calculatedYears % 1) * 12));
       }
       
       const options: Intl.DateTimeFormatOptions = { month: 'long', year: 'numeric' };
       setFreedomDate(found ? freedom.toLocaleDateString(undefined, options) : t('results.forever'));
-      
-      if (!found) setYearsToFire(-1); // Indicator for "Never" within timeframe
     };
 
     calculateFire();
-  }, [currentAge, currentNetWorth, annualIncome, annualSpending, returnRate, withdrawalRate, t, yearsToFire]);
+  }, [currentAge, currentNetWorth, annualIncome, annualSpending, returnRate, withdrawalRate, inflationRate, isInflationAdjusted, t]);
 
   return (
     <>
@@ -126,22 +145,49 @@ export default function FireCalculator() {
           </p>
         </div>
 
+        {/* Inflation Toggle Banner */}
+        <div className="flex justify-center">
+           <div className="bg-gray-100 dark:bg-gray-800 p-1 rounded-lg flex items-center">
+              <button
+                onClick={() => setIsInflationAdjusted(true)}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                  isInflationAdjusted 
+                  ? 'bg-white dark:bg-gray-700 text-orange-600 shadow-sm' 
+                  : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'
+                }`}
+              >
+                Real Value (Today's $)
+              </button>
+              <button
+                 onClick={() => setIsInflationAdjusted(false)}
+                 className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                  !isInflationAdjusted 
+                  ? 'bg-white dark:bg-gray-700 text-orange-600 shadow-sm' 
+                  : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'
+                }`}
+              >
+                Nominal Value (Future $)
+              </button>
+           </div>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Controls */}
           <div className="lg:col-span-1 space-y-6 bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 h-fit">
              {/* Current Stats */}
              <div className="space-y-4">
                <h3 className="font-semibold text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-700 pb-2">Your Details</h3>
-               <div>
-                  <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.current_age')}</label>
-                  <input type="number" value={currentAge} onChange={e => setCurrentAge(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-orange-500" />
-               </div>
-               <div>
-                  <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.current_net_worth')}</label>
-                  <div className="relative">
-                    <span className="absolute left-3 top-2.5 text-gray-400">$</span>
-                    <input type="number" value={currentNetWorth} onChange={e => setCurrentNetWorth(Number(e.target.value))} className="w-full pl-7 p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-orange-500" />
-                  </div>
+               <CalculatorInput 
+                  label={t('forms.labels.current_age')}
+                  value={currentAge}
+                  onChange={setCurrentAge}
+               />
+               <CalculatorInput 
+                  label={t('forms.labels.current_net_worth')}
+                  value={currentNetWorth}
+                  onChange={setCurrentNetWorth}
+                  icon={DollarSign}
+               />
 
              {/* Sync Controls */}
              <div className="flex items-center gap-2 pt-4 border-t border-gray-100 dark:border-gray-700">
@@ -152,46 +198,56 @@ export default function FireCalculator() {
                  Save to Smart Profile
                </button>
              </div>
-               </div>
              </div>
 
              {/* Income & Expenses */}
              <div className="space-y-4">
                <h3 className="font-semibold text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-700 pb-2">Money In & Out</h3>
                <div>
-                  <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.annual_income')}</label>
-                  <div className="relative">
-                    <span className="absolute left-3 top-2.5 text-gray-400">$</span>
-                    <input type="number" value={annualIncome} onChange={e => setAnnualIncome(Number(e.target.value))} className="w-full pl-7 p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-orange-500" />
-                  </div>
+                  <CalculatorInput 
+                    label={t('forms.labels.annual_income')}
+                    value={annualIncome}
+                    onChange={setAnnualIncome}
+                    icon={DollarSign}
+                  />
                   <p className="text-xs text-gray-400 mt-1">Post-tax (Take home pay)</p>
                </div>
-               <div>
-                  <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.annual_spending')}</label>
-                  <div className="relative">
-                    <span className="absolute left-3 top-2.5 text-gray-400">$</span>
-                    <input type="number" value={annualSpending} onChange={e => setAnnualSpending(Number(e.target.value))} className="w-full pl-7 p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-orange-500" />
-                  </div>
-               </div>
+               <CalculatorInput 
+                    label={t('forms.labels.annual_spending')}
+                    value={annualSpending}
+                    onChange={setAnnualSpending}
+                    icon={DollarSign}
+                  />
              </div>
 
              {/* Assumptions */}
              <div className="space-y-4">
                <h3 className="font-semibold text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-700 pb-2">Assumptions</h3>
+                <CalculatorInput 
+                  label={t('forms.labels.return_rate')}
+                  value={returnRate}
+                  onChange={setReturnRate}
+                  step="0.1"
+                  icon={Percent}
+               />
+               
+               <CalculatorInput 
+                  label="Inflation Rate (%)"
+                  value={inflationRate}
+                  onChange={setInflationRate}
+                  step="0.1"
+                  icon={Percent}
+               />
+
                <div>
-                  <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.return_rate')}</label>
-                  <div className="relative">
-                    <span className="absolute right-3 top-2.5 text-gray-400">%</span>
-                    <input type="number" step="0.1" value={returnRate} onChange={e => setReturnRate(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-orange-500" />
-                  </div>
-               </div>
-               <div>
-                  <label className="text-xs font-medium text-gray-500 uppercase">{t('forms.labels.withdrawal_rate')}</label>
-                  <div className="relative">
-                    <span className="absolute right-3 top-2.5 text-gray-400">%</span>
-                    <input type="number" step="0.1" value={withdrawalRate} onChange={e => setWithdrawalRate(Number(e.target.value))} className="w-full p-2 bg-gray-50 dark:bg-gray-900 border rounded-lg focus:ring-2 focus:ring-orange-500" />
-                  </div>
-                  <p className="text-xs text-gray-400 mt-1">Standard FIRE rule is 4.0%</p>
+                 <CalculatorInput 
+                    label={t('forms.labels.withdrawal_rate')}
+                    value={withdrawalRate}
+                    onChange={setWithdrawalRate}
+                    step="0.1"
+                    icon={Percent}
+                 />
+                 <p className="text-xs text-gray-400 mt-1">Standard FIRE rule is 4.0%</p>
                </div>
              </div>
           </div>
@@ -205,14 +261,18 @@ export default function FireCalculator() {
                    <p className="text-3xl font-black text-gray-900 dark:text-white mt-2">
                      {yearsToFire > 0 ? freedomDate : '---'}
                    </p>
-                   {yearsToFire > 0 && <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">in {Math.floor(yearsToFire)} years, {Math.round((yearsToFire % 1) * 12)} months</p>}
+                   {yearsToFire > 0 && <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">in ~{Math.floor(yearsToFire)} years</p>}
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 text-center">
-                   <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Your FIRE Number</h3>
+                   <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
+                     {isInflationAdjusted ? "FIRE (Real Value)" : "FIRE (Nominal Value)"}
+                   </h3>
                    <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
                      ${fireNumber.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                    </p>
-                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Needed to sustain current spending</p>
+                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                     {isInflationAdjusted ? "Buying power in today's dollars" : "Actual dollar amount in future"}
+                   </p>
                 </div>
              </div>
 
@@ -235,7 +295,11 @@ export default function FireCalculator() {
                       <YAxis tickFormatter={(value) => `$${value / 1000}k`} />
                       <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
                       <Tooltip 
-                        formatter={(value: number | undefined) => [value !== undefined ? `$${Number(value).toLocaleString()}` : '', '']}
+                        formatter={(value: ValueType | undefined, name: NameType | undefined) => {
+                           if (value === undefined) return ['', name];
+                           const num = Number(value);
+                           return [`$${num.toLocaleString()}`, name];
+                        }}
                         contentStyle={{ backgroundColor: '#1f2937', borderColor: '#374151', color: '#f3f4f6' }}
                       />
                       <Legend />
@@ -248,7 +312,15 @@ export default function FireCalculator() {
                         fillOpacity={1} 
                         fill="url(#colorNetWorth)" 
                       />
-                      <ReferenceLine y={fireNumber} label="FIRE Target" stroke="#22c55e" strokeDasharray="3 3" />
+                      <Area 
+                        type="monotone" 
+                        dataKey="fireNumber" 
+                        name="FIRE Target" 
+                        stroke="#22c55e" 
+                        strokeDasharray="5 5"
+                        fill="none" 
+                        strokeWidth={2}
+                      />
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>
@@ -261,9 +333,10 @@ export default function FireCalculator() {
                     <DollarSign className="w-6 h-6 text-green-600 dark:text-green-400" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 dark:text-white">The 4% Rule</h4>
+                    <h4 className="font-bold text-gray-900 dark:text-white">Why "Real Value" Matters?</h4>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                      This calculator uses the "4% Rule" (Safe Withdrawal Rate), which suggests you can withdraw 4% of your portfolio annually adjusted for inflation without running out of money for at least 30 years. To be safer, some people target 3.5% or 3%.
+                      Inflation eats away purchasing power. A million dollars in 30 years won't buy what it does today. 
+                      Use <strong>Real Value</strong> to plan purchasing power, and <strong>Nominal Value</strong> to see the actual bank account number you'll see on screen.
                     </p>
                   </div>
                 </div>
