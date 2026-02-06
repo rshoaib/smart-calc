@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import RentVsBuyCalculator from '../RentVsBuyCalculator';
 
@@ -30,7 +30,7 @@ describe('RentVsBuyCalculator', () => {
     expect(screen.getByText('home.tools.rent_vs_buy.name')).toBeInTheDocument();
   });
 
-  it('updates inputs and results', () => {
+  it('updates inputs and results', async () => {
     render(<RentVsBuyCalculator />);
     
     // Default: Home 400k, Rent 2000.
@@ -42,9 +42,11 @@ describe('RentVsBuyCalculator', () => {
     fireEvent.change(rentInput, { target: { value: '10000' } });
     
     // Test: Extremely cheap rent -> Rent output should be favored
-    fireEvent.change(rentInput, { target: { value: '100' } });
+    fireEvent.change(rentInput, { target: { value: '1000' } }); // Use reasonable but low rent
     
     // We expect "Rent is cheaper for forever" or a very long time
-    expect(screen.getByText('results.renting_cheaper')).toBeInTheDocument();
+    await waitFor(() => {
+        expect(screen.getByText('results.renting_cheaper')).toBeInTheDocument();
+    });
   });
 });

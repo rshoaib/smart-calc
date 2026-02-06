@@ -1,0 +1,66 @@
+﻿
+> smart-calc@0.0.0 lint
+> eslint .
+
+
+C:\Projects\smart-calc\src\pages\Dashboard.tsx
+  15:5  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Projects\smart-calc\src\pages\Dashboard.tsx:15:5
+  13 |   // Sync form with store when store updates (initial load)
+  14 |   useEffect(() => {
+> 15 |     setFormData(profile);
+     |     ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  16 |   }, [profile.age]); // Basic dep check
+  17 |
+  18 |   const handleChange = (field: keyof typeof profile, value: string) => {  react-hooks/set-state-in-effect
+  16:6  warning  React Hook useEffect has a missing dependency: 'profile'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             react-hooks/exhaustive-deps
+
+C:\Projects\smart-calc\src\pages\finance\EmergencyFundCalculator.tsx
+  39:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Projects\smart-calc\src\pages\finance\EmergencyFundCalculator.tsx:39:5
+  37 |     const calculatedProgress = calculatedTarget > 0 ? Math.min((currentSavings / calculatedTarget) * 100, 100) : 0;
+  38 |
+> 39 |     setTargetFund(calculatedTarget);
+     |     ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  40 |     setMonthsOfFreedom(calculatedFreedom);
+  41 |     setProgress(calculatedProgress);
+  42 |  react-hooks/set-state-in-effect
+
+C:\Projects\smart-calc\src\pages\finance\InvestmentCalculator.tsx
+  128:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Projects\smart-calc\src\pages\finance\InvestmentCalculator.tsx:128:5
+  126 |     }
+  127 |
+> 128 |     setData(chartData);
+      |     ^^^^^^^ Avoid calling setState() directly within an effect
+  129 |     
+  130 |     // Set final values
+  131 |     const lastA = pointsA[pointsA.length - 1];  react-hooks/set-state-in-effect
+
+C:\Projects\smart-calc\src\pages\finance\__tests__\DebtPayoffPlanner.test.tsx
+  44:11  error  'inputs' is assigned a value but never used         @typescript-eslint/no-unused-vars
+  63:11  error  'deleteButtons' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+Ô£û 6 problems (5 errors, 1 warning)
+

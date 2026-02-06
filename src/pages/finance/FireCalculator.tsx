@@ -268,7 +268,7 @@ export default function FireCalculator() {
                      {isInflationAdjusted ? "FIRE (Real Value)" : "FIRE (Nominal Value)"}
                    </h3>
                    <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
-                     ${fireNumber.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                     ${fireNumber.toLocaleString('en-US', { maximumFractionDigits: 0 })}
                    </p>
                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                      {isInflationAdjusted ? "Buying power in today's dollars" : "Actual dollar amount in future"}
@@ -298,7 +298,7 @@ export default function FireCalculator() {
                         formatter={(value: ValueType | undefined, name: NameType | undefined) => {
                            if (value === undefined) return ['', name];
                            const num = Number(value);
-                           return [`$${num.toLocaleString()}`, name];
+                           return [`$${num.toLocaleString('en-US')}`, name];
                         }}
                         contentStyle={{ backgroundColor: '#1f2937', borderColor: '#374151', color: '#f3f4f6' }}
                       />

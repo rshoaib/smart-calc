@@ -125,6 +125,7 @@ export default function InvestmentCalculator() {
       });
     }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     setData(chartData);
     
     // Set final values

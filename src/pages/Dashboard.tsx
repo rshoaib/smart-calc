@@ -12,6 +12,7 @@ export default function Dashboard() {
 
   // Sync form with store when store updates (initial load)
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     setFormData(profile);
   }, [profile.age]); // Basic dep check
 

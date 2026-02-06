@@ -264,7 +264,7 @@ export default function MacroCalculator() {
                         <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm text-center">
                              <h3 className="text-gray-500 dark:text-gray-400 uppercase tracking-widest text-sm font-semibold mb-2">Total Calories</h3>
                              <div className="text-4xl font-black text-gray-900 dark:text-white mb-2 flex items-center justify-center gap-2">
-                                {result.calories} <span className="text-xl font-medium text-gray-500">kcal</span>
+                                {result.calories.toLocaleString('en-US')} <span className="text-xl font-medium text-gray-500">kcal</span>
                              </div>
                         </div>
                         

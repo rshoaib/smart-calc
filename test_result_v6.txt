@@ -1,0 +1,195 @@
+﻿
+> smart-calc@0.0.0 test
+> vitest run
+
+
+[1m[46m RUN [49m[22m [36mv4.0.18 [39m[90mC:/Projects/smart-calc[39m
+
+npm : 
+[90mstderr[2m | src
+/pages/finance/__test
+s__/TimeToMillionaire
+Calculator.test.tsx[
+2m > [22m[2mTimeToM
+illionaireCalculator
+[2m > 
+[22m[2mrenders 
+correctly
+At line:1 char:1
++ npm test 2>&1 | 
+Out-File -Encoding 
+UTF8 
+test_result_v6.txt
++ ~~~~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: ([90mst   
+ derr[2m...nders    
+ correctly:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+[22m[39mThe tag 
+<stop> is 
+unrecognized in this 
+browser. If you 
+meant to render a 
+React component, 
+start its name with 
+an uppercase letter.
+<linearGradient /> 
+is using incorrect 
+casing. Use 
+PascalCase for React 
+components, or 
+lowercase for HTML 
+elements.
+The tag 
+<linearGradient> is 
+unrecognized in this 
+browser. If you 
+meant to render a 
+React component, 
+start its name with 
+an uppercase letter.
+The tag <defs> is 
+unrecognized in this 
+browser. If you 
+meant to render a 
+React component, 
+start its name with 
+an uppercase letter.
+
+[90mstderr[2m | src
+/pages/finance/__test
+s__/TimeToMillionaire
+Calculator.test.tsx[
+2m > [22m[2mTimeToM
+illionaireCalculator
+[2m > 
+[22m[2mcalculates 
+the correct time to 
+millionaire
+[22m[39m<linearGrad
+ient /> is using 
+incorrect casing. 
+Use PascalCase for 
+React components, or 
+lowercase for HTML 
+elements.
+
+ [31mÔØ»[39m src/pages/health/__tests__/MacroCalculator.test.tsx [2m([22m[2m2 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 218[2mms[22m[39m
+     [32mÔ£ô[39m renders correctly[32m 137[2mms[22m[39m
+[31m     [31m├ù[31m updates TDEE and macros when inputs change[39m[32m 70[2mms[22m[39m
+ [31mÔØ»[39m src/pages/finance/__tests__/TimeToMillionaireCalculator.test.tsx [2m([22m[2m2 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 243[2mms[22m[39m
+     [32mÔ£ô[39m renders correctly[32m 175[2mms[22m[39m
+[31m     [31m├ù[31m calculates the correct time to millionaire[39m[32m 61[2mms[22m[39m
+[90mstderr[2m | src
+/pages/finance/__test
+s__/DebtPayoffPlanner
+.test.tsx[2m > [22m
+[2mDebtPayoffPlanner
+[2m > 
+[22m[2mrenders 
+correctly
+[22m[39mThe tag 
+<stop> is 
+unrecognized in this 
+browser. If you 
+meant to render a 
+React component, 
+start its name with 
+an uppercase letter.
+<linearGradient /> 
+is using incorrect 
+casing. Use 
+PascalCase for React 
+components, or 
+lowercase for HTML 
+elements.
+The tag 
+<linearGradient> is 
+unrecognized in this 
+browser. If you 
+meant to render a 
+React component, 
+start its name with 
+an uppercase letter.
+The tag <defs> is 
+unrecognized in this 
+browser. If you 
+meant to render a 
+React component, 
+start its name with 
+an uppercase letter.
+
+ [31mÔØ»[39m src/pages/finance/__tests__/RentVsBuyCalculator.test.tsx [2m([22m[2m2 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 222[2mms[22m[39m
+     [32mÔ£ô[39m renders correctly[32m 120[2mms[22m[39m
+[31m     [31m├ù[31m updates inputs and results[39m[32m 97[2mms[22m[39m
+[90mstderr[2m | src
+/pages/finance/__test
+s__/DebtPayoffPlanner
+.test.tsx[2m > [22m
+[2mDebtPayoffPlanner
+[2m > [22m[2madds 
+a new debt
+[22m[39m<linearGrad
+ient /> is using 
+incorrect casing. 
+Use PascalCase for 
+React components, or 
+lowercase for HTML 
+elements.
+
+[90mstderr[2m | src
+/pages/finance/__test
+s__/DebtPayoffPlanner
+.test.tsx[2m > [22m
+[2mDebtPayoffPlanner
+[2m > 
+[22m[2mupdates a 
+debt field
+[22m[39m<linearGrad
+ient /> is using 
+incorrect casing. 
+Use PascalCase for 
+React components, or 
+lowercase for HTML 
+elements.
+
+[90mstderr[2m | src
+/pages/finance/__test
+s__/DebtPayoffPlanner
+.test.tsx[2m > [22m
+[2mDebtPayoffPlanner
+[2m > 
+[22m[2mremoves a 
+debt
+[22m[39m<linearGrad
+ient /> is using 
+incorrect casing. 
+Use PascalCase for 
+React components, or 
+lowercase for HTML 
+elements.
+
+[90mstderr[2m | src
+/pages/finance/__test
+s__/DebtPayoffPlanner
+.test.tsx[2m > [22m
+[2mDebtPayoffPlanner
+[2m > 
+[22m[2mcalculates 
+payoff correctly
+[22m[39m<linearGrad
+ient /> is using 
+incorrect casing. 
+Use PascalCase for 
+React components, or 
+lowercase for HTML 
+elements.
+
+ [32mÔ£ô[39m src/pages/finance/__tests__/DebtPayoffPlanner.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[33m 503[2mms[22m[39m

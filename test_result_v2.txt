@@ -1,0 +1,423 @@
+﻿
+> smart-calc@0.0.0 test
+> vitest run
+
+
+[1m[46m RUN [49m[22m [36mv4.0.18 [39m[90mC:/Projects/smart-calc[39m
+
+npm : [31mÔÄ»ÔÄ»ÔÄ»Ô
+Ä»ÔÄ»ÔÄ»[39m[1m[41
+m Unhandled Errors [
+49m[22m[31mÔÄ»ÔÄ»ÔÄ
+»ÔÄ»ÔÄ»ÔÄ»[39m
+At line:1 char:1
++ npm test 2>&1 | 
+Out-File -Encoding 
+UTF8 
+test_result_v2.txt
++ ~~~~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: ([31mÔÄ   
+ »ÔÄ»ÔÄ»Ô...»ÔÄ»Ô    
+Ä»ÔÄ»[39m:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+[31m[1m
+Vitest caught 5 
+unhandled errors 
+during the test run.
+This might cause 
+false positive 
+tests. Resolve 
+unhandled errors to 
+make sure your tests 
+are not 
+affected.[22m[39m
+
+[31mÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»Ô
+Ä»[39m[1m[41m 
+Unhandled Error [49m
+[22m[31mÔÄ»ÔÄ»ÔÄ»ÔÄ
+»ÔÄ»ÔÄ»ÔÄ»[39m
+[31m[1mError[22m: 
+[vitest-pool]: 
+Failed to start 
+forks worker for 
+test files C:/Project
+s/smart-calc/src/page
+s/finance/__tests__/D
+ebtPayoffPlanner.test
+.tsx.[39m
+[90m [2mÔØ»[22m no
+de_modules/vitest/dis
+t/chunks/cli-api.B7PN
+_QUv.js:[2m8046:94[
+22m[39m
+[90m [2mÔØ»[22m pr
+ocessTicksAndRejectio
+ns node:internal/proc
+ess/task_queues:[2m9
+5:5[22m[39m
+[90m [2mÔØ»[22m 
+Pool.schedule node_mo
+dules/vitest/dist/chu
+nks/cli-api.B7PN_QUv.
+js:[2m8046:5[22m[3
+9m
+
+[31m[1mCaused by: 
+Error[22m: 
+require() of ES 
+Module C:\Projects\sm
+art-calc\node_modules
+\@exodus\bytes\encodi
+ng-lite.js from C:\Pr
+ojects\smart-calc\nod
+e_modules\html-encodi
+ng-sniffer\lib\html-e
+ncoding-sniffer.js 
+not supported.
+Instead change the 
+require of 
+encoding-lite.js in C
+:\Projects\smart-calc
+\node_modules\html-en
+coding-sniffer\lib\ht
+ml-encoding-sniffer.j
+s to a dynamic 
+import() which is 
+available in all 
+CommonJS 
+modules.[39m
+[90m [2mÔØ»[22m 
+Object.<anonymous> no
+de_modules/html-encod
+ing-sniffer/lib/html-
+encoding-sniffer.js:
+[2m2:41[22m[39m
+
+[31m[2mÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[22m
+[39m
+[31m[1mSerialized 
+Error:[22m[39m 
+[90m{ code: 
+'ERR_REQUIRE_ESM' 
+}[39m
+
+[31mÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»Ô
+Ä»[39m[1m[41m 
+Unhandled Error [49m
+[22m[31mÔÄ»ÔÄ»ÔÄ»ÔÄ
+»ÔÄ»ÔÄ»ÔÄ»[39m
+[31m[1mError[22m: 
+[vitest-pool]: 
+Failed to start 
+forks worker for 
+test files C:/Project
+s/smart-calc/src/page
+s/finance/__tests__/T
+imeToMillionaireCalcu
+lator.test.tsx.[39m
+[90m [2mÔØ»[22m no
+de_modules/vitest/dis
+t/chunks/cli-api.B7PN
+_QUv.js:[2m8046:94[
+22m[39m
+[90m [2mÔØ»[22m pr
+ocessTicksAndRejectio
+ns node:internal/proc
+ess/task_queues:[2m9
+5:5[22m[39m
+[90m [2mÔØ»[22m 
+Pool.schedule node_mo
+dules/vitest/dist/chu
+nks/cli-api.B7PN_QUv.
+js:[2m8046:5[22m[3
+9m
+
+[31m[1mCaused by: 
+Error[22m: 
+require() of ES 
+Module C:\Projects\sm
+art-calc\node_modules
+\@exodus\bytes\encodi
+ng-lite.js from C:\Pr
+ojects\smart-calc\nod
+e_modules\html-encodi
+ng-sniffer\lib\html-e
+ncoding-sniffer.js 
+not supported.
+Instead change the 
+require of 
+encoding-lite.js in C
+:\Projects\smart-calc
+\node_modules\html-en
+coding-sniffer\lib\ht
+ml-encoding-sniffer.j
+s to a dynamic 
+import() which is 
+available in all 
+CommonJS 
+modules.[39m
+[90m [2mÔØ»[22m 
+Object.<anonymous> no
+de_modules/html-encod
+ing-sniffer/lib/html-
+encoding-sniffer.js:
+[2m2:41[22m[39m
+
+[31m[2mÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[22m
+[39m
+[31m[1mSerialized 
+Error:[22m[39m 
+[90m{ code: 
+'ERR_REQUIRE_ESM' 
+}[39m
+
+[31mÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»Ô
+Ä»[39m[1m[41m 
+Unhandled Error [49m
+[22m[31mÔÄ»ÔÄ»ÔÄ»ÔÄ
+»ÔÄ»ÔÄ»ÔÄ»[39m
+[31m[1mError[22m: 
+[vitest-pool]: 
+Failed to start 
+forks worker for 
+test files C:/Project
+s/smart-calc/src/page
+s/finance/__tests__/R
+entVsBuyCalculator.te
+st.tsx.[39m
+[90m [2mÔØ»[22m no
+de_modules/vitest/dis
+t/chunks/cli-api.B7PN
+_QUv.js:[2m8046:94[
+22m[39m
+[90m [2mÔØ»[22m pr
+ocessTicksAndRejectio
+ns node:internal/proc
+ess/task_queues:[2m9
+5:5[22m[39m
+[90m [2mÔØ»[22m 
+Pool.schedule node_mo
+dules/vitest/dist/chu
+nks/cli-api.B7PN_QUv.
+js:[2m8046:5[22m[3
+9m
+
+[31m[1mCaused by: 
+Error[22m: 
+require() of ES 
+Module C:\Projects\sm
+art-calc\node_modules
+\@exodus\bytes\encodi
+ng-lite.js from C:\Pr
+ojects\smart-calc\nod
+e_modules\html-encodi
+ng-sniffer\lib\html-e
+ncoding-sniffer.js 
+not supported.
+Instead change the 
+require of 
+encoding-lite.js in C
+:\Projects\smart-calc
+\node_modules\html-en
+coding-sniffer\lib\ht
+ml-encoding-sniffer.j
+s to a dynamic 
+import() which is 
+available in all 
+CommonJS 
+modules.[39m
+[90m [2mÔØ»[22m 
+Object.<anonymous> no
+de_modules/html-encod
+ing-sniffer/lib/html-
+encoding-sniffer.js:
+[2m2:41[22m[39m
+
+[31m[2mÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[22m
+[39m
+[31m[1mSerialized 
+Error:[22m[39m 
+[90m{ code: 
+'ERR_REQUIRE_ESM' 
+}[39m
+
+[31mÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»Ô
+Ä»[39m[1m[41m 
+Unhandled Error [49m
+[22m[31mÔÄ»ÔÄ»ÔÄ»ÔÄ
+»ÔÄ»ÔÄ»ÔÄ»[39m
+[31m[1mError[22m: 
+[vitest-pool]: 
+Failed to start 
+forks worker for 
+test files C:/Project
+s/smart-calc/src/page
+s/health/__tests__/Ma
+croCalculator.test.ts
+x.[39m
+[90m [2mÔØ»[22m no
+de_modules/vitest/dis
+t/chunks/cli-api.B7PN
+_QUv.js:[2m8046:94[
+22m[39m
+[90m [2mÔØ»[22m pr
+ocessTicksAndRejectio
+ns node:internal/proc
+ess/task_queues:[2m9
+5:5[22m[39m
+[90m [2mÔØ»[22m 
+Pool.schedule node_mo
+dules/vitest/dist/chu
+nks/cli-api.B7PN_QUv.
+js:[2m8046:5[22m[3
+9m
+
+[31m[1mCaused by: 
+Error[22m: 
+require() of ES 
+Module C:\Projects\sm
+art-calc\node_modules
+\@exodus\bytes\encodi
+ng-lite.js from C:\Pr
+ojects\smart-calc\nod
+e_modules\html-encodi
+ng-sniffer\lib\html-e
+ncoding-sniffer.js 
+not supported.
+Instead change the 
+require of 
+encoding-lite.js in C
+:\Projects\smart-calc
+\node_modules\html-en
+coding-sniffer\lib\ht
+ml-encoding-sniffer.j
+s to a dynamic 
+import() which is 
+available in all 
+CommonJS 
+modules.[39m
+[90m [2mÔØ»[22m 
+Object.<anonymous> no
+de_modules/html-encod
+ing-sniffer/lib/html-
+encoding-sniffer.js:
+[2m2:41[22m[39m
+
+[31m[2mÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[22m
+[39m
+[31m[1mSerialized 
+Error:[22m[39m 
+[90m{ code: 
+'ERR_REQUIRE_ESM' 
+}[39m
+
+[31mÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»Ô
+Ä»[39m[1m[41m 
+Unhandled Error [49m
+[22m[31mÔÄ»ÔÄ»ÔÄ»ÔÄ
+»ÔÄ»ÔÄ»ÔÄ»[39m
+[31m[1mError[22m: 
+[vitest-pool]: 
+Failed to start 
+forks worker for 
+test files C:/Project
+s/smart-calc/src/page
+s/finance/__tests__/F
+ireCalculator.test.ts
+x.[39m
+[90m [2mÔØ»[22m no
+de_modules/vitest/dis
+t/chunks/cli-api.B7PN
+_QUv.js:[2m8046:94[
+22m[39m
+[90m [2mÔØ»[22m pr
+ocessTicksAndRejectio
+ns node:internal/proc
+ess/task_queues:[2m9
+5:5[22m[39m
+[90m [2mÔØ»[22m 
+Pool.schedule node_mo
+dules/vitest/dist/chu
+nks/cli-api.B7PN_QUv.
+js:[2m8046:5[22m[3
+9m
+
+[31m[1mCaused by: 
+Error[22m: 
+require() of ES 
+Module C:\Projects\sm
+art-calc\node_modules
+\@exodus\bytes\encodi
+ng-lite.js from C:\Pr
+ojects\smart-calc\nod
+e_modules\html-encodi
+ng-sniffer\lib\html-e
+ncoding-sniffer.js 
+not supported.
+Instead change the 
+require of 
+encoding-lite.js in C
+:\Projects\smart-calc
+\node_modules\html-en
+coding-sniffer\lib\ht
+ml-encoding-sniffer.j
+s to a dynamic 
+import() which is 
+available in all 
+CommonJS 
+modules.[39m
+[90m [2mÔØ»[22m 
+Object.<anonymous> no
+de_modules/html-encod
+ing-sniffer/lib/html-
+encoding-sniffer.js:
+[2m2:41[22m[39m
+
+[31m[2mÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[22m
+[39m
+[31m[1mSerialized 
+Error:[22m[39m 
+[90m{ code: 
+'ERR_REQUIRE_ESM' 
+}[39m
+[31mÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»Ô
+Ä»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»Ô
+Ä»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»Ô
+Ä»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»Ô
+Ä»ÔÄ»ÔÄ»ÔÄ»[39m
+
+
+[2m Test Files [22m [2mno tests[22m
+[2m      Tests [22m [2mno tests[22m
+[2m     Errors [22m [1m[31m5 errors[39m[22m
+[2m   Start at [22m 21:34:59
+[2m   Duration [22m 832ms[2m (transform 0ms, setup 0ms, import 0ms, tests 0ms, environment 0ms)[22m
+

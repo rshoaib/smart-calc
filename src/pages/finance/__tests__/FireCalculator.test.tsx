@@ -34,9 +34,9 @@ describe('FireCalculator', () => {
   it('calculates FIRE number correctly', () => {
     render(<FireCalculator />);
     
-    // Default Spending: 45000, Withdrawal: 4.0%
-    // Target = 45000 / 0.04 = 1,125,000
-    expect(screen.getByText('$1,125,000')).toBeInTheDocument();
+    // Default Spending: 60000 (from component), Withdrawal: 4.0%
+    // Target = 60000 / 0.04 = 1,500,000
+    expect(screen.getByText('$1,500,000')).toBeInTheDocument();
   });
 
   it('updates calculation when inputs change', () => {

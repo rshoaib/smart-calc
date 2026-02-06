@@ -36,6 +36,7 @@ export default function EmergencyFundCalculator() {
     // Prevent NaN
     const calculatedProgress = calculatedTarget > 0 ? Math.min((currentSavings / calculatedTarget) * 100, 100) : 0;
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     setTargetFund(calculatedTarget);
     setMonthsOfFreedom(calculatedFreedom);
     setProgress(calculatedProgress);

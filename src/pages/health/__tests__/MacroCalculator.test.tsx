@@ -46,7 +46,8 @@ describe('MacroCalculator', () => {
     const goalSelect = screen.getByLabelText('forms.labels.goal');
     fireEvent.change(goalSelect, { target: { value: 'lose' } });
 
-    // Should be lower
-    // We can verify specific text logic if needed
+    // Should be lower (2039 - 500 = 1539)
+    // We expect the new value to be present
+    expect(screen.getByText(/1,539/)).toBeInTheDocument();
   });
 });

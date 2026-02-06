@@ -16,6 +16,7 @@ vi.mock('react-helmet-async', () => ({
 vi.mock('recharts', () => ({
   ResponsiveContainer: ({ children }: { children: React.ReactNode }) => <>{children}</>,
   ComposedChart: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  AreaChart: ({ children }: { children: React.ReactNode }) => <>{children}</>,
   Line: () => null,
   Area: () => null,
   Bar: () => null,
@@ -46,7 +47,7 @@ describe('TimeToMillionaireCalculator', () => {
     const contributionInput = screen.getByLabelText('forms.labels.monthly_contrib');
     fireEvent.change(contributionInput, { target: { value: '0' } });
 
-    expect(screen.getByText('results.forever')).toBeInTheDocument();
+    expect(screen.getByText('It will take over 100 years. Try increasing your contributions.')).toBeInTheDocument();
 
     // Now set realistic values
     // Balance 500k, Monthly 5k, Return 0% -> Need 500k more -> 100 months (8.3 years)
