@@ -1,0 +1,387 @@
+{
+  "welcome": "Welcome to SmartCalc",
+  "description": "Smart Financial & Health Tools",
+  "common": {
+    "calculate": "Calculate",
+    "results": "Results",
+    "metric": "Metric",
+    "imperial": "Imperial",
+    "clear": "Clear",
+    "save": "Save"
+  },
+  "nav": {
+    "finance": "Finance",
+    "health": "Health",
+    "productivity": "Productivity",
+    "blog": "Blog",
+    "privacy": "Privacy Policy"
+  },
+  "home": {
+    "hero_title": "Smart Calculators for Better Decisions",
+    "hero_subtitle": "Free, instant, and privacy-focused tools for your money and health.",
+    "finance_title": "Financial Tools",
+    "health_title": "Health Tools",
+    "meta": {
+      "title": "SmartCalc - Finance & Health Calculators",
+      "desc": "Free online financial and health calculators. Mortgage, Loan, BMI, Calorie calculators and more. No login required."
+    },
+    "tools": {
+      "mortgage": {
+        "name": "Mortgage Calculator",
+        "desc": "Calculate monthly payments, interest rates, and amortization."
+      },
+      "investment": {
+        "name": "Investment Return",
+        "desc": "Project your investment growth with compound interest."
+      },
+      "auto_loan": {
+        "name": "Auto Loan Calculator",
+        "desc": "Estimate monthly car payments and total loan costs."
+      },
+      "retirement": {
+        "name": "Retirement Planner",
+        "desc": "Visualize your 401k growth and plan for financial freedom."
+      },
+      "debt_payoff": {
+        "name": "Debt Payoff Planner",
+        "desc": "Snowball vs Avalanche. Create a structured plan to be debt-free."
+      },
+      "bmi": {
+        "name": "BMI Calculator",
+        "desc": "Check your Body Mass Index and understand weight health."
+      },
+      "calorie": {
+        "name": "Calorie Calculator",
+        "desc": "Calculate daily caloric needs (TDEE) for your goals."
+      },
+      "millionaire": {
+        "name": "Time to Millionaire",
+        "desc": "See how long it will take to reach your first million."
+      },
+      "emergency": {
+        "name": "Emergency Fund",
+        "desc": "Calculate how much you need to save for a rainy day."
+      },
+      "macro_split": {
+        "name": "Macro Split Calculator",
+        "desc": "Optimize your nutrient intake for muscle gain or fat loss."
+      },
+      "rent_vs_buy": {
+        "name": "Rent vs. Buy Analyzer",
+        "desc": "Compare the total cost of renting vs buying over time."
+      },
+      "fire": {
+        "name": "FIRE Calculator",
+        "desc": "Calculate your Financial Independence, Retire Early date."
+      },
+      "orm": {
+        "name": "1 Rep Max",
+        "desc": "Estimate your maximum lifting strength and training zones."
+      },
+      "pomodoro": {
+        "name": "Pomodoro Timer",
+        "desc": "Boost focus with customizable work & break intervals."
+      },
+      "salary_hourly": {
+        "name": "Salary ↔ Hourly",
+        "desc": "Convert between annual salary and hourly wage instantly."
+      },
+      "meeting_cost": {
+        "name": "Meeting Cost",
+        "desc": "Track the real-time cost of your meetings."
+      },
+      "percentage": {
+        "name": "Percentage Calculator",
+        "desc": "Three ways to calculate percentages instantly."
+      },
+      "gpa": {
+        "name": "GPA Calculator",
+        "desc": "Calculate your cumulative GPA on a 4.0 scale."
+      },
+      "typing": {
+        "name": "Typing Speed Test",
+        "desc": "Measure your typing speed and accuracy in real time."
+      }
+    },
+    "productivity_title": "Productivity Tools"
+  },
+  "forms": {
+    "sections": {
+      "loan": "Loan Details",
+      "investment": "Investment Details",
+      "retirement": "Retirement Plan",
+      "debt": "Debt Details",
+      "expenses": "Monthly Expenses",
+      "personal": "Personal Details"
+    },
+    "options": {
+      "snowball": "Debt Snowball (Lowest Balance First)",
+      "avalanche": "Debt Avalanche (Highest Interest First)",
+      "male": "Male",
+      "female": "Female",
+      "sedentary": "Sedentary (Office job)",
+      "light": "Light Exercise (1-2 days/week)",
+      "moderate": "Moderate Exercise (3-5 days/week)",
+      "active": "Active (Daily exercise)",
+      "very_active": "Very Active (Physical job + training)",
+      "heavy": "Heavy Exercise (6-7 days/week)",
+      "athlete": "Athlete (2x per day)",
+      "balanced": "Balanced (40/30/30)",
+      "low_carb": "Low Carb (40/40/20)",
+      "high_protein": "High Protein (50/30/20)",
+      "keto": "Keto (70/25/5)",
+      "lose_weight": "Lose Weight (-500 kcal)",
+      "maintain_weight": "Maintain Weight",
+      "gain_muscle": "Gain Muscle (+500 kcal)"
+    },
+    "labels": {
+      "home_price": "Home Price ($)",
+      "vehicle_price": "Vehicle Price ($)",
+      "down_payment": "Down Payment ($)",
+      "interest_rate": "Interest Rate (%)",
+      "loan_term": "Loan Term (Years)",
+      "term_months": "Term (Months)",
+      "trade_in": "Trade-In Value ($)",
+      "sales_tax": "Sales Tax (%)",
+      "debt_name": "Debt Name",
+      "balance": "Balance ($)",
+      "min_payment": "Min Payment ($)",
+      "initial_inv": "Initial Investment ($)",
+      "monthly_contrib": "Monthly Contribution ($)",
+      "years_grow": "Years to Grow",
+      "return_rate": "Expected Return (%)",
+      "current_age": "Current Age",
+      "retire_age": "Retirement Age",
+      "current_savings": "Current Savings ($)",
+      "monthly_budget": "Monthly Payoff Budget ($)",
+      "payoff_strategy": "Payoff Strategy",
+      "height_ft": "Height (ft)",
+      "height_in": "Height (in)",
+      "height_cm": "Height (cm)",
+      "weight_lb": "Weight (lbs)",
+      "weight_kg": "Weight (kg)",
+      "age": "Age",
+      "gender": "Gender",
+      "activity_level": "Activity Level",
+      "current_balance": "Current Balance ($)",
+      "annual_interest": "Annual Interest Rate (%)",
+      "diet_type": "Diet Preference",
+      "goal": "Goal",
+      "rent_monthly": "Monthly Rent ($)",
+      "rent_increase": "Annual Rent Increase (%)",
+      "home_appreciation": "Home Appreciation (%)",
+      "maintenance_cost": "Annual Maintenance (%)",
+      "buying_closing_costs": "Buying Closing Costs (%)",
+      "selling_closing_costs": "Selling Closing Costs (%)",
+      "current_net_worth": "Current Net Worth ($)",
+      "annual_income": "Annual Income ($)",
+      "annual_spending": "Annual Spending ($)",
+      "withdrawal_rate": "Safe Withdrawal Rate (%)",
+      "essential_expenses": "Essential Expenses ($)",
+      "optional_expenses": "Optional Expenses ($)",
+      "risk_level": "Job Stability / Liability Risk"
+    }
+  },
+  "results": {
+    "monthly_payment": "Monthly Payment",
+    "total_interest": "Total Interest",
+    "total_cost": "Total Cost of Loan",
+    "payoff_date": "Debt Free Date",
+    "total_savings": "Total Savings",
+    "future_value": "Future Value",
+    "time_to_1m": "Time to $1 Million",
+    "years": "Years",
+    "months": "Months",
+    "macros": {
+      "protein": "Protein",
+      "carbs": "Carbs",
+      "fats": "Fats"
+    },
+    "bmi_score": "Your BMI Score",
+    "category": "Category",
+    "maintain_weight": "Maintain Weight",
+    "mild_loss": "Mild Weight Loss",
+    "loss": "Weight Loss",
+    "extreme_loss": "Extreme Weight Loss",
+    "mild_gain": "Mild Weight Gain",
+    "gain": "Weight Gain",
+    "extreme_gain": "Extreme Weight Gain",
+    "categories": {
+      "underweight": "Underweight",
+      "normal": "Normal Weight",
+      "overweight": "Overweight",
+      "obese": "Obese"
+    },
+    "break_even_point": "Breakeven Point",
+    "buying_cheaper": "Buying becomes cheaper after",
+    "renting_cheaper": "Renting is cheaper for",
+    "forever": "forever"
+  },
+  "emergency": {
+    "target_fund": "Target Emergency Fund",
+    "months_freedom": "Months of Freedom",
+    "status_danger": "Dangerous: You have less than 1 month of runway.",
+    "status_warning": "Warning: Aim for at least 3-6 months.",
+    "status_good": "Good: You have a solid safety net.",
+    "progress": "Fund Progress",
+    "gap_message": "You need another ${{amount}} to reach your goal.",
+    "expense_breakdown": "Monthly Breakdown",
+    "essential": "Essential",
+    "optional": "Optional",
+    "essential_hint": "Food, Rent, Debt, Utilities",
+    "optional_hint": "Dining out, Subscriptions, Fun",
+    "risk": {
+      "low": "Stable",
+      "medium": "Average",
+      "high": "High Risk"
+    },
+    "risk_desc": {
+      "low": "Stable 9-5, Dual Income, Low Liabilities",
+      "medium": "Standard 9-5, Single Income",
+      "high": "Volatile Income or Dependents"
+    }
+  },
+  "orm": {
+    "lift_details": "Lift Details",
+    "weight_lifted": "Weight Lifted",
+    "repetitions": "Repetitions",
+    "reps_hint": "How many reps did you perform?",
+    "formula": "Calculation Formula",
+    "estimated_max": "Estimated One Rep Max",
+    "training_percentages": "Training Percentages",
+    "percentage": "Intensity",
+    "weight": "Weight",
+    "reps": "Est. Reps"
+  },
+  "freelance": {
+    "title": "Freelance Rate Calculator",
+    "meta_title": "Freelance Rate Calculator - SmartCalc",
+    "meta_desc": "Calculate your hourly rate based on desired income and expenses.",
+    "subtitle": "Calculate the perfect hourly rate to reach your income goals.",
+    "desired_income": "Desired Annual Salary",
+    "desired_income_help": "How much do you want to take home (pre-tax)?",
+    "monthly_expenses": "Monthly Business Expenses",
+    "expenses_help": "Software, insurance, internet, etc.",
+    "billable_hours": "Billable Hours / Week",
+    "billable_help": "Hours you can actually bill to clients.",
+    "weeks_off": "Weeks Off / Year",
+    "weeks_off_help": "Vacation, sick time, and holidays.",
+    "profit_margin": "Profit Margin (%)",
+    "profit_help": "Buffer for business savings/growth.",
+    "tax_rate": "Est. Tax Rate (%)",
+    "tax_help": "Estimated tax percentage to set aside.",
+    "min_hourly_rate": "Your Minimum Rate",
+    "based_on": "Based on {{hours}} billable hours/year",
+    "income_breakdown": "Target Breakdown",
+    "daily": "Daily Target",
+    "weekly": "Weekly Target",
+    "monthly": "Monthly Target",
+    "gross_revenue": "Total Revenue Needed",
+    "est_tax": "Est. Tax ({{rate}}%)",
+    "net_estimate": "Est. Take Home"
+  },
+  "heart_rate": {
+    "title": "Target Heart Rate Calculator",
+    "meta_title": "Target Heart Rate Calculator - SmartCalc",
+    "meta_desc": "Calculate your target heart rate training zones.",
+    "subtitle": "Optimize your training with personalized heart rate zones.",
+    "age": "Age",
+    "age_help": "Used to estimate Max Heart Rate (220 - Age).",
+    "resting_hr": "Resting Heart Rate",
+    "resting_help": "Optional. Improves accuracy (Karvonen formula).",
+    "using_karvonen": "Using Karvonen Formula (more accurate).",
+    "using_simple": "Using Standard Formula. Enter Resting HR for better accuracy.",
+    "zones_title": "Training Zones",
+    "zone1": "Very Light (Warm Up)",
+    "zone1_desc": "Improves overall health and helps recovery.",
+    "zone2": "Light (Fat Burn)",
+    "zone2_desc": "Improves basic endurance and fat burning.",
+    "zone3": "Moderate (Aerobic)",
+    "zone3_desc": "Improves aerobic fitness and cardiovascular health.",
+    "zone4": "Hard (Anaerobic)",
+    "zone4_desc": "Increases maximum performance capacity.",
+    "zone5": "Maximum (VO2 Max)",
+    "zone5_desc": "Develops maximum performance and speed."
+  },
+  "pomodoro": {
+    "title": "Pomodoro Timer",
+    "meta_title": "Pomodoro Timer - SmartCalc",
+    "meta_desc": "Boost productivity with the Pomodoro Technique timer.",
+    "focus_msg": "Time to focus on your task!",
+    "break_msg": "Take a short break to recharge.",
+    "settings": "Timer Settings"
+  },
+  "sleep": {
+    "title": "Sleep Cycle Calculator",
+    "meta_title": "Sleep Cycle Calculator - SmartCalc",
+    "meta_desc": "Find the perfect bedtime or wake up time.",
+    "subtitle": "Wake up feeling refreshed by syncing with your natural sleep cycles.",
+    "i_want_to_wake": "I want to wake at...",
+    "i_am_sleeping": "I am sleeping at...",
+    "wake_time": "Wake Up Time",
+    "bed_time": "Bed Time",
+    "best_bedtimes": "You should fall asleep at:",
+    "best_waketimes": "You should wake up at:",
+    "feeling_great": "Feeling Great (Recommended)",
+    "feeling_good": "Feeling Good",
+    "feeling_ok": "Feeling Okay",
+    "feeling_groggy": "Might feel groggy",
+    "promt": "Enter a time to calculate perfect cycles.",
+    "why_matters": "Why Cycles Matter",
+    "disclaimer": "Includes avg. 14 min to fall asleep."
+  },
+  "roi": {
+    "title": "ROI / ROAS Calculator",
+    "meta_title": "ROI Calculator - SmartCalc",
+    "meta_desc": "Calculate Return on Investment and Return on Ad Spend.",
+    "subtitle": "Analyze the profitability of your investments or marketing campaigns.",
+    "invested": "Amount Invested ($)",
+    "invested_help": "Total cost (e.g. ad spend, stock purchase).",
+    "returned": "Amount Returned ($)",
+    "returned_help": "Total revenue or current value.",
+    "duration": "Duration (Months)",
+    "duration_help": "Time held (for annualized calculation).",
+    "show_time": "Calculate Annualized ROI?",
+    "hide_time": "Hide Time Input",
+    "roi_percent": "Total ROI",
+    "net_profit": "Net Profit",
+    "annualized": "Annualized ROI",
+    "multiplier": "Multiplier (ROAS)",
+    "breakdown": "Profit Breakdown",
+    "investment": "Initial Investment",
+    "profit": "Profit",
+    "no_profit_chart": "Chart displays when there is a profit."
+  },
+  "savings": {
+    "title": "Savings Goal Calculator",
+    "meta_title": "Savings Goal Calculator - SmartCalc",
+    "meta_desc": "Plan how much to save monthly to reach your financial goals.",
+    "subtitle": "Map out your path to a specific financial target.",
+    "goal_amount": "Savings Goal ($)",
+    "goal_help": "The total amount you want to reach.",
+    "current_savings": "Current Savings ($)",
+    "current_help": "Money you have already saved.",
+    "years": "Time to Grow (Years)",
+    "years_help": "When do you need the money?",
+    "interest_rate": "Interest Rate (%)",
+    "rate_help": "Expected annual return.",
+    "monthly_needed": "Required Monthly Savings",
+    "total_interest": "Total Interest Earned",
+    "total_principal": "Total Contribution",
+    "growth_chart": "Savings Growth Over Time"
+  },
+  "financial_hub": {
+    "meta_title": "The Ultimate Guide to Financial Independence - SmartCalc",
+    "meta_desc": "A complete step-by-step guide to achieving financial freedom using our smart calculators.",
+    "hero_title": "Your Roadmap to Financial Freedom",
+    "hero_subtitle": "Financial independence isn't just a dream—it's a mathematical certainty if you follow the right steps. Use our suite of tools to plan your journey.",
+    "start_journey": "Start Your Journey"
+  },
+  "wellness_hub": {
+    "meta_title": "Total Wellness Optimization Guide - SmartCalc",
+    "meta_desc": "Optimize your health with our comprehensive suite of nutrition, fitness, and recovery tools.",
+    "hero_title": "Optimize Your Body & Mind",
+    "hero_subtitle": "Health isn't about guessing. It's about data. Use our precision tools to dial in your nutrition, training, and recovery for peak performance.",
+    "start_journey": "Calculate Your Needs"
+  }
+}

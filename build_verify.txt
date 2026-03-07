@@ -1,0 +1,70 @@
+﻿
+> dailysmartcalc-next@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 13.2s
+  Running TypeScript ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/44) ...
+­ƒîÉ i18next is maintained with support from Locize ÔÇö consider powering your project with managed localization (AI, CDN, integrations): https://locize.com ­ƒÆÖ
+­ƒîÉ i18next is maintained with support from Locize ÔÇö consider powering your project with managed localization (AI, CDN, integrations): https://locize.com ­ƒÆÖ
+  Generating static pages using 7 workers (11/44) 
+  Generating static pages using 7 workers (22/44) 
+  Generating static pages using 7 workers (33/44) 
+Ô£ô Generating static pages using 7 workers (44/44) in 5.1s
+  Finalizing page optimization ...
+
+Route (app)
+Ôöî Ôùï /
+Ôö£ Ôùï /_not-found
+Ôö£ Ôùï /about
+Ôö£ Ôùï /blog
+Ôö£ ãÆ /blog/[slug]
+Ôö£ ãÆ /calculate/[slug]
+Ôö£ Ôùï /contact
+Ôö£ Ôùï /dashboard
+Ôö£ Ôùï /finance
+Ôö£ Ôùï /finance/debt-payoff
+Ôö£ Ôùï /finance/emergency
+Ôö£ Ôùï /finance/fire
+Ôö£ Ôùï /finance/freedom-guide
+Ôö£ Ôùï /finance/freelance-rate
+Ôö£ Ôùï /finance/investment
+Ôö£ Ôùï /finance/loan
+Ôö£ Ôùï /finance/mortgage
+Ôö£ Ôùï /finance/rent-vs-buy
+Ôö£ Ôùï /finance/retirement
+Ôö£ Ôùï /finance/roi
+Ôö£ Ôùï /finance/savings-goal
+Ôö£ Ôùï /finance/time-to-millionaire
+Ôö£ Ôùï /health
+Ôö£ Ôùï /health/1rm
+Ôö£ Ôùï /health/bmi
+Ôö£ Ôùï /health/calories
+Ôö£ Ôùï /health/heart-rate
+Ôö£ Ôùï /health/macro-split
+Ôö£ Ôùï /health/sleep
+Ôö£ Ôùï /health/wellness-guide
+Ôö£ Ôùï /privacy
+Ôö£ Ôùï /productivity
+Ôö£ Ôùï /productivity/age
+Ôö£ Ôùï /productivity/date-difference
+Ôö£ Ôùï /productivity/gpa
+Ôö£ Ôùï /productivity/meeting-cost
+Ôö£ Ôùï /productivity/percentage
+Ôö£ Ôùï /productivity/pomodoro
+Ôö£ Ôùï /productivity/salary-hourly
+Ôö£ Ôùï /productivity/tip-calculator
+Ôö£ Ôùï /productivity/typing-speed
+Ôö£ Ôùï /productivity/unit-converter
+Ôö£ Ôùï /productivity/word-counter
+Ôöö Ôùï /terms
+
+
+Ôùï  (Static)   prerendered as static content
+ãÆ  (Dynamic)  server-rendered on demand
+
