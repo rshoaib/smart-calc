@@ -15,6 +15,237 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
     {
+        id: '38',
+        slug: 'credit-score-guide-how-credit-scores-work-2026',
+        title: 'Credit Scores Explained: How They Work and What Changed in 2026',
+        excerpt: 'Your credit score affects every loan, credit card, and even apartment application. In 2026, major changes to FICO and VantageScore models are reshaping how scores are calculated. Here is everything you need to know.',
+        date: '2026-03-07',
+        displayDate: 'March 7, 2026',
+        readTime: '13 min read',
+        category: 'Finance',
+        relatedToolLink: '/finance/loan',
+        relatedToolName: 'Loan Calculator',
+        image: '/images/blog/credit-score-guide-hero.png',
+        content: `
+## What Is a Credit Score?
+
+A credit score is a three-digit number between 300 and 850 that tells lenders how likely you are to repay borrowed money. Think of it as your financial GPA.
+
+A higher score means lower risk to the lender, which translates to **lower interest rates**, **higher credit limits**, and **faster approvals** for you.
+
+A lower score means the opposite: higher rates, smaller limits, and more rejections.
+
+Your credit score affects more than loans. Landlords check it before renting to you. Insurance companies use it to set premiums. Some employers review it during hiring.
+
+In short, your credit score is the single most important number in your financial life after your income.
+
+## How Credit Scores Are Calculated
+
+Two companies dominate credit scoring in the United States: **FICO** (used by 90% of top lenders) and **VantageScore** (created by the three credit bureaus).
+
+Both models analyze the same raw data from your credit reports at Equifax, Experian, and TransUnion. But they weigh the factors differently.
+
+### The 5 Factors That Determine Your Score
+
+| Factor | FICO Weight | VantageScore Weight | What It Measures |
+|---|---|---|---|
+| **Payment History** | 35% | 40–41% | On-time vs. late payments |
+| **Credit Utilization** | 30% | 20% | How much of your available credit you use |
+| **Length of Credit History** | 15% | 21% | Age of your oldest and newest accounts |
+| **Credit Mix** | 10% | 11% | Variety of account types (cards, loans, mortgage) |
+| **New Credit** | 10% | 5% | Recent applications and hard inquiries |
+
+Let's break each one down.
+
+### 1. Payment History (35% of FICO)
+
+This is the biggest factor by far. One late payment can drop your score by 60–110 points, and it stays on your report for **7 years**.
+
+The damage depends on three things:
+- **How late:** 30 days late is bad. 90 days late is devastating.
+- **How recent:** A late payment from last month hurts more than one from 3 years ago.
+- **How frequent:** A pattern of late payments signals chronic risk.
+
+**The fix:** Set up autopay for at least the minimum payment on every account. If you miss a payment, pay it before 30 days to prevent it from being reported to the bureaus.
+
+### 2. Credit Utilization (30% of FICO)
+
+Credit utilization is the percentage of your available credit that you are using. If you have a $10,000 credit limit and a $3,000 balance, your utilization is 30%.
+
+- **Below 10%:** Excellent. This is the sweet spot.
+- **Below 30%:** Good. Most advice targets this threshold.
+- **Above 50%:** Risky. Lenders see this as financial stress.
+- **Above 75%:** Red flag. Expect score drops.
+
+Utilization is measured **per card** and **across all cards**. Even if your total utilization is low, one maxed-out card can hurt.
+
+**The fix:** Pay down balances before the statement closing date (not the due date). You can also request credit limit increases, which lowers your utilization ratio without changing your spending.
+
+### 3. Length of Credit History (15%)
+
+Lenders want to see a long track record. This factor considers:
+- The age of your oldest account.
+- The age of your newest account.
+- The average age across all accounts.
+
+This is why financial advisors say **never close your oldest credit card**, even if you do not use it. Closing it shortens your history and can drop your score.
+
+### 4. Credit Mix (10%)
+
+A healthy mix of different credit types signals sophistication. Lenders look for a combination of:
+- **Revolving credit:** Credit cards, lines of credit.
+- **Installment loans:** Auto loans, student loans, mortgage.
+
+You do not need to take out a loan just to improve this factor. But if you only have credit cards, adding a small installment loan (like an auto loan) can give you a modest boost.
+
+### 5. New Credit (10%)
+
+Every time you apply for credit, the lender pulls a **hard inquiry** on your report. Each inquiry can lower your score by 5–10 points.
+
+Multiple inquiries in a short period look like desperation. However, both FICO and VantageScore have a **rate-shopping window**. If you apply for multiple mortgages or auto loans within 14–45 days, they count as a single inquiry.
+
+This is important when you are shopping for the best [loan rates](/finance/loan). Apply to multiple lenders within the same 2-week window to minimize the impact.
+
+## Credit Score Ranges: What Is a "Good" Score?
+
+The FICO and VantageScore ranges differ slightly:
+
+| Range | FICO | VantageScore |
+|---|---|---|
+| **Excellent** | 800–850 | 781–850 |
+| **Very Good** | 740–799 | — |
+| **Good** | 670–739 | 661–780 |
+| **Fair** | 580–669 | 601–660 |
+| **Poor** | 300–579 | 300–600 |
+
+### What Each Range Means in Practice
+
+- **800+:** You qualify for the best rates on everything. A mortgage at 800 vs. 680 can save you **$100,000+** in interest over 30 years.
+- **740–799:** Excellent placement. You will qualify for nearly all products with competitive rates.
+- **670–739:** You will be approved for most loans, but your rates will be higher than top-tier borrowers. Use our [Mortgage Calculator](/finance/mortgage) to see exactly how your rate affects your monthly payment.
+- **580–669:** Subprime territory. You will pay significantly higher interest rates. Focus on the improvement tips below.
+- **Below 580:** Rebuilding mode. Secured credit cards and credit-builder loans are your best tools.
+
+## What Changed in 2026
+
+2026 is not a normal year for credit scoring. Several major shifts are reshaping how scores are calculated, especially for mortgage lending.
+
+### 1. FICO 10T and VantageScore 4.0 (Trended Data)
+
+This is the biggest change in a decade. Older scoring models took a **snapshot** of your credit at one moment. The new models analyze **24 months of behavior patterns**.
+
+What this means:
+- If your debt has been **steadily decreasing**, your score gets a boost.
+- If your debt has been **steadily increasing**, even if you are under 30% utilization, you could see a score drop.
+- **Paying in full every month** is now visibly rewarded over making minimum payments.
+
+The old trick of maxing out a card, paying it off before the statement date, and repeating no longer works as well. FICO 10T sees the pattern.
+
+### 2. Buy Now, Pay Later (BNPL) on Credit Reports
+
+Afterpay, Klarna, and Affirm purchases are now appearing on credit reports. This is a double-edged sword:
+- **On-time BNPL payments** can help build credit history, especially for younger borrowers with thin files.
+- **Missed BNPL payments** will hurt your score just like a missed credit card payment.
+
+If you use BNPL, treat it exactly like a credit card. Late payments are no longer invisible.
+
+### 3. Medical Debt Disappearing
+
+Paid medical collections and medical debts under $500 are being **removed from credit reports**. For millions of Americans who had a medical emergency tank their score, this is a significant relief.
+
+If your score was dragged down by an old medical bill, check your report. It may already be gone.
+
+### 4. Alternative Data for Thin Files
+
+VantageScore 4.0 now considers:
+- On-time rent payments.
+- Utility bill payments.
+- Telecom (phone) bill payments.
+
+This helps people with limited credit history, such as recent graduates, immigrants, and anyone who has avoided credit cards. If you pay your bills on time, you now get credit for it, literally.
+
+### 5. Stronger Consumer Protections
+
+In March 2026, the practice of **"mortgage trigger leads"** ended. Previously, when you applied for a mortgage, your credit inquiry information could be sold to competing lenders who would spam you with calls. That is now illegal without your explicit consent.
+
+Dispute timelines have also been shortened, so credit report errors must be investigated and resolved faster.
+
+## How to Improve Your Credit Score (Actionable Steps)
+
+If your score is below where you want it, here is the priority order:
+
+### Step 1: Fix Errors on Your Credit Report
+
+About 1 in 5 credit reports contain an error. Go to AnnualCreditReport.com and pull your free reports from all three bureaus. Dispute any inaccuracies, especially incorrectly reported late payments or accounts that are not yours.
+
+### Step 2: Pay Down High Utilization
+
+This is the fastest lever you can pull. Paying a credit card from 80% utilization to 10% can improve your score by **50–100 points** within one billing cycle.
+
+If you have multiple high-balance cards, use our [Debt Payoff Planner](/finance/debt-payoff) to find the best payoff order. The Debt Avalanche method (highest interest first) saves the most money.
+
+### Step 3: Set Up Autopay for Everything
+
+A single 30-day late payment can erase years of good behavior. Automate at least the minimum payment on every account.
+
+### Step 4: Keep Old Accounts Open
+
+Even if you have a credit card you no longer use, keep it open. The length of your credit history and your overall available credit (utilization ratio) both benefit.
+
+### Step 5: Limit New Applications
+
+Only apply for new credit when you truly need it. If you are rate shopping for a [mortgage](/finance/mortgage) or [auto loan](/finance/loan), do all your applications within a 2-week window.
+
+### Step 6: Consider a Secured Credit Card
+
+If you are rebuilding from a poor score, a secured credit card (where you put down a deposit as collateral) is the safest way to establish payment history.
+
+## Credit Score vs. Financial Health
+
+A high credit score does not mean you are wealthy. People with excellent scores can still be living paycheck to paycheck, drowning in debt that they pay on time.
+
+Your credit score measures **how well you manage debt**, not how much money you have.
+
+True financial health involves:
+- A fully funded [emergency fund](/finance/emergency).
+- A manageable [debt-to-income ratio](/finance/debt-payoff).
+- Investments growing faster than [inflation](/finance/investment).
+- A clear [retirement timeline](/finance/retirement).
+
+If your credit score is excellent but you have no savings, you are one job loss away from that score collapsing. Read our [2026 Financial Health Checkup](/blog/financial-health-checkup-2026) for a complete audit.
+
+## Frequently Asked Questions
+
+### How often does my credit score update?
+
+Your score can change every time a creditor reports new data, which is typically monthly. However, each creditor reports on a different day, so your score may fluctuate throughout the month. Major changes (paying off a large balance, a late payment being reported) will show up within 30–45 days.
+
+### Can checking my own credit score lower it?
+
+No. Checking your own score is a **"soft inquiry"** and has zero impact. Only "hard inquiries" (when a lender checks your credit for a loan application) affect your score. You should check your score regularly to catch errors and track improvement.
+
+### What is the fastest way to raise my credit score?
+
+The fastest lever is **paying down credit utilization**. If you have a high balance on one card, paying it down below 10% of the limit can boost your score within one billing cycle (30 days). Disputing errors on your report is another fast fix. Building payment history, unfortunately, takes time.
+
+### Does closing a credit card hurt my score?
+
+Usually, yes. Closing a card reduces your total available credit, which increases your utilization ratio. It also eventually shortens your credit history when the closed account ages off your report. Keep old cards open, even if unused, unless they charge an annual fee you cannot justify.
+
+### Is 700 a good credit score?
+
+A 700 FICO score falls in the "Good" range (670–739). You will qualify for most loans and credit cards, but your interest rates will be higher than someone at 760+. For a mortgage on a $400,000 home, the difference between a 700 and a 760 score can mean **$200+ more per month** in payments. Use our [Mortgage Calculator](/finance/mortgage) to see your exact numbers.
+
+## Know Your Number
+
+Your credit score is not a mystery. It is a formula with known inputs. You now know the 5 factors, their weights, and the specific actions that move each one.
+
+Stop guessing. Start tracking. And if you are carrying balances, run the numbers on when you can be debt-free.
+
+[Plan Your Debt Payoff](/finance/debt-payoff) | [Calculate Mortgage Cost](/finance/mortgage) | [Check Investment Returns](/finance/investment)
+`
+    },
+    {
         id: '37',
         slug: 'financial-health-checkup-2026',
         title: 'Your 2026 Financial Health Checkup: A Free Step-by-Step Audit',
