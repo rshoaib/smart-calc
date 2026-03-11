@@ -96,5 +96,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.7,
     }));
 
-    return [...routes, ...toolRoutes, ...seoRoutes, ...blogRoutes];
+    // Aggressive Sitemap Pruning: Explicitly excluding `...seoRoutes` (335+ programmatic pages)
+    // to focus Google crawler on the highest value Tool and Blog pages.
+    return [...routes, ...toolRoutes, ...blogRoutes];
 }

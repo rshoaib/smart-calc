@@ -2,18 +2,18 @@ import { Metadata } from 'next';
 import ClientComponent from './ClientComponent';
 
 export const metadata: Metadata = {
-  title: 'Inflation Calculator | Historical & Future Value | SmartCalc',
-  description: 'Calculate the changing value of the US dollar over time. See how inflation impacts purchasing power from 1913 to today using historical CPI data.',
+  title: 'Inflation Calculator | SmartCalc',
+  description: 'Free online inflation calculator. Get accurate results instantly. No sign-up required.',
   openGraph: {
-    title: 'Inflation Calculator | Historical & Future Value | SmartCalc',
-    description: 'Calculate the changing value of the US dollar over time.',
+    title: 'Inflation Calculator | SmartCalc',
+    description: 'Free online inflation calculator. Get accurate results instantly.',
     url: 'https://dailysmartcalc.com/finance/inflation',
     type: 'website',
   },
   twitter: {
     card: 'summary',
-    title: 'Inflation Calculator | Historical & Future Value',
-    description: 'Calculate the changing value of the US dollar.',
+    title: 'Inflation Calculator | SmartCalc',
+    description: 'Free online inflation calculator.',
   },
 };
 
@@ -35,7 +35,7 @@ export default function Page() {
               price: '0',
               priceCurrency: 'USD'
             },
-            description: 'Free online calculator to measure the changing purchasing power of the US dollar over time using official historical CPI data.'
+            description: 'Free online inflation calculator.'
           })
         }}
       />
