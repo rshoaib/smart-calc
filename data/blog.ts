@@ -251,7 +251,7 @@ In the United States, inflation is measured by the Consumer Price Index (CPI), w
 Always use **real returns**. If you determine you need $80,000 a year to live comfortably *today*, you can use real returns in a calculator to figure out exactly how much you need to save to generate that equivalent purchasing power in the future, regardless of what the actual nominal dollar amount ends up being.
 
 [Calculate Your Real Investment Growth](/finance/investment) | [Check Your Emergency Fund](/finance/emergency) | [Plan Your Debt Payoff](/finance/debt-payoff)
-\`
+`
     },
     {
         id: '40',
