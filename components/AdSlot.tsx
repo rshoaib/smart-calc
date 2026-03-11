@@ -15,11 +15,14 @@ const SHOW_ADS = false;
 export function AdSlot({ className, slotId, label = 'Ad Space' }: AdSlotProps) {
   if (!SHOW_ADS) return null;
 
+  const isVerticalAd = className?.includes('300px') || className?.includes('600px') || className?.includes('250px');
+
   return (
     <div
       aria-label="Advertisement"
       className={twMerge(
         'flex items-center justify-center bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md overflow-hidden',
+        isVerticalAd ? 'hidden lg:flex' : '',
         className
       )}
     >
