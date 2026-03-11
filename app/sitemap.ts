@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { blogPosts } from '@/data/blog';
+import { getAllPosts } from '@/lib/blogService';
 import {
     percentagePages,
     tipPages,
@@ -13,7 +13,7 @@ import {
 import * as fs from 'fs';
 import * as path from 'path';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://dailysmartcalc.com';
 
     // Basic routes
@@ -87,10 +87,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.5,
     }));
 
-    // Blog posts from data source
+    // Blog posts from Supabase
+    const blogPosts = await getAllPosts();
     const blogRoutes = blogPosts.map((post) => ({
         url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: new Date(), // Could be post.date if parsed correctly
+        lastModified: new Date(),
         changeFrequency: 'monthly' as const,
         priority: 0.7,
     }));

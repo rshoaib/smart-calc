@@ -81,7 +81,7 @@ export default function RootLayout({
               '@type': 'Organization',
               name: 'DailySmartCalc',
               url: 'https://dailysmartcalc.com',
-              logo: 'https://dailysmartcalc.com/vite.svg',
+              logo: 'https://dailysmartcalc.com/favicon.svg',
               description:
                 'Free finance and health calculators — mortgage, compound interest, BMI, calorie tracking, and more.',
             }),

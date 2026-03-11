@@ -1,62 +1,92 @@
-'use client';
-
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useParams, redirect } from 'next/navigation';
-import { Calendar, Clock, ArrowLeft, Zap, Share2, Link2, Check } from 'lucide-react';
+import { notFound } from 'next/navigation';
+import { Calendar, Clock, ArrowLeft, Zap, Share2 } from 'lucide-react';
 import { getAllPosts, getPostBySlug } from '@/lib/blogService';
-import type { BlogPost as BlogPostType } from '@/data/blog';
+import type { BlogPost as BlogPostType } from '@/lib/blogService';
+import { ShareButtons } from '@/components/ShareButtons';
+import type { Metadata } from 'next';
 
-export default function BlogPost() {
-  const { slug } = useParams();
-  const [post, setPost] = useState<BlogPostType | undefined | null>(null);
-  const [relatedPosts, setRelatedPosts] = useState<BlogPostType[]>([]);
-  const [loading, setLoading] = useState(true);
+// ---------- SEO: per-article metadata ----------
 
-  useEffect(() => {
-    if (!slug) return;
-    setLoading(true);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
+  if (!post) return {};
 
-    Promise.all([getPostBySlug(slug as string), getAllPosts()])
-      .then(([found, all]) => {
-        setPost(found);
-        const others = all.filter((p) => p.slug !== slug);
-        const sameCategory = others.filter((p) => p.category === found?.category);
-        const different = others.filter((p) => p.category !== found?.category);
-        setRelatedPosts([...sameCategory, ...different].slice(0, 3));
-      })
-      .finally(() => setLoading(false));
-  }, [slug]);
+  return {
+    title: post.title,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: 'article',
+      url: `https://dailysmartcalc.com/blog/${post.slug}`,
+      ...(post.image && { images: [{ url: post.image }] }),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      ...(post.image && { images: [post.image] }),
+    },
+  };
+}
 
-  if (loading) {
-    return (
-      <div className="max-w-3xl mx-auto space-y-6 animate-pulse">
-        <div className="h-4 w-24 bg-gray-200 dark:bg-gray-700 rounded" />
-        <div className="space-y-3">
-          <div className="flex gap-4">
-            <div className="h-5 w-16 bg-gray-200 dark:bg-gray-700 rounded-full" />
-            <div className="h-4 w-28 bg-gray-200 dark:bg-gray-700 rounded" />
-            <div className="h-4 w-20 bg-gray-200 dark:bg-gray-700 rounded" />
-          </div>
-          <div className="h-10 w-3/4 bg-gray-200 dark:bg-gray-700 rounded" />
-          <div className="h-6 w-full bg-gray-200 dark:bg-gray-700 rounded" />
-        </div>
-        <div className="h-24 bg-gray-200 dark:bg-gray-700 rounded-2xl" />
-        <div className="space-y-4 mt-8">
-          {[1, 2, 3, 4, 5].map((i) => (
-            <div key={i} className="h-4 bg-gray-200 dark:bg-gray-700 rounded" style={{ width: `${85 + Math.random() * 15}%` }} />
-          ))}
-        </div>
-      </div>
-    );
-  }
+// ---------- Page (Server Component) ----------
 
-  if (!post) {
-    redirect("/blog");
-  }
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const [post, allPosts] = await Promise.all([
+    getPostBySlug(slug),
+    getAllPosts(),
+  ]);
+
+  if (!post) notFound();
+
+  // Build related posts list
+  const others = allPosts.filter((p) => p.slug !== slug);
+  const sameCategory = others.filter((p) => p.category === post.category);
+  const different = others.filter((p) => p.category !== post.category);
+  const relatedPosts = [...sameCategory, ...different].slice(0, 3);
 
   return (
     <>
+      {/* Article JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: post.title,
+            description: post.excerpt,
+            datePublished: post.date,
+            author: {
+              '@type': 'Organization',
+              name: 'DailySmartCalc',
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'DailySmartCalc',
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://dailysmartcalc.com/favicon.svg',
+              },
+            },
+            mainEntityOfPage: `https://dailysmartcalc.com/blog/${post.slug}`,
+            ...(post.image && { image: post.image }),
+          }),
+        }}
+      />
+
       <div className="max-w-3xl mx-auto space-y-8">
         <Link href="/blog" className="inline-flex items-center gap-2 text-gray-500 hover:text-indigo-600 transition-colors text-sm font-medium">
           <ArrowLeft className="w-4 h-4" /> Back to Blog
@@ -101,7 +131,7 @@ export default function BlogPost() {
             </Link>
         </div>
 
-        {/* Share Buttons */}
+        {/* Share Buttons (client component) */}
         <div className="flex items-center gap-3 py-4">
           <span className="text-sm font-medium text-gray-500 dark:text-gray-400 flex items-center gap-1">
             <Share2 className="w-4 h-4" /> Share:
@@ -110,78 +140,7 @@ export default function BlogPost() {
         </div>
 
         <article className="prose prose-lg dark:prose-invert max-w-none">
-            {(() => {
-                const lines = post.content.split('\n');
-                const elements: React.ReactNode[] = [];
-                let i = 0;
-                while (i < lines.length) {
-                    const line = lines[i];
-                    if (line.trim().startsWith('|')) {
-                        const tableLines: string[] = [];
-                        while (i < lines.length && lines[i].trim().startsWith('|')) {
-                            tableLines.push(lines[i]);
-                            i++;
-                        }
-                        const parseRow = (row: string) => row.split('|').filter(c => c.trim() !== '').map(c => c.trim());
-                        const headers = parseRow(tableLines[0]);
-                        const dataRows = tableLines.slice(2).map(parseRow);
-                        elements.push(
-                            <div key={i} className="overflow-x-auto my-6">
-                                <table className="w-full text-sm border-collapse rounded-lg overflow-hidden">
-                                    <thead>
-                                        <tr className="bg-indigo-50 dark:bg-indigo-900/30">
-                                            {headers.map((h, hi) => (
-                                                <th key={hi} className="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700">{parseContent(h)}</th>
-                                            ))}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {dataRows.map((row, ri) => (
-                                            <tr key={ri} className={ri % 2 === 0 ? 'bg-white dark:bg-gray-800' : 'bg-gray-50 dark:bg-gray-800/50'}>
-                                                {row.map((cell, ci) => (
-                                                    <td key={ci} className="px-4 py-3 text-gray-700 dark:text-gray-300 border-b border-gray-100 dark:border-gray-700">{parseContent(cell)}</td>
-                                                ))}
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                        );
-                        continue;
-                    }
-                    if (line.startsWith('### ')) {
-                        elements.push(<h3 key={i} className="text-xl font-bold mt-6 mb-3 text-gray-800 dark:text-gray-100">{line.replace('### ', '')}</h3>);
-                    } else if (line.startsWith('## ')) {
-                        elements.push(<h2 key={i} className="text-2xl font-bold mt-8 mb-4 text-gray-900 dark:text-white">{line.replace('## ', '')}</h2>);
-                    } else if (line.startsWith('> ')) {
-                        elements.push(
-                            <blockquote key={i} className="border-l-4 border-indigo-500 pl-4 italic text-gray-700 dark:text-gray-300 my-4 bg-gray-50 dark:bg-gray-800/50 py-2 pr-2 rounded-r">
-                                {parseContent(line.replace('> ', ''))}
-                            </blockquote>
-                        );
-                    } else if (line.startsWith('- ')) {
-                        elements.push(
-                            <div key={i} className="flex gap-2 ml-4 mb-2">
-                               <span className="text-indigo-600 font-bold">•</span>
-                               <span>{parseContent(line.replace('- ', ''))}</span>
-                            </div>
-                        );
-                    } else if (line.trim().match(/^\d+\. /)) {
-                        elements.push(
-                            <div key={i} className="flex gap-2 ml-4 mb-2">
-                               <span className="text-indigo-600 font-bold">{line.split(' ')[0]}</span>
-                               <span>{parseContent(line.replace(/^\d+\. /, ''))}</span>
-                            </div>
-                        );
-                    } else if (line.trim() === '') {
-                        elements.push(<div key={i} className="h-4"></div>);
-                    } else {
-                        elements.push(<p key={i} className="leading-7 mb-4 text-gray-700 dark:text-gray-300">{parseContent(line)}</p>);
-                    }
-                    i++;
-                }
-                return elements;
-            })()}
+            <MarkdownContent content={post.content} />
         </article>
 
         <div className="border-t border-gray-200 dark:border-gray-700 pt-8 mt-12">
@@ -200,6 +159,87 @@ export default function BlogPost() {
   );
 }
 
+// ---------- Markdown Renderer (server-safe) ----------
+
+function MarkdownContent({ content }: { content: string }) {
+  const lines = content.split('\n');
+  const elements: React.ReactNode[] = [];
+  let i = 0;
+
+  while (i < lines.length) {
+    const line = lines[i];
+
+    if (line.trim().startsWith('|')) {
+      const tableLines: string[] = [];
+      while (i < lines.length && lines[i].trim().startsWith('|')) {
+        tableLines.push(lines[i]);
+        i++;
+      }
+      const parseRow = (row: string) => row.split('|').filter(c => c.trim() !== '').map(c => c.trim());
+      const headers = parseRow(tableLines[0]);
+      const dataRows = tableLines.slice(2).map(parseRow);
+      elements.push(
+        <div key={i} className="overflow-x-auto my-6">
+          <table className="w-full text-sm border-collapse rounded-lg overflow-hidden">
+            <thead>
+              <tr className="bg-indigo-50 dark:bg-indigo-900/30">
+                {headers.map((h, hi) => (
+                  <th key={hi} className="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700">{parseContent(h)}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {dataRows.map((row, ri) => (
+                <tr key={ri} className={ri % 2 === 0 ? 'bg-white dark:bg-gray-800' : 'bg-gray-50 dark:bg-gray-800/50'}>
+                  {row.map((cell, ci) => (
+                    <td key={ci} className="px-4 py-3 text-gray-700 dark:text-gray-300 border-b border-gray-100 dark:border-gray-700">{parseContent(cell)}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+      continue;
+    }
+
+    if (line.startsWith('### ')) {
+      elements.push(<h3 key={i} className="text-xl font-bold mt-6 mb-3 text-gray-800 dark:text-gray-100">{line.replace('### ', '')}</h3>);
+    } else if (line.startsWith('## ')) {
+      elements.push(<h2 key={i} className="text-2xl font-bold mt-8 mb-4 text-gray-900 dark:text-white">{line.replace('## ', '')}</h2>);
+    } else if (line.startsWith('> ')) {
+      elements.push(
+        <blockquote key={i} className="border-l-4 border-indigo-500 pl-4 italic text-gray-700 dark:text-gray-300 my-4 bg-gray-50 dark:bg-gray-800/50 py-2 pr-2 rounded-r">
+          {parseContent(line.replace('> ', ''))}
+        </blockquote>
+      );
+    } else if (line.startsWith('- ')) {
+      elements.push(
+        <div key={i} className="flex gap-2 ml-4 mb-2">
+          <span className="text-indigo-600 font-bold">•</span>
+          <span>{parseContent(line.replace('- ', ''))}</span>
+        </div>
+      );
+    } else if (line.trim().match(/^\d+\. /)) {
+      elements.push(
+        <div key={i} className="flex gap-2 ml-4 mb-2">
+          <span className="text-indigo-600 font-bold">{line.split(' ')[0]}</span>
+          <span>{parseContent(line.replace(/^\d+\. /, ''))}</span>
+        </div>
+      );
+    } else if (line.trim() === '') {
+      elements.push(<div key={i} className="h-4"></div>);
+    } else {
+      elements.push(<p key={i} className="leading-7 mb-4 text-gray-700 dark:text-gray-300">{parseContent(line)}</p>);
+    }
+    i++;
+  }
+
+  return <>{elements}</>;
+}
+
+// ---------- Inline markdown helpers ----------
+
 function parseContent(text: string) {
   const linkRegex = /\[(.*?)\]\((.*?)\)/g;
   const parts = text.split(linkRegex);
@@ -207,85 +247,35 @@ function parseContent(text: string) {
 
   const elements: React.ReactNode[] = [];
   for (let i = 0; i < parts.length; i += 3) {
-      if (parts[i]) {
-          elements.push(<span key={`text-${i}`}>{parseBold(parts[i])}</span>);
-      }
-      if (i + 1 < parts.length) {
-          const linkText = parts[i + 1];
-          const linkUrl = parts[i + 2];
-          elements.push(
-              <Link key={`link-${i}`} href={linkUrl} className="text-indigo-600 font-bold hover:underline">
-                  {parseBold(linkText)}
-              </Link>
-          );
-      }
+    if (parts[i]) {
+      elements.push(<span key={`text-${i}`}>{parseBold(parts[i])}</span>);
+    }
+    if (i + 1 < parts.length) {
+      const linkText = parts[i + 1];
+      const linkUrl = parts[i + 2];
+      elements.push(
+        <Link key={`link-${i}`} href={linkUrl} className="text-indigo-600 font-bold hover:underline">
+          {parseBold(linkText)}
+        </Link>
+      );
+    }
   }
   return elements;
 }
 
 function parseBold(text: string): React.ReactNode {
-    const boldParts = text.split(/(\*\*.*?\*\*)/);
-    return boldParts.map((part, i) => {
-        if (part.startsWith('**') && part.endsWith('**')) {
-            return <strong key={i} className="font-bold text-gray-900 dark:text-white">{part.slice(2, -2)}</strong>;
-        }
-        const italicParts = part.split(/(\*[^*]+?\*)/);
-        if (italicParts.length === 1) return part;
-        return italicParts.map((seg, j) => {
-            if (seg.startsWith('*') && seg.endsWith('*') && seg.length > 2) {
-                return <em key={`${i}-${j}`} className="italic">{seg.slice(1, -1)}</em>;
-            }
-            return seg;
-        });
+  const boldParts = text.split(/(\*\*.*?\*\*)/);
+  return boldParts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={i} className="font-bold text-gray-900 dark:text-white">{part.slice(2, -2)}</strong>;
+    }
+    const italicParts = part.split(/(\*[^*]+?\*)/);
+    if (italicParts.length === 1) return part;
+    return italicParts.map((seg, j) => {
+      if (seg.startsWith('*') && seg.endsWith('*') && seg.length > 2) {
+        return <em key={`${i}-${j}`} className="italic">{seg.slice(1, -1)}</em>;
+      }
+      return seg;
     });
-}
-
-function ShareButtons({ title, slug }: { title: string; slug: string }) {
-  const [copied, setCopied] = useState(false);
-  const url = `https://dailysmartcalc.com/blog/${slug}`;
-  const encodedTitle = encodeURIComponent(title);
-  const encodedUrl = encodeURIComponent(url);
-
-  const btnBase = "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors";
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(url);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <div className="flex flex-wrap gap-2">
-      <a
-        href={`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`${btnBase} bg-black text-white hover:bg-gray-800`}
-      >
-        𝕏 Post
-      </a>
-      <a
-        href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`${btnBase} bg-blue-700 text-white hover:bg-blue-800`}
-      >
-        LinkedIn
-      </a>
-      <a
-        href={`https://wa.me/?text=${encodedTitle}%20${encodedUrl}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`${btnBase} bg-green-600 text-white hover:bg-green-700`}
-      >
-        WhatsApp
-      </a>
-      <button
-        onClick={handleCopy}
-        className={`${btnBase} ${copied ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300' : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'}`}
-      >
-        {copied ? <><Check className="w-3.5 h-3.5" /> Copied!</> : <><Link2 className="w-3.5 h-3.5" /> Copy Link</>}
-      </button>
-    </div>
-  );
+  });
 }

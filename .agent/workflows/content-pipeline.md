@@ -179,7 +179,10 @@ Before writing ANY content, read the context files for the target site:
 
 ### Phase 7: Verify & Index (Gemini 3.1 Pro)
 <!-- progress: "🎯 Phase 7/8: Verifying on production & requesting indexing..." -->
-30. Open the article URL in browser and verify rendering
+30. Open the article URL using the following command to show the live URL:
+    ```bash
+    start "" "C:\Program Files\Google\Chrome\Application\chrome.exe" --user-data-dir="C:\Users\Riz\.gemini\antigravity-ultra-2" "https://dailysmartcalc.com/blog/[article-slug]"
+    ```
 31. Verify hero image loads correctly
 32. Submit new URL to Google Search Console
 33. Request indexing for the new page
