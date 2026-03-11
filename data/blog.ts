@@ -17,7 +17,7 @@ export const blogPosts: BlogPost[] = [
     {
         id: '42',
         slug: 'freelance-hourly-rate-calculator-guide-2026',
-        title: 'How to Calculate Your True Freelance Hourly Rate in 2026 (Don\\'t Forget Taxes)',
+        title: "How to Calculate Your True Freelance Hourly Rate in 2026 (Don't Forget Taxes)",
         excerpt: 'If you want to earn $80,000 as a freelancer, charging $40 an hour will leave you broke. The math for self-employment is drastically different than a salary. Here is how to reverse-engineer your perfect hourly rate.',
         date: '2026-03-11',
         displayDate: 'March 11, 2026',
