@@ -149,6 +149,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                   <li><Link href="/finance/freedom-guide" className="hover:text-primary-500 font-medium text-emerald-600 dark:text-emerald-400">✨ Ultimate FIRE Guide</Link></li>
+                  <li><Link href="/finance/inflation" className="hover:text-primary-500">Inflation Calculator</Link></li>
                   <li><Link href="/finance/mortgage" className="hover:text-primary-500">Mortgage Calculator</Link></li>
                   <li><Link href="/finance/investment" className="hover:text-primary-500">Investment Return</Link></li>
                   <li><Link href="/finance/loan" className="hover:text-primary-500">Auto Loan Calculator</Link></li>

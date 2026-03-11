@@ -53,6 +53,14 @@ export function Home() {
       bg: 'bg-emerald-50 dark:bg-emerald-900/20',
     },
     {
+      name: t('home.tools.inflation.name', 'Inflation Calculator'),
+      description: t('home.tools.inflation.desc', 'Calculate real dollar value over time using official CPI.'),
+      icon: TrendingUp,
+      path: '/finance/inflation',
+      color: 'text-indigo-500',
+      bg: 'bg-indigo-50 dark:bg-indigo-900/20',
+    },
+    {
       name: t('home.tools.auto_loan.name'),
       description: t('home.tools.auto_loan.desc'),
       icon: HandCoins,

@@ -9,6 +9,7 @@ import {
 const financeTools = [
   { name: 'Mortgage Calculator', desc: 'Calculate monthly payments with PMI, taxes & insurance for 2026 rates.', icon: DollarSign, path: '/finance/mortgage', color: 'text-green-500', bg: 'bg-green-50 dark:bg-green-900/20' },
   { name: 'Investment Calculator', desc: 'Project compound growth with inflation & tax impact analysis.', icon: TrendingUp, path: '/finance/investment', color: 'text-emerald-500', bg: 'bg-emerald-50 dark:bg-emerald-900/20' },
+  { name: 'Inflation Calculator', desc: 'Calculate the changing value of the US dollar.', icon: TrendingUp, path: '/finance/inflation', color: 'text-indigo-500', bg: 'bg-indigo-50 dark:bg-indigo-900/20' },
   { name: 'Auto Loan Calculator', desc: 'Amortization schedule with extra payment analysis.', icon: HandCoins, path: '/finance/loan', color: 'text-teal-500', bg: 'bg-teal-50 dark:bg-teal-900/20' },
   { name: 'Retirement Calculator', desc: 'Plan your retirement with Monte Carlo simulations.', icon: TrendingUp, path: '/finance/retirement', color: 'text-indigo-500', bg: 'bg-indigo-50 dark:bg-indigo-900/20' },
   { name: 'Debt Payoff Planner', desc: 'Avalanche vs Snowball payoff comparison.', icon: ShieldCheck, path: '/finance/debt-payoff', color: 'text-rose-500', bg: 'bg-rose-50 dark:bg-rose-900/20' },
