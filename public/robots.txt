@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /*?q=
-
-Sitemap: https://dailysmartcalc.com/sitemap.xml
