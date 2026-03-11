@@ -142,7 +142,7 @@ Avoid it if possible. Clients often experience "sticker shock" when they see a h
 Yes and no. In 2026, the global remote economy means you are competing against talent worldwide. However, if your clients are based in high-cost-of-living areas (like New York or San Francisco), they expect to pay premium rates. Anchor your rates to the *value* you provide the client, not the cost of rent in your specific zip code.
 
 [Calculate Your Freelance Rate](/finance/freelance-rate) | [Track Your Project Time](/productivity/pomodoro) | [Convert Salary to Hourly](/productivity/salary-hourly)
-\`
+`
     },
     {
         id: '41',
