@@ -5,6 +5,7 @@ import './globals.css';
 import { Providers } from '@/components/Providers';
 import { ClientLayout } from '@/components/ClientLayout';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
+import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://dailysmartcalc.com'),
@@ -89,6 +90,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <GoogleAnalytics />
         <Suspense fallback={<LoadingSpinner />}>
           <Providers>
             <ClientLayout>{children}</ClientLayout>
