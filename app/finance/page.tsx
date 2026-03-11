@@ -13,6 +13,7 @@ const financeTools = [
   { name: 'Auto Loan Calculator', desc: 'Amortization schedule with extra payment analysis.', icon: HandCoins, path: '/finance/loan', color: 'text-teal-500', bg: 'bg-teal-50 dark:bg-teal-900/20' },
   { name: 'Retirement Calculator', desc: 'Plan your retirement with Monte Carlo simulations.', icon: TrendingUp, path: '/finance/retirement', color: 'text-indigo-500', bg: 'bg-indigo-50 dark:bg-indigo-900/20' },
   { name: 'Debt Payoff Planner', desc: 'Avalanche vs Snowball payoff comparison.', icon: ShieldCheck, path: '/finance/debt-payoff', color: 'text-rose-500', bg: 'bg-rose-50 dark:bg-rose-900/20' },
+  { name: 'Tax Calculator', desc: 'Estimate your 2025/2026 Federal Income Taxes.', icon: DollarSign, path: '/finance/tax', color: 'text-yellow-500', bg: 'bg-yellow-50 dark:bg-yellow-900/20' },
   { name: 'Time to Millionaire', desc: 'Calculate exactly when you\'ll hit 7 figures.', icon: TrendingUp, path: '/finance/time-to-millionaire', color: 'text-blue-500', bg: 'bg-blue-50 dark:bg-blue-900/20' },
   { name: 'Rent vs Buy', desc: 'Comprehensive comparison with opportunity cost analysis.', icon: HomeIcon, path: '/finance/rent-vs-buy', color: 'text-indigo-500', bg: 'bg-indigo-50 dark:bg-indigo-900/20' },
   { name: 'FIRE Calculator', desc: 'Find your Financial Independence Retire Early number.', icon: Flame, path: '/finance/fire', color: 'text-orange-500', bg: 'bg-orange-50 dark:bg-orange-900/20' },
