@@ -38,3 +38,8 @@
   - body mass index calculator
   - calculate my bmi
   - bmi chart by age and gender
+- **[ ] Pregnancy Due Date Calculator**
+  - pregnancy due date calculator by lmp
+  - how far along am i calculator
+  - estimated date of delivery calculator
+  - edd calculator

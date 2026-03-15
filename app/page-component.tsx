@@ -1,6 +1,6 @@
 'use client';
 
-import { DollarSign, Activity, TrendingUp, HandCoins, Heart, ShieldCheck, Utensils, Home as HomeIcon, ShieldAlert, Dumbbell, Zap, Timer, ArrowLeftRight, Users, Percent, GraduationCap, Keyboard, Receipt, Shield, Eye, Sparkles, ChevronDown, Calculator, Clock, BookOpen, Car } from 'lucide-react';
+import { DollarSign, Activity, TrendingUp, HandCoins, Heart, ShieldCheck, Utensils, Home as HomeIcon, ShieldAlert, Dumbbell, Zap, Timer, ArrowLeftRight, Users, Percent, GraduationCap, Keyboard, Receipt, Shield, Eye, Sparkles, ChevronDown, Calculator, Clock, BookOpen, Car, Baby } from 'lucide-react';
 import { ToolCard } from '@/components/ToolCard';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
@@ -142,6 +142,14 @@ export function Home() {
       path: '/health/1rm',
       color: 'text-indigo-500',
       bg: 'bg-indigo-50 dark:bg-indigo-900/20',
+    },
+    {
+      name: t('home.tools.pregnancy.name', 'Pregnancy Due Date'),
+      description: t('home.tools.pregnancy.desc', 'Calculate your EDD and view your milestone timeline.'),
+      icon: Baby,
+      path: '/health/pregnancy-due-date',
+      color: 'text-pink-500',
+      bg: 'bg-pink-50 dark:bg-pink-900/20',
     },
   ];
 
