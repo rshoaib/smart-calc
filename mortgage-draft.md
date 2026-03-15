@@ -1,4 +1,3 @@
-# Free Mortgage Calculator with Amortization Schedule (2026)
 
 Buying a home is one of the biggest financial decisions you will ever make. But before you fall in love with a property, you need to know exactly what it will cost you every single month.
 

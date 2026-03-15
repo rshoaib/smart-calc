@@ -1,6 +1,6 @@
 'use client';
 
-import { DollarSign, Activity, TrendingUp, HandCoins, Heart, ShieldCheck, Utensils, Home as HomeIcon, ShieldAlert, Dumbbell, Zap, Timer, ArrowLeftRight, Users, Percent, GraduationCap, Keyboard, Receipt, Shield, Eye, Sparkles, ChevronDown, Calculator, Clock, BookOpen } from 'lucide-react';
+import { DollarSign, Activity, TrendingUp, HandCoins, Heart, ShieldCheck, Utensils, Home as HomeIcon, ShieldAlert, Dumbbell, Zap, Timer, ArrowLeftRight, Users, Percent, GraduationCap, Keyboard, Receipt, Shield, Eye, Sparkles, ChevronDown, Calculator, Clock, BookOpen, Car } from 'lucide-react';
 import { ToolCard } from '@/components/ToolCard';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
@@ -63,8 +63,8 @@ export function Home() {
     {
       name: t('home.tools.auto_loan.name'),
       description: t('home.tools.auto_loan.desc'),
-      icon: HandCoins,
-      path: '/finance/loan',
+      icon: Car,
+      path: '/finance/auto-loan',
       color: 'text-teal-500',
       bg: 'bg-teal-50 dark:bg-teal-900/20',
     },

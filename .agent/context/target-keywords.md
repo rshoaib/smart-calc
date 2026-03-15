@@ -21,6 +21,11 @@
   - return on ad spend calculator
   - how to calculate roas
   - marketing roi calculator
+- **[ ] Auto Loan Calculator**
+  - auto loan calculator with taxes
+  - car payment calculator
+  - car loan amortization schedule
+  - used car loan calculator
 - **[ ] FIRE Calculator**
   - fire calculator
   - financial independence retire early
@@ -28,7 +33,7 @@
   - barista fire vs lean fire
 
 ## Health Tools
-- **[ ] BMI Calculator**
+- **[x] BMI Calculator**
   - bmi calculator for adults
   - body mass index calculator
   - calculate my bmi

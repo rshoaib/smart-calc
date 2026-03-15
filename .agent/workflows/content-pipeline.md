@@ -164,10 +164,11 @@ Before writing ANY content, read the context files for the target site:
 ### Phase 5: Code Implementation (Claude Opus 4.5)
 <!-- progress: "💻 Phase 5/8: Adding article to codebase..." -->
 21. Add article to site's data file or database (e.g., `articles.js` or Supabase `blog_posts` table)
-22. **⚠️ CRITICAL — Supabase Insert Scripts**: Always use the **service_role key** (NOT the anon key) in seed/insert scripts. The anon key is blocked by RLS on INSERT (returns `401 / 42501`). Look for `"role":"service_role"` in the base64 JWT payload from existing working scripts.
-23. Reference the hero image in the article metadata (if supported)
-24. Verify icon is imported in BlogList component
-25. Add programmatic SEO pages if applicable
+22. **⚠️ CRITICAL — Raw Markdown**: For all Next.js sites (like DailySmartCalc, OrderViaChat, etc.), you MUST insert the `content` field into Supabase as **raw markdown**, NOT HTML. The frontend parser component handles the markdown. If you convert it to HTML before inserting, it will show up as raw text tags.
+23. **⚠️ CRITICAL — Supabase Insert Scripts**: Always use the **service_role key** (NOT the anon key) in seed/insert scripts. The anon key is blocked by RLS on INSERT (returns `401 / 42501`). Look for `"role":"service_role"` in the base64 JWT payload from existing working scripts.
+24. Reference the hero image in the article metadata (if supported)
+25. Verify icon is imported in BlogList component
+26. Add programmatic SEO pages if applicable
 
 ### Phase 6: Build & Deployment (Claude Opus 4.5)
 <!-- progress: "🚀 Phase 6/8: Building & deploying to production..." -->
