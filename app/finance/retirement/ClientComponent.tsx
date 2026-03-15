@@ -111,91 +111,164 @@ export default function RetirementCalculator() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Input Section */}
-          <div className="lg:col-span-1 space-y-6 bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 h-fit">
+          <div className="lg:col-span-1 space-y-8 bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl border border-gray-200 dark:border-gray-700 h-fit shadow-sm">
             
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('forms.labels.current_age')}</label>
-                <div className="relative">
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <div className="space-y-6">
+              {/* Current Age Slider */}
+              <div className="space-y-4">
+                <div className="flex justify-between items-center bg-gray-50 dark:bg-gray-900 p-3 rounded-xl border border-gray-100 dark:border-gray-700">
+                  <div className="flex items-center gap-2">
+                    <User className="w-4 h-4 text-indigo-500" />
+                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">{t('forms.labels.current_age')}</label>
+                  </div>
                   <input
                     type="number"
                     value={currentAge}
                     onChange={(e) => setCurrentAge(Number(e.target.value))}
-                    className="w-full pl-10 pr-4 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                    className="w-20 text-right bg-transparent border-b border-gray-300 dark:border-gray-600 focus:border-indigo-500 outline-none font-bold text-gray-900 dark:text-white"
                   />
                 </div>
+                <input 
+                  type="range" 
+                  min="18" max="90" step="1"
+                  value={currentAge} 
+                  onChange={(e) => setCurrentAge(Number(e.target.value))}
+                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-600 dark:bg-gray-700"
+                />
               </div>
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('forms.labels.retire_age')}</label>
-                <div className="relative">
-                  <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+
+              {/* Retirement Age Slider */}
+              <div className="space-y-4">
+                <div className="flex justify-between items-center bg-gray-50 dark:bg-gray-900 p-3 rounded-xl border border-gray-100 dark:border-gray-700">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-4 h-4 text-indigo-500" />
+                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">{t('forms.labels.retire_age')}</label>
+                  </div>
                   <input
                     type="number"
                     value={retireAge}
                     onChange={(e) => setRetireAge(Number(e.target.value))}
-                    className="w-full pl-10 pr-4 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+                    className="w-20 text-right bg-transparent border-b border-gray-300 dark:border-gray-600 focus:border-indigo-500 outline-none font-bold text-gray-900 dark:text-white"
                   />
                 </div>
+                <input 
+                  type="range" 
+                  min={currentAge + 1} max="100" step="1"
+                  value={retireAge} 
+                  onChange={(e) => setRetireAge(Number(e.target.value))}
+                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-600 dark:bg-gray-700"
+                />
               </div>
-            </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('forms.labels.current_savings')}</label>
-              <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <input
-                  type="number"
-                  value={currentSavings}
+              {/* Current Savings Slider */}
+              <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+                <div className="flex justify-between items-center bg-gray-50 dark:bg-gray-900 p-3 rounded-xl border border-gray-100 dark:border-gray-700">
+                  <div className="flex items-center gap-2">
+                    <DollarSign className="w-4 h-4 text-green-500" />
+                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">{t('forms.labels.current_savings')}</label>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-gray-500 dark:text-gray-400 mr-1">$</span>
+                    <input
+                      type="number"
+                      value={currentSavings}
+                      onChange={(e) => setCurrentSavings(Number(e.target.value))}
+                      className="w-24 text-right bg-transparent border-b border-gray-300 dark:border-gray-600 focus:border-green-500 outline-none font-bold text-gray-900 dark:text-white"
+                    />
+                  </div>
+                </div>
+                <input 
+                  type="range" 
+                  min="0" max="2000000" step="1000"
+                  value={currentSavings} 
                   onChange={(e) => setCurrentSavings(Number(e.target.value))}
-                  className="w-full pl-10 pr-4 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-green-600 dark:bg-gray-700"
                 />
               </div>
-            </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('forms.labels.monthly_contrib')}</label>
-              <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <input
-                  type="number"
-                  value={monthlyContribution}
+               {/* Monthly Contribution Slider */}
+               <div className="space-y-4">
+                <div className="flex justify-between items-center bg-gray-50 dark:bg-gray-900 p-3 rounded-xl border border-gray-100 dark:border-gray-700">
+                  <div className="flex items-center gap-2">
+                    <DollarSign className="w-4 h-4 text-green-500" />
+                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">{t('forms.labels.monthly_contrib')}</label>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-gray-500 dark:text-gray-400 mr-1">$</span>
+                    <input
+                      type="number"
+                      value={monthlyContribution}
+                      onChange={(e) => setMonthlyContribution(Number(e.target.value))}
+                      className="w-20 text-right bg-transparent border-b border-gray-300 dark:border-gray-600 focus:border-green-500 outline-none font-bold text-gray-900 dark:text-white"
+                    />
+                  </div>
+                </div>
+                <input 
+                  type="range" 
+                  min="0" max="10000" step="100"
+                  value={monthlyContribution} 
                   onChange={(e) => setMonthlyContribution(Number(e.target.value))}
-                  className="w-full pl-10 pr-4 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-green-600 dark:bg-gray-700"
                 />
               </div>
-            </div>
 
-             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('forms.labels.return_rate')}</label>
-              <div className="relative">
-                <TrendingUp className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <input
-                  type="number"
-                  step="0.1"
-                  value={returnRate}
+               {/* Return Rate Slider */}
+               <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+                <div className="flex justify-between items-center bg-gray-50 dark:bg-gray-900 p-3 rounded-xl border border-gray-100 dark:border-gray-700">
+                  <div className="flex items-center gap-2">
+                    <TrendingUp className="w-4 h-4 text-purple-500" />
+                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">{t('forms.labels.return_rate')}</label>
+                  </div>
+                  <div className="flex items-center">
+                    <input
+                      type="number"
+                      step="0.1"
+                      value={returnRate}
+                      onChange={(e) => setReturnRate(Number(e.target.value))}
+                      className="w-16 text-right bg-transparent border-b border-gray-300 dark:border-gray-600 focus:border-purple-500 outline-none font-bold text-gray-900 dark:text-white"
+                    />
+                    <span className="text-gray-500 dark:text-gray-400 ml-1">%</span>
+                  </div>
+                </div>
+                <input 
+                  type="range" 
+                  min="1" max="15" step="0.1"
+                  value={returnRate} 
                   onChange={(e) => setReturnRate(Number(e.target.value))}
-                  className="w-full pl-10 pr-4 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-purple-600 dark:bg-gray-700"
                 />
+                <p className="text-xs text-gray-500 dark:text-gray-400 px-1 mt-1 text-right">S&P 500 average is ~10%</p>
               </div>
-              <p className="text-xs text-gray-500 mt-1">S&P 500 average is ~10%, conservative is 6-7%</p>
-            </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('forms.labels.inflation_rate')}</label>
-              <div className="relative">
-                <TrendingUp className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <input
-                  type="number"
-                  step="0.1"
-                  value={inflationRate}
+              {/* Inflation Rate Slider */}
+              <div className="space-y-4">
+                <div className="flex justify-between items-center bg-gray-50 dark:bg-gray-900 p-3 rounded-xl border border-gray-100 dark:border-gray-700">
+                  <div className="flex items-center gap-2">
+                    <TrendingUp className="w-4 h-4 text-purple-500" />
+                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">{t('forms.labels.inflation_rate')}</label>
+                  </div>
+                  <div className="flex items-center">
+                    <input
+                      type="number"
+                      step="0.1"
+                      value={inflationRate}
+                      onChange={(e) => setInflationRate(Number(e.target.value))}
+                      className="w-16 text-right bg-transparent border-b border-gray-300 dark:border-gray-600 focus:border-purple-500 outline-none font-bold text-gray-900 dark:text-white"
+                    />
+                    <span className="text-gray-500 dark:text-gray-400 ml-1">%</span>
+                  </div>
+                </div>
+                <input 
+                  type="range" 
+                  min="0" max="10" step="0.1"
+                  value={inflationRate} 
                   onChange={(e) => setInflationRate(Number(e.target.value))}
-                  className="w-full pl-10 pr-4 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-purple-600 dark:bg-gray-700"
                 />
+                <p className="text-xs text-gray-500 dark:text-gray-400 px-1 mt-1 text-right">Historical average is ~3%</p>
               </div>
-              <p className="text-xs text-gray-500 mt-1">Average inflation rate is ~3%</p>
-            </div>
 
+            </div>
           </div>
 
           {/* Results Section */}
