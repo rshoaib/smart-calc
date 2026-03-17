@@ -1,49 +1,49 @@
-const { createClient } = require('@supabase/supabase-js');
-const fs = require('fs');
-const path = require('path');
-
-const envPath = path.join(process.cwd(), '.env.local');
-const envContent = fs.readFileSync(envPath, 'utf8');
-const env = {};
-envContent.split('\n').forEach(line => {
-  const match = line.match(/^([^=]+)=(.*)$/);
-  if (match) {
-    env[match[1]] = match[2].trim();
-  }
-});
-
-const supabase = createClient(env.NEXT_PUBLIC_SUPABASE_URL, env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+const SupabaseREST = require('./scripts/supabase_rest.cjs');
 
 async function checkStats() {
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select('created_at, title')
-    .order('created_at', { ascending: false });
+  try {
+    const db = new SupabaseREST();
+    
+    // Select all articles to get the count and dates
+    const data = await db.select('blog_posts', 'date,title');
+    
+    // Sort by date descending
+    data.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  if (error) {
-    console.error('Supabase Error:', error);
-    return;
+    const now = new Date();
+    // Offset for local timezone (approximate standard date strings to local)
+    const today = now.toISOString().split('T')[0];
+    
+    // Calculate Monday
+    const currentDayOfWeek = now.getDay() || 7; // 1-7 (Mon-Sun)
+    const mondayDate = new Date(now);
+    mondayDate.setDate(now.getDate() - currentDayOfWeek + 1);
+    const mondayStr = mondayDate.toISOString().split('T')[0];
+
+    const publishedToday = data.filter(p => p.date.startsWith(today));
+    // Filter by greater than or equal to Monday
+    const publishedThisWeek = data.filter(p => p.date >= mondayStr);
+
+    console.log('╔══════════════════════════════════════════════════════╗');
+    console.log('║  📊 Content Dashboard — dailysmartcalc.com           ║');
+    console.log('╠══════════════════════════════════════════════════════╣');
+    console.log(`║  📦 Total Articles       │ ${String(data.length).padEnd(24)}║`);
+    console.log(`║  📅 Last Published       │ ${data.length > 0 ? data[0].date.split('T')[0] : 'None'.padEnd(24)} ║`);
+    console.log('╠──────────────────────────┼──────────────────────────╣');
+    console.log(`║  ✍️ Published Today       │ ${publishedToday.length} of 1 ${publishedToday.length >= 1 ? '⬛' : '⬜'}                 ║`);
+    console.log(`║  📆 Published This Week  │ ${publishedThisWeek.length} of 3 ${'⬛'.repeat(publishedThisWeek.length)}${'⬜'.repeat(3 - publishedThisWeek.length)}               ║`);
+    console.log('╠──────────────────────────┼──────────────────────────╣');
+    console.log(`║  🟢 Today Slots Left     │ ${Math.max(0, 1 - publishedToday.length)}                        ║`);
+    console.log(`║  🟢 Week Slots Left      │ ${Math.max(0, 3 - publishedThisWeek.length)}                        ║`);
+    console.log('╚══════════════════════════════════════════════════════╝');
+    
+    if (publishedThisWeek.length > 0) {
+        console.log(`  This week's articles:`);
+        publishedThisWeek.forEach(p => console.log(`  • ${p.date.split('T')[0]} — ${p.title}`));
+    }
+  } catch (err) {
+    console.error('Error fetching stats:', err.message);
   }
-
-  const now = new Date();
-  const today = now.toISOString().split('T')[0];
-  
-  const day = now.getDay() || 7; 
-  now.setHours(-24 * (day - 1)); 
-  const monday = now.toISOString().split('T')[0];
-
-  const publishedToday = data.filter(p => p.created_at.startsWith(today));
-  const publishedThisWeek = data.filter(p => p.created_at >= monday);
-
-  console.log('╔══════════════════════════════════════════════════════╗');
-  console.log('║  📊 Content Dashboard — dailysmartcalc.com           ║');
-  console.log('╠══════════════════════════════════════════════════════╣');
-  console.log(`║  📦 Total Articles       │ ${String(data.length).padEnd(24)}║`);
-  console.log(`║  📅 Last Published       │ ${data[0]?.created_at.split('T')[0] || 'None'}           ║`);
-  console.log('╠──────────────────────────┼──────────────────────────╣');
-  console.log(`║  ✍️ Published Today      │ ${publishedToday.length} of 1 ${publishedToday.length >= 1 ? '⬛' : '⬜'}                 ║`);
-  console.log(`║  📆 Published This Week  │ ${publishedThisWeek.length} of 3 ${'⬛'.repeat(publishedThisWeek.length)}${'⬜'.repeat(3 - publishedThisWeek.length)}               ║`);
-  console.log('╚══════════════════════════════════════════════════════╝');
 }
 
 checkStats();
