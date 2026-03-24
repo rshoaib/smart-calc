@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { Disclaimer } from '@/components/Disclaimer';
+import { AdSlot } from '@/components/AdSlot';
+import Link from 'next/link';
 import { DollarSign, Percent, Calendar, PieChart, Car } from 'lucide-react';
 import {
   AreaChart,
@@ -120,6 +122,9 @@ export default function AutoLoanCalculator() {
   return (
     <div className="max-w-4xl mx-auto">
       <Disclaimer type="finance" />
+      <div className="my-6">
+        <AdSlot className="h-[90px] w-full max-w-[728px] mx-auto" label="728x90 Leaderboard" />
+      </div>
 
       <div className="mb-8 text-center">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 flex items-center justify-center gap-3">
@@ -343,6 +348,14 @@ export default function AutoLoanCalculator() {
               In most states, trading in your vehicle gives you a massive tax break. For example, if your new car is $40,000 and your trade-in is worth $15,000, 
               <strong> you only pay sales tax on the $25,000 difference</strong>. This calculator automatically applies this tax logic to estimate your total amount financed accurately.
           </p>
+
+          <p className="text-gray-600 dark:text-gray-400 mb-6">
+              If you run a dealership or calculate auto loan interest for clients, you may also find our <Link href="/finance/margin" className="text-blue-600 dark:text-blue-400 hover:underline">margin calculator</Link> useful for determining your net profit on vehicle sales.
+          </p>
+
+          <div className="my-8">
+            <AdSlot className="h-[250px] w-[300px] mx-auto" label="300x250 Medium Rectangle" />
+          </div>
 
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Frequently Asked Questions</h2>
           <div className="space-y-6">

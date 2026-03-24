@@ -21,7 +21,7 @@
   - return on ad spend calculator
   - how to calculate roas
   - marketing roi calculator
-- **[ ] Auto Loan Calculator**
+- **[x] Auto Loan Calculator**
   - auto loan calculator with taxes
   - car payment calculator
   - car loan amortization schedule
