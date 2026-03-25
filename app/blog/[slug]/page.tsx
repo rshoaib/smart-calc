@@ -113,6 +113,12 @@ export default async function BlogPostPage({
           </p>
         </header>
 
+        {post.image && (
+            <div className="w-full h-auto aspect-[1200/630] rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800">
+                <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+            </div>
+        )}
+
         {/* CTA Box */}
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 rounded-2xl text-white shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
