@@ -17,6 +17,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://dailysmartcalc.com';
 
     // Basic routes
+    const getPriority = (route: string): number => {
+        if (route === '') return 1;
+        if (['/finance', '/health', '/productivity', '/blog'].includes(route)) return 0.9;
+        if (['/about', '/contact'].includes(route)) return 0.5;
+        return 0.3; // /privacy, /terms
+    };
+
     const routes = [
         '',
         '/finance',
@@ -31,7 +38,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         url: `${baseUrl}${route}`,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
-        priority: route === '' ? 1 : 0.9,
+        priority: getPriority(route),
     }));
 
     // Generate tool routes dynamically from the app directory at build time
