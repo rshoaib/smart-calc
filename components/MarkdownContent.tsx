@@ -6,7 +6,18 @@ interface MarkdownContentProps {
 }
 
 export function MarkdownContent({ content }: MarkdownContentProps) {
-  const lines = content.split('\n');
+  let cleanContent = content;
+
+  // 1. Strip YAML frontmatter aggressively
+  if (cleanContent.startsWith('---')) {
+    cleanContent = cleanContent.replace(/^---[\s\S]*?---\n*/, '');
+  }
+
+  // 2. Clean turndown artifacts and block escapes
+  cleanContent = cleanContent.replace(/\\-/g, '-').replace(/\\\*/g, '*').replace(/\\_/g, '_');
+  cleanContent = cleanContent.replace(/^[\-\\_]{3,}$/gm, '');
+
+  const lines = cleanContent.split('\n');
   const elements: React.ReactNode[] = [];
   let i = 0;
 
