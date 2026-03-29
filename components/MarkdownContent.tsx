@@ -14,7 +14,7 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
   }
 
   // 2. Clean turndown artifacts and block escapes
-  cleanContent = cleanContent.replace(/\\-/g, '-').replace(/\\\*/g, '*').replace(/\\_/g, '_');
+  cleanContent = cleanContent.replace(/\\-/g, '-').replace(/\\\*/g, '*').replace(/\\_/g, '_').replace(/\\\./g, '.');
   cleanContent = cleanContent.replace(/^[\-\\_]{3,}$/gm, '');
 
   const lines = cleanContent.split('\n');
