@@ -227,6 +227,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
             <div className="flex flex-wrap justify-center gap-4 text-xs">
               <a href="https://mycalcfinance.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-500 transition-colors">Finance Calculators</a>
               <a href="https://onlineimageshrinker.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-500 transition-colors">Image Compressor</a>
+              <a href="https://tinypdftools.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-500 transition-colors">PDF Tools</a>
               <a href="https://legalpolicygen.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-500 transition-colors">Legal Policy Generator</a>
               <a href="https://imrizwan.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-500 transition-colors">Developer Blog</a>
             </div>
