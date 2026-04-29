@@ -4,7 +4,9 @@ import {
     buildCalculatorMetadata,
     buildCalculatorJsonLd,
     buildBreadcrumbJsonLd,
+    buildFaqJsonLd,
 } from '@/lib/calculatorMeta';
+import { getFaqsForPath } from '@/lib/calculatorFaqs';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 
 const meta = {
@@ -18,6 +20,7 @@ const meta = {
 export const metadata: Metadata = buildCalculatorMetadata(meta);
 
 export default function Page() {
+    const faqs = getFaqsForPath(meta.path);
     return (
         <>
             <script
@@ -34,6 +37,12 @@ export default function Page() {
                     ]),
                 }}
             />
+            {faqs.length > 0 && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: buildFaqJsonLd(faqs) }}
+                />
+            )}
             <Breadcrumbs
                 items={[
                     { name: 'Home', path: '/' },

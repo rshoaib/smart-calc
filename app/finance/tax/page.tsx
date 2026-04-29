@@ -6,7 +6,9 @@ import {
     buildCalculatorMetadata,
     buildCalculatorJsonLd,
     buildBreadcrumbJsonLd,
+    buildFaqJsonLd,
 } from '@/lib/calculatorMeta';
+import { getFaqsForPath } from '@/lib/calculatorFaqs';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 
 const meta = {
@@ -21,6 +23,7 @@ export const metadata: Metadata = buildCalculatorMetadata(meta);
 
 export default async function TaxCalculatorPage() {
     const post = await getPostByRelatedTool('/finance/tax');
+    const faqs = getFaqsForPath(meta.path);
 
     return (
         <>
@@ -38,6 +41,12 @@ export default async function TaxCalculatorPage() {
                     ]),
                 }}
             />
+            {faqs.length > 0 && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: buildFaqJsonLd(faqs) }}
+                />
+            )}
             <Breadcrumbs
                 items={[
                     { name: 'Home', path: '/' },
