@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { Suspense } from 'react';
 import './globals.css';
 import { Providers } from '@/components/Providers';
 import { ClientLayout } from '@/components/ClientLayout';
-import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 
 export const metadata: Metadata = {
@@ -62,6 +60,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Note: NO outer <Suspense> wrapping {children}. An outer boundary made
+  // every page bail out to the spinner whenever Providers (which calls
+  // useSearchParams) suspended. The narrower boundary now lives inside
+  // Providers, so the page tree renders server-side normally.
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -103,11 +105,9 @@ export default function RootLayout({
       </head>
       <body>
         <GoogleAnalytics />
-        <Suspense fallback={<LoadingSpinner />}>
-          <Providers>
-            <ClientLayout>{children}</ClientLayout>
-          </Providers>
-        </Suspense>
+        <Providers>
+          <ClientLayout>{children}</ClientLayout>
+        </Providers>
       </body>
     </html>
   );
