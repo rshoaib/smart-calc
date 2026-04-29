@@ -8,6 +8,7 @@ import {
 } from '@/lib/calculatorMeta';
 import { getFaqsForPath } from '@/lib/calculatorFaqs';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { CalculatorCopy } from '@/components/CalculatorCopy';
 
 const meta = {
     path: '/productivity/word-counter',
@@ -51,6 +52,7 @@ export default function Page() {
                 ]}
             />
             <ClientComponent />
+            <CalculatorCopy path={meta.path} />
         </>
     );
 }
