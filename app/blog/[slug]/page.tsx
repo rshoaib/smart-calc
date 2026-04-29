@@ -128,11 +128,6 @@ export default async function BlogPostPage({
           </p>
         </header>
 
-        {/* Hero banner: SVG canvas stays 1200x630 (used for OG/Twitter share
-            cards via /blog/<slug>/hero.svg), but on-page we crop to a shorter
-            16:5 band so the article body isn't pushed below the fold.
-            preserveAspectRatio="xMidYMid slice" keeps the centered icon in
-            frame after the vertical crop. */}
         <div
           className="w-full h-40 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800"
           dangerouslySetInnerHTML={{ __html: heroSvg }}
@@ -169,4 +164,10 @@ export default async function BlogPostPage({
           <MarkdownContent content={post.content} />
         </article>
 
-        <div className="border-t border-gray-200
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 mt-12">
+          <h3 className="font-bold text-gray-900 dark:text-white mb-4">Read Next</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {relatedPosts.map((next) => (
+              <Link key={next.id} href={`/blog/${next.slug}`} className="block p-4 rounded-xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                <div className="text-xs text-gray-500 mb-1">{next.category}</div>
+                <div classNam
