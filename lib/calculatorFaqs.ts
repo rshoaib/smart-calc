@@ -474,6 +474,78 @@ export const CALCULATOR_FAQS: Record<string, CalculatorFaq[]> = {
             answer: 'kg × 2.205 = lbs. Quick mental version: double the kg value and add 10%.',
         },
     ],
+    '/finance/net-worth': [
+        {
+            question: 'What is net worth?',
+            answer: 'Net worth is the total dollar value of everything you own (assets) minus everything you owe (liabilities). It\'s the single best summary number for your overall financial health.',
+        },
+        {
+            question: 'How do I calculate my net worth?',
+            answer: 'List every asset (cash, investments, retirement accounts, real estate, vehicles) and every liability (mortgage, auto loans, student loans, credit cards). Sum each side, then subtract liabilities from assets.',
+        },
+        {
+            question: 'What\'s a good net worth for my age?',
+            answer: 'Common benchmarks: 1× annual salary by 30, 3× by 40, 6× by 50, 10× by retirement. These are guideposts, not requirements — context (income, location, kids, debt level) varies hugely.',
+        },
+        {
+            question: 'Should I include my house in net worth?',
+            answer: 'Yes — at current market value, with the remaining mortgage as a separate liability. The home is an asset; the mortgage is a debt against it. Both belong on the balance sheet.',
+        },
+    ],
+    '/finance/budget': [
+        {
+            question: 'What is the 50/30/20 budget rule?',
+            answer: 'A simple budgeting framework popularized by Senator Elizabeth Warren: spend 50% of after-tax income on needs, 30% on wants, and save or invest 20%. The simplicity is the point — most people fail at detailed budgeting but can stick to three numbers.',
+        },
+        {
+            question: 'What counts as a "need" vs a "want"?',
+            answer: 'Needs: rent or mortgage, utilities, groceries, basic transportation, minimum debt payments, insurance. Wants: dining out, streaming subscriptions, hobbies, travel, non-essential shopping. The litmus test: would your life be meaningfully harder without it?',
+        },
+        {
+            question: 'Is 50/30/20 realistic in expensive cities?',
+            answer: 'In high-cost-of-living areas, needs often consume 60-70% of take-home pay. Adjust the ratios — 60/20/20 is more honest in San Francisco or NYC. The savings target should be the last thing you cut.',
+        },
+        {
+            question: 'Should the 20% savings include retirement contributions?',
+            answer: 'Yes. Pre-tax 401(k) contributions effectively count, since the rule is based on take-home pay (which already excludes those contributions). Add Roth, brokerage, and emergency fund contributions to hit the 20% target.',
+        },
+    ],
+    '/productivity/time-card': [
+        {
+            question: 'How do I calculate hours worked from clock-in and clock-out times?',
+            answer: 'Subtract clock-in time from clock-out time, then subtract any unpaid breaks. For overnight shifts, add 24 hours to the clock-out time before subtracting. The calculator handles both automatically.',
+        },
+        {
+            question: 'How is overtime pay calculated?',
+            answer: 'Federal law (FLSA) requires 1.5× the regular rate for hours over 40 in a workweek for non-exempt employees. Some states have daily overtime rules too — California, for example, requires 1.5× over 8 hours/day and 2× over 12 hours/day.',
+        },
+        {
+            question: 'Does the time card calculator handle overnight shifts?',
+            answer: 'Yes. If your clock-out time is earlier than your clock-in time, the calculator assumes you crossed midnight and adds 24 hours.',
+        },
+        {
+            question: 'Should I include lunch breaks?',
+            answer: 'In the US, unpaid breaks of 30+ minutes generally aren\'t counted toward worked hours. Short paid rest breaks (5-15 minutes) typically are. Subtract any unpaid break time in the "break" field.',
+        },
+    ],
+    '/health/body-fat': [
+        {
+            question: 'What is the US Navy body fat formula?',
+            answer: 'For men: 86.010 × log10(waist − neck) − 70.041 × log10(height) + 36.76. For women: 163.205 × log10(waist + hip − neck) − 97.684 × log10(height) − 78.387. All measurements in inches.',
+        },
+        {
+            question: 'How accurate is the US Navy method?',
+            answer: 'Within ±3-4% body fat compared to DEXA scan for most people, which is good enough for tracking progress. It\'s less accurate at extremes — very lean (<8% men, <15% women) or very high body fat — but excellent for the typical range.',
+        },
+        {
+            question: 'What body fat percentage is healthy?',
+            answer: 'Men: 10-20% is generally healthy; 6-13% is athletic. Women: 18-28% is healthy; 14-20% is athletic. Below ~5% (men) or ~13% (women) is essential fat — going lower is dangerous and not sustainable.',
+        },
+        {
+            question: 'Why does the female formula include hip measurement?',
+            answer: 'Women carry proportionally more fat in the hips and thighs (gluteofemoral fat). Including hip measurement makes the formula far more accurate for women than waist + neck alone.',
+        },
+    ],
 };
 
 export function getFaqsForPath(path: string): CalculatorFaq[] {

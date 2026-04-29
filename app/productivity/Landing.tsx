@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import {
     Zap, Timer, ArrowLeftRight, Users, Percent,
-    GraduationCap, Keyboard, FileText, Calendar
+    GraduationCap, Keyboard, FileText, Calendar, Clock
 } from 'lucide-react';
 
 const productivityTools = [
@@ -15,6 +15,7 @@ const productivityTools = [
     { name: 'Typing Speed Test', desc: 'Measure your typing speed (WPM) and accuracy.', icon: Keyboard, path: '/productivity/typing-speed', color: 'text-pink-500', bg: 'bg-pink-50 dark:bg-pink-900/20' },
     { name: 'Word & Character Counter', desc: 'Count words, characters, and estimate your reading time instantly.', icon: FileText, path: '/productivity/word-counter', color: 'text-violet-500', bg: 'bg-violet-50 dark:bg-violet-900/20' },
     { name: 'Age Calculator', desc: 'Calculate your exact age in years, months, and days.', icon: Calendar, path: '/productivity/age', color: 'text-teal-500', bg: 'bg-teal-50 dark:bg-teal-900/20' },
+    { name: 'Time Card Calculator', desc: 'Add up clock-in/clock-out times, separate OT, see gross weekly pay.', icon: Clock, path: '/productivity/time-card', color: 'text-orange-500', bg: 'bg-orange-50 dark:bg-orange-900/20' },
 ];
 
 export default function ProductivityLanding() {

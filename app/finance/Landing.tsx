@@ -21,6 +21,8 @@ const financeTools = [
     { name: 'ROI / ROAS Calculator', desc: 'Measure Return on Investment and Ad Spend.', icon: PieChart, path: '/finance/roi', color: 'text-cyan-500', bg: 'bg-cyan-50 dark:bg-cyan-900/20' },
     { name: 'Savings Goal', desc: 'Plan and track your savings milestones.', icon: PiggyBank, path: '/finance/savings-goal', color: 'text-pink-500', bg: 'bg-pink-50 dark:bg-pink-900/20' },
     { name: 'Emergency Fund', desc: 'Calculate your ideal emergency fund size.', icon: ShieldAlert, path: '/finance/emergency', color: 'text-amber-500', bg: 'bg-amber-50 dark:bg-amber-900/20' },
+    { name: 'Net Worth Calculator', desc: 'Add up assets, subtract liabilities, see your true financial picture.', icon: PiggyBank, path: '/finance/net-worth', color: 'text-emerald-500', bg: 'bg-emerald-50 dark:bg-emerald-900/20' },
+    { name: '50/30/20 Budget', desc: '50% needs / 30% wants / 20% savings — the simplest budget that works.', icon: PieChart, path: '/finance/budget', color: 'text-indigo-500', bg: 'bg-indigo-50 dark:bg-indigo-900/20' },
 ];
 
 export default function FinanceLanding() {

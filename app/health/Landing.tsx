@@ -12,6 +12,7 @@ const healthTools = [
     { name: 'Heart Rate Zones', desc: 'Calculate target heart rate zones for optimal training intensity.', icon: HeartPulse, path: '/health/heart-rate', color: 'text-pink-500', bg: 'bg-pink-50 dark:bg-pink-900/20' },
     { name: 'Sleep Cycle Calculator', desc: 'Optimize your bedtime to wake up refreshed based on 90-minute cycles.', icon: Moon, path: '/health/sleep', color: 'text-indigo-500', bg: 'bg-indigo-50 dark:bg-indigo-900/20' },
     { name: 'One Rep Max (1RM)', desc: 'Estimate your max lift from submaximal loads for safe progression.', icon: Dumbbell, path: '/health/1rm', color: 'text-purple-500', bg: 'bg-purple-50 dark:bg-purple-900/20' },
+    { name: 'Body Fat Calculator', desc: 'US Navy method — just a tape measure, ±3-4% accurate.', icon: Activity, path: '/health/body-fat', color: 'text-rose-500', bg: 'bg-rose-50 dark:bg-rose-900/20' },
 ];
 
 export default function HealthLanding() {

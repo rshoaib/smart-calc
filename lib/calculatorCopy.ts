@@ -152,6 +152,42 @@ export const CALCULATOR_COPY: Record<string, CalculatorCopy> = {
         exampleHeading: 'Worked example',
         exampleBody: 'A $87.50 dinner bill at 20% tip: tip = $17.50, total = $105. Split four ways: $26.25 per person. With a \'round up\' option, each person could pay $27 and the slight overage goes to the server.',
     },
+    '/finance/net-worth': {
+        intro: 'Net worth is the bottom line of your personal balance sheet. Track it quarterly and you\'ll know whether your strategy is actually working — far more reliable than tracking income alone, which can stay flat while debt secretly grows.',
+        formulaHeading: 'The net worth formula',
+        formulaBody: 'Net Worth = Total Assets − Total Liabilities. Assets include cash, investments, retirement accounts, the current market value of real estate and vehicles, and other valuables (business equity, jewelry, collectibles). Liabilities include mortgages, auto loans, student loans, credit-card balances, and any other debt.',
+        useHeading: 'When to use this calculator',
+        useBody: 'Run it once a quarter — not monthly (too noisy with market fluctuations) and not annually (too infrequent to catch problems early). Track the trend more than the absolute number. A negative net worth is normal in your 20s after college and a starter mortgage; the goal is consistent positive trajectory.',
+        exampleHeading: 'Worked example',
+        exampleBody: 'A typical mid-career household: $5K cash, $25K brokerage, $50K 401(k), $350K home, $15K cars = $445K assets. $280K mortgage, $8K auto loan, $12K student loans, $3K credit cards = $303K liabilities. Net worth: $142K. The mortgage and auto loan are productive (they\'re tied to assets); the credit cards are pure drag — pay them off first.',
+    },
+    '/finance/budget': {
+        intro: 'The 50/30/20 rule is the simplest budgeting framework that survives contact with real life. Three categories, fixed percentages, no spreadsheets required. It works because the cognitive load is low — and people actually follow plans they can hold in their head.',
+        formulaHeading: 'How the 50/30/20 split works',
+        formulaBody: '50% of monthly take-home pay covers needs (housing, utilities, groceries, transportation, insurance, minimum debt payments). 30% covers wants (everything optional). 20% goes to savings and investment (emergency fund, retirement, brokerage, extra debt principal). Take-home means after-tax, after-401(k) — the dollars that hit your bank account.',
+        useHeading: 'When to use this calculator',
+        useBody: 'Use it to set or sanity-check your budget. If your needs already consume 70%, you have a lifestyle-vs-income mismatch that no budget tool can fix — you need to either cut a major expense (housing is usually the biggest lever) or grow income. If you can hit 20% savings comfortably, push it to 25-30% — the higher your savings rate, the closer you are to financial independence.',
+        exampleHeading: 'Worked example',
+        exampleBody: 'Monthly take-home of $5,000. 50/30/20 means $2,500 for needs, $1,500 for wants, $1,000 for savings. If your rent alone is $2,400, you\'re already over the needs target before utilities — adjust to 60/20/20 ($3,000/$1,000/$1,000) or seriously reconsider housing. Sustainable plans match real life.',
+    },
+    '/productivity/time-card': {
+        intro: 'A time card calculator turns clock-in and clock-out times into total hours, regular vs overtime split, and gross weekly pay. Useful for hourly employees verifying paychecks, freelancers tracking client hours, and anyone curious whether their week was actually 40 hours or 47.',
+        formulaHeading: 'How weekly hours and overtime are calculated',
+        formulaBody: 'Daily hours = clock-out − clock-in − unpaid breaks. Total hours = sum across the week. Federal FLSA defines overtime as hours over 40 per workweek, paid at 1.5× regular rate. Some states (California, Alaska, Nevada) also require daily overtime over 8 or 12 hours. Gross pay = (regular hours × rate) + (OT hours × rate × OT multiplier).',
+        useHeading: 'When to use this calculator',
+        useBody: 'Use it to double-check your paycheck — payroll errors are surprisingly common, and most affect the OT calculation. Use it as a freelancer or consultant to bill clients accurately. Use it before negotiating a flat rate to know what your effective hourly rate would be at typical hours worked.',
+        exampleHeading: 'Worked example',
+        exampleBody: 'A retail worker logs 9-5 with 30-minute unpaid breaks Mon-Fri (7.5 hours × 5 = 37.5) plus a 5-hour Saturday shift = 42.5 total hours. At $20/hour with 1.5× OT over 40: regular 40 hrs × $20 = $800. OT 2.5 hrs × $30 = $75. Gross weekly pay: $875.',
+    },
+    '/health/body-fat': {
+        intro: 'Body fat percentage is a far more useful metric than weight or BMI for body composition. The US Navy method uses a tape measure and three (or four) circumference measurements to estimate it — accurate enough for tracking progress without spending money on DEXA scans.',
+        formulaHeading: 'How the Navy method works',
+        formulaBody: 'For men, the formula uses height, neck, and waist circumferences (all in inches): 86.010 × log10(waist − neck) − 70.041 × log10(height) + 36.76. For women, hip circumference is added: 163.205 × log10(waist + hip − neck) − 97.684 × log10(height) − 78.387. The log10 transformation captures the non-linear relationship between body shape and fat percentage.',
+        useHeading: 'When to use this calculator',
+        useBody: 'Use it to track body composition changes over weeks and months — far more meaningful than the bathroom scale, which fluctuates with water weight, glycogen, and food in your gut. Measure first thing in the morning, after the bathroom, before food. Keep tape measure technique consistent — same spots, same tension, same time of day.',
+        exampleHeading: 'Worked example',
+        exampleBody: 'A 5\'10" (70 inch) man, 36-inch waist, 15-inch neck. Body fat = 86.010 × log10(36 − 15) − 70.041 × log10(70) + 36.76 = 86.010 × 1.322 − 70.041 × 1.845 + 36.76 ≈ 113.7 − 129.2 + 36.76 = 21.3%. That\'s in the "average" range. Dropping the waist to 33 inches (still 5\'10", 15-inch neck) brings body fat to about 16% — fitness range.',
+    },
 };
 
 export function getCopyForPath(path: string): CalculatorCopy | undefined {
