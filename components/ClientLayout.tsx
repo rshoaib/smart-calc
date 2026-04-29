@@ -8,7 +8,7 @@ import { CookieConsent } from './CookieConsent';
 import { useTranslation } from 'react-i18next';
 
 export function ClientLayout({ children }: { children: React.ReactNode }) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
 
@@ -21,11 +21,6 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
       setIsDark(window.matchMedia('(prefers-color-scheme: dark)').matches);
     }
   }, []);
-
-  const toggleLanguage = () => {
-    const newLang = i18n.language === 'es' ? 'en' : 'es';
-    i18n.changeLanguage(newLang);
-  };
 
   useEffect(() => {
     localStorage.setItem('smartcalc-theme', isDark ? 'dark' : 'light');
@@ -67,13 +62,6 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
           </nav>
 
           <div className="flex items-center gap-2">
-            <button
-              onClick={toggleLanguage}
-              className="px-3 py-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm font-medium border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
-              aria-label="Toggle Language"
-            >
-              {i18n.language === 'es' ? 'ES' : 'EN'}
-            </button>
             <button
               onClick={() => setIsDark(!isDark)}
               className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
