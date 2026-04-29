@@ -134,7 +134,7 @@ export default async function BlogPostPage({
             preserveAspectRatio="xMidYMid slice" keeps the centered icon in
             frame after the vertical crop. */}
         <div
-          className="w-full h-auto aspect-[16/5] rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800"
+          className="w-full h-40 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800"
           dangerouslySetInnerHTML={{ __html: heroSvg }}
         />
 
