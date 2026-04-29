@@ -64,7 +64,7 @@ export default function BudgetCalculator() {
                 <Card title="Savings" pct={savingsPct} amount={allocations.savings} examples={SAVINGS} color="emerald" />
             </div>
 
-            <Disclaimer />
+            <Disclaimer type="finance" />
         </div>
     );
 }

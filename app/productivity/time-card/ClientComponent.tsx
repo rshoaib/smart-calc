@@ -108,7 +108,7 @@ export default function TimeCardCalculator() {
                 </div>
             </div>
 
-            <Disclaimer />
+            <Disclaimer type="general" />
         </div>
     );
 }

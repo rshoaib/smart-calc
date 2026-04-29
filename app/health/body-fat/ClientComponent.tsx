@@ -116,7 +116,7 @@ export default function BodyFatCalculator() {
                 </div>
             )}
 
-            <Disclaimer />
+            <Disclaimer type="health" />
         </div>
     );
 }

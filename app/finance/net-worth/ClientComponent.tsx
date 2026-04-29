@@ -159,7 +159,7 @@ export default function NetWorthCalculator() {
                 </div>
             )}
 
-            <Disclaimer />
+            <Disclaimer type="finance" />
         </div>
     );
 }
