@@ -117,7 +117,7 @@ export function buildBlogHeroSvg(opts: HeroOptions): string {
 
     // Build the SVG. Indentation kept minimal — this is meant to be embedded.
     const svg = [
-        `<svg${xmlns} viewBox="0 0 1200 630" role="img" aria-labelledby="${titleId}" preserveAspectRatio="xMidYMid slice">`,
+        `<svg${xmlns} viewBox="0 0 1200 630" role="img" aria-labelledby="${titleId}" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" style="display:block">`,
         `<title id="${titleId}">${escapeXml(title || theme.label + ' article')}</title>`,
         `<defs>`,
         `<linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="100%">`,
@@ -163,12 +163,3 @@ export function buildBlogHeroSvg(opts: HeroOptions): string {
  */
 export function buildHeroForPost(
     post: { slug: string; category: string; title: string },
-    opts: { standalone?: boolean } = {},
-): string {
-    return buildBlogHeroSvg({
-        slug: post.slug,
-        category: post.category,
-        title: post.title,
-        standalone: opts.standalone,
-    });
-}
