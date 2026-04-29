@@ -1,45 +1,47 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import ClientComponent from './ClientComponent';
+import {
+    buildCalculatorMetadata,
+    buildCalculatorJsonLd,
+    buildBreadcrumbJsonLd,
+} from '@/lib/calculatorMeta';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Emergency Calculator | SmartCalc',
-  description: 'Free online emergency calculator. Get accurate results instantly. No sign-up required.',
-  openGraph: {
-    title: 'Emergency Calculator | SmartCalc',
-    description: 'Free online emergency calculator. Get accurate results instantly.',
-    url: 'https://dailysmartcalc.com/finance/emergency',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Emergency Calculator | SmartCalc',
-    description: 'Free online emergency calculator.',
-  },
+const meta = {
+    path: '/finance/emergency',
+    name: 'Emergency Fund Calculator',
+    title: 'Emergency Fund Calculator',
+    description:
+        'Calculate your ideal emergency fund size based on your monthly expenses and risk profile. Get a personalized 3-, 6-, or 12-month target.',
 };
 
+export const metadata: Metadata = buildCalculatorMetadata(meta);
+
 export default function Page() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebApplication',
-            name: 'Emergency Calculator',
-            url: 'https://dailysmartcalc.com/finance/emergency',
-            applicationCategory: 'CalculatorApplication',
-            operatingSystem: 'All',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD'
-            },
-            description: 'Free online emergency calculator.'
-          })
-        }}
-      />
-      <ClientComponent />
-    </>
-  );
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: buildCalculatorJsonLd(meta) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: buildBreadcrumbJsonLd([
+                        { name: 'Home', path: '/' },
+                        { name: 'Finance', path: '/finance' },
+                        { name: meta.name, path: meta.path },
+                    ]),
+                }}
+            />
+            <Breadcrumbs
+                items={[
+                    { name: 'Home', path: '/' },
+                    { name: 'Finance', path: '/finance' },
+                    { name: 'Emergency Fund' },
+                ]}
+            />
+            <ClientComponent />
+        </>
+    );
 }

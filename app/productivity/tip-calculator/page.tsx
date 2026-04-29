@@ -1,45 +1,47 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import ClientComponent from './ClientComponent';
+import {
+    buildCalculatorMetadata,
+    buildCalculatorJsonLd,
+    buildBreadcrumbJsonLd,
+} from '@/lib/calculatorMeta';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Tip Calculator Calculator | SmartCalc',
-  description: 'Free online tip calculator calculator. Get accurate results instantly. No sign-up required.',
-  openGraph: {
-    title: 'Tip Calculator Calculator | SmartCalc',
-    description: 'Free online tip calculator calculator. Get accurate results instantly.',
-    url: 'https://dailysmartcalc.com/productivity/tip-calculator',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Tip Calculator Calculator | SmartCalc',
-    description: 'Free online tip calculator calculator.',
-  },
+const meta = {
+    path: '/productivity/tip-calculator',
+    name: 'Tip Calculator',
+    title: 'Tip Calculator with Bill Splitting',
+    description:
+        'Calculate tip and total per person on any bill. Customize the tip percentage and split across any group size. Travel-friendly.',
 };
 
+export const metadata: Metadata = buildCalculatorMetadata(meta);
+
 export default function Page() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebApplication',
-            name: 'Tip Calculator Calculator',
-            url: 'https://dailysmartcalc.com/productivity/tip-calculator',
-            applicationCategory: 'CalculatorApplication',
-            operatingSystem: 'All',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD'
-            },
-            description: 'Free online tip calculator calculator.'
-          })
-        }}
-      />
-      <ClientComponent />
-    </>
-  );
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: buildCalculatorJsonLd(meta) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: buildBreadcrumbJsonLd([
+                        { name: 'Home', path: '/' },
+                        { name: 'Productivity', path: '/productivity' },
+                        { name: meta.name, path: meta.path },
+                    ]),
+                }}
+            />
+            <Breadcrumbs
+                items={[
+                    { name: 'Home', path: '/' },
+                    { name: 'Productivity', path: '/productivity' },
+                    { name: 'Tip' },
+                ]}
+            />
+            <ClientComponent />
+        </>
+    );
 }

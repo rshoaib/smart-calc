@@ -1,45 +1,47 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import ClientComponent from './ClientComponent';
+import {
+    buildCalculatorMetadata,
+    buildCalculatorJsonLd,
+    buildBreadcrumbJsonLd,
+} from '@/lib/calculatorMeta';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Word Counter Calculator | SmartCalc',
-  description: 'Free online word counter calculator. Get accurate results instantly. No sign-up required.',
-  openGraph: {
-    title: 'Word Counter Calculator | SmartCalc',
-    description: 'Free online word counter calculator. Get accurate results instantly.',
-    url: 'https://dailysmartcalc.com/productivity/word-counter',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Word Counter Calculator | SmartCalc',
-    description: 'Free online word counter calculator.',
-  },
+const meta = {
+    path: '/productivity/word-counter',
+    name: 'Word Counter',
+    title: 'Word Counter (Words, Characters, Reading Time)',
+    description:
+        'Free word and character counter with reading time estimate, sentence count, and paragraph count. Paste any text for instant analysis.',
 };
 
+export const metadata: Metadata = buildCalculatorMetadata(meta);
+
 export default function Page() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebApplication',
-            name: 'Word Counter Calculator',
-            url: 'https://dailysmartcalc.com/productivity/word-counter',
-            applicationCategory: 'CalculatorApplication',
-            operatingSystem: 'All',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD'
-            },
-            description: 'Free online word counter calculator.'
-          })
-        }}
-      />
-      <ClientComponent />
-    </>
-  );
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: buildCalculatorJsonLd(meta) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: buildBreadcrumbJsonLd([
+                        { name: 'Home', path: '/' },
+                        { name: 'Productivity', path: '/productivity' },
+                        { name: meta.name, path: meta.path },
+                    ]),
+                }}
+            />
+            <Breadcrumbs
+                items={[
+                    { name: 'Home', path: '/' },
+                    { name: 'Productivity', path: '/productivity' },
+                    { name: 'Word Counter' },
+                ]}
+            />
+            <ClientComponent />
+        </>
+    );
 }

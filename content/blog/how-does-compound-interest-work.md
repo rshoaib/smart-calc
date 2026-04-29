@@ -7,7 +7,7 @@ date: 2026-03-26
 display_date: "March 26, 2026"
 read_time: 6 min read
 category: Finance
-related_tool_link: /compound-interest
+related_tool_link: /finance/investment
 related_tool_name: Compound Interest Calculator
 created_at: "2026-03-25T22:28:43.424568+00:00"
 ---
@@ -15,7 +15,7 @@ When it comes to building wealth, compound interest is the most powerful tool yo
 
 But how exactly does it work?
 
-In this guide, we'll break down the math behind compound interest in plain English. Before we dive into the details, you can see the math in action for yourself. Use our **[Free Compound Interest Calculator](/compound-interest)** to instantly project your wealth. It's 100% free, instant, and requires no signup.
+In this guide, we'll break down the math behind compound interest in plain English. Before we dive into the details, you can see the math in action for yourself. Use our **[Free Compound Interest Calculator](/finance/investment)** to instantly project your wealth. It's 100% free, instant, and requires no signup.
 
 Let's look at exactly how this financial superpower works.
 
@@ -90,6 +90,6 @@ Because credit card interest rates are often 20% or higher, the compounding effe
 
 Reading about compound interest is one thing; seeing the numbers mapped out on a chart is another.
 
-Head over to our **[Compound Interest Calculator](/compound-interest)**. You can input your starting balance, estimated return rate, and monthly contributions to see exactly when you will hit your first $100k, $500k, or $1 Million.
+Head over to our **[Compound Interest Calculator](/finance/investment)**. You can input your starting balance, estimated return rate, and monthly contributions to see exactly when you will hit your first $100k, $500k, or $1 Million.
 
-Need more financial tools? We offer free calculators for your **[Mortgage](/mortgage)**, **[Retirement](/retirement)**, and more. No signup required, always 100% private.
+Need more financial tools? We offer free calculators for your **[Mortgage](/finance/mortgage)**, **[Retirement](/finance/retirement)**, and more. No signup required, al

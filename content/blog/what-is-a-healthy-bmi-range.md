@@ -7,7 +7,7 @@ date: 2026-03-30
 display_date: "March 30, 2026"
 read_time: 5 min read
 category: Health
-related_tool_link: /bmi
+related_tool_link: /health/bmi
 related_tool_name: Free BMI Calculator
 created_at: "2026-03-29T04:34:40.120884+00:00"
 ---
@@ -15,7 +15,7 @@ Body Mass Index (BMI) is one of the most widely used tools by doctors and health
 
 But what exactly do those numbers mean?
 
-In this guide, we will break down what a healthy BMI range looks like, how the calculation works, and how you can figure out your own number right now using our **[Free BMI Calculator](/bmi)**.
+In this guide, we will break down what a healthy BMI range looks like, how the calculation works, and how you can figure out your own number right now using our **[Free BMI Calculator](/health/bmi)**.
 
 What is BMI?
 ------------
@@ -54,7 +54,7 @@ If you are using the metric system, the formula is: **Weight (in kilograms) divi
 
 If you are using pounds and inches, the math is a bit more complex, requiring a conversion factor of 703.
 
-Rather than doing the math yourself, the easiest way to find your number is to use our instant, **[Free BMI Calculator](/bmi)**. You just enter your height and weight, and we instantly show you your BMI and which category you fall into. No signup is required, and your data is never saved.
+Rather than doing the math yourself, the easiest way to find your number is to use our instant, **[Free BMI Calculator](/health/bmi)**. You just enter your height and weight, and we instantly show you your BMI and which category you fall into. No signup is required, and your data is never saved.
 
 The Limitations of BMI
 ----------------------
@@ -76,4 +76,4 @@ Your BMI is a great starting point for understanding your general health, but it
 
 If you calculate your BMI and find that you are outside the healthy range (18.5 to 24.9), don't panic. Use it as a prompt to start a conversation with a doctor or health professional about your overall wellness.
 
-Ready to find out your number? **[Click here to calculate your BMI instantly](/bmi)**.
+Ready to find out your number? **[Click here to calculate your BMI

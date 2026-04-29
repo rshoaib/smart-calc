@@ -1,45 +1,47 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import ClientComponent from './ClientComponent';
+import {
+    buildCalculatorMetadata,
+    buildCalculatorJsonLd,
+    buildBreadcrumbJsonLd,
+} from '@/lib/calculatorMeta';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Savings Goal Calculator | SmartCalc',
-  description: 'Free online savings goal calculator. Get accurate results instantly. No sign-up required.',
-  openGraph: {
-    title: 'Savings Goal Calculator | SmartCalc',
-    description: 'Free online savings goal calculator. Get accurate results instantly.',
-    url: 'https://dailysmartcalc.com/finance/savings-goal',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Savings Goal Calculator | SmartCalc',
-    description: 'Free online savings goal calculator.',
-  },
+const meta = {
+    path: '/finance/savings-goal',
+    name: 'Savings Goal Calculator',
+    title: 'Savings Goal Calculator',
+    description:
+        'Plan how much to save monthly to hit any savings goal by a specific date. See the impact of interest and contribution adjustments over time.',
 };
 
+export const metadata: Metadata = buildCalculatorMetadata(meta);
+
 export default function Page() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebApplication',
-            name: 'Savings Goal Calculator',
-            url: 'https://dailysmartcalc.com/finance/savings-goal',
-            applicationCategory: 'CalculatorApplication',
-            operatingSystem: 'All',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD'
-            },
-            description: 'Free online savings goal calculator.'
-          })
-        }}
-      />
-      <ClientComponent />
-    </>
-  );
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: buildCalculatorJsonLd(meta) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: buildBreadcrumbJsonLd([
+                        { name: 'Home', path: '/' },
+                        { name: 'Finance', path: '/finance' },
+                        { name: meta.name, path: meta.path },
+                    ]),
+                }}
+            />
+            <Breadcrumbs
+                items={[
+                    { name: 'Home', path: '/' },
+                    { name: 'Finance', path: '/finance' },
+                    { name: 'Savings Goal' },
+                ]}
+            />
+            <ClientComponent />
+        </>
+    );
 }

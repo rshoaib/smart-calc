@@ -1,45 +1,47 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import ClientComponent from './ClientComponent';
+import {
+    buildCalculatorMetadata,
+    buildCalculatorJsonLd,
+    buildBreadcrumbJsonLd,
+} from '@/lib/calculatorMeta';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Pregnancy Due Date Calculator & Milestone Timeline (2026)',
-  description: 'Free pregnancy due date calculator. Calculate your estimated delivery date (EDD), see how many weeks pregnant you are, and view your custom milestone timeline.',
-  openGraph: {
-    title: 'Pregnancy Due Date Calculator & Milestone Timeline',
-    description: 'Calculate your estimated delivery date (EDD), see how many weeks pregnant you are, and view your custom milestone timeline.',
-    url: 'https://dailysmartcalc.com/health/pregnancy-due-date',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Pregnancy Due Date Calculator',
-    description: 'Calculate your exact EDD and view your custom pregnancy milestone timeline.',
-  },
+const meta = {
+    path: '/health/pregnancy-due-date',
+    name: 'Pregnancy Due Date Calculator',
+    title: 'Pregnancy Due Date Calculator (LMP & Conception)',
+    description:
+        'Calculate your estimated due date (EDD) from last menstrual period or conception date. View your custom milestone timeline week by week.',
 };
 
+export const metadata: Metadata = buildCalculatorMetadata(meta);
+
 export default function Page() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebApplication',
-            name: 'Pregnancy Due Date Calculator',
-            url: 'https://dailysmartcalc.com/health/pregnancy-due-date',
-            applicationCategory: 'HealthApplication',
-            operatingSystem: 'All',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD'
-            },
-            description: 'Free pregnancy due date calculator. Calculate your estimated delivery date (EDD), see how many weeks pregnant you are, and view your custom milestone timeline.'
-          })
-        }}
-      />
-      <ClientComponent />
-    </>
-  );
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: buildCalculatorJsonLd(meta) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: buildBreadcrumbJsonLd([
+                        { name: 'Home', path: '/' },
+                        { name: 'Health', path: '/health' },
+                        { name: meta.name, path: meta.path },
+                    ]),
+                }}
+            />
+            <Breadcrumbs
+                items={[
+                    { name: 'Home', path: '/' },
+                    { name: 'Health', path: '/health' },
+                    { name: 'Pregnancy Due Date' },
+                ]}
+            />
+            <ClientComponent />
+        </>
+    );
 }

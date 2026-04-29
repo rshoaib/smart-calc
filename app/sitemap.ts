@@ -8,10 +8,15 @@ import {
     salaryPages,
     mortgagePages,
     bmiPages,
-    convertPages
+    convertPages,
 } from '@/data/seoTemplates';
 import * as fs from 'fs';
 import * as path from 'path';
+
+// Stable build-time fallback. Evaluated once at module load — NOT on every
+// request — so we don't lie to Google about every URL being modified
+// continuously, which causes crawl-budget waste and de-prioritisation.
+const BUILD_TIME = new Date();
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://dailysmartcalc.com';
@@ -36,7 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/terms',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
-        lastModified: new Date(),
+        lastModified: BUILD_TIME,
         changeFrequency: 'weekly' as const,
         priority: getPriority(route),
     }));
@@ -46,15 +51,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         try {
             const categories = ['finance', 'health', 'productivity'];
             const appDir = path.join(process.cwd(), 'app');
-            let foundRoutes: string[] = [];
+            const foundRoutes: string[] = [];
 
-            categories.forEach(category => {
+            categories.forEach((category) => {
                 const categoryPath = path.join(appDir, category);
                 if (fs.existsSync(categoryPath)) {
                     const tools = fs.readdirSync(categoryPath);
-                    tools.forEach(tool => {
+                    tools.forEach((tool) => {
                         const toolPath = path.join(categoryPath, tool);
-                        if (fs.statSync(toolPath).isDirectory() && fs.existsSync(path.join(toolPath, 'page.tsx'))) {
+                        if (
+                            fs.statSync(toolPath).isDirectory() &&
+                            fs.existsSync(path.join(toolPath, 'page.tsx'))
+                        ) {
                             foundRoutes.push(`/${category}/${tool}`);
                         }
                     });
@@ -69,12 +77,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     const toolRoutes = getToolRoutes().map((route) => ({
         url: `${baseUrl}${route}`,
-        lastModified: new Date(),
+        lastModified: BUILD_TIME,
         changeFrequency: 'monthly' as const,
         priority: 0.8,
     }));
 
-    // Combine SEO templates
+    // Programmatic SEO long-tail pages.
+    // Now that /calculate/[slug] is a server component with unique per-slug
+    // metadata (see app/calculate/[slug]/page.tsx), it's safe to include these
+    // in the sitemap — each URL has a unique title and description.
     const allSeoPages = [
         ...percentagePages,
         ...tipPages,
@@ -86,28 +97,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         ...convertPages,
     ];
 
-    // SEO Conversion specific routes from template
     const seoRoutes = allSeoPages.map((template) => ({
         url: `${baseUrl}/calculate/${template.slug}`,
-        lastModified: new Date(),
+        lastModified: BUILD_TIME,
         changeFrequency: 'yearly' as const,
         priority: 0.5,
     }));
 
-    // Blog posts from Supabase
+    // Blog posts — use the post's own date so Google sees real freshness signals
     const blogPosts = await getAllPosts();
-    const blogRoutes = blogPosts.map((post) => ({
-        url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: (post as { published_at?: string; date?: string }).published_at
-            ? new Date((post as { published_at?: string }).published_at!)
-            : (post as { date?: string }).date
-                ? new Date((post as { date?: string }).date!)
-                : new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.7,
-    }));
+    const blogRoutes = blogPosts.map((post) => {
+        const stamp = post.updatedAt || post.date;
+        const lastModified = stamp ? new Date(stamp) : BUILD_TIME;
+        return {
+            url: `${baseUrl}/blog/${post.slug}`,
+            lastModified,
+            changeFrequency: 'monthly' as const,
+            priority: 0.7,
+        };
+    });
 
-    // Aggressive Sitemap Pruning: Explicitly excluding `...seoRoutes` (335+ programmatic pages)
-    // to focus Google crawler on the highest value Tool and Blog pages.
-    return [...routes, ...toolRoutes, ...blogRoutes];
+    return [...routes, ...toolRoutes, ...seoRoutes, ...blogRoutes];
 }

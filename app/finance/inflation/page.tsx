@@ -1,45 +1,47 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import ClientComponent from './ClientComponent';
+import {
+    buildCalculatorMetadata,
+    buildCalculatorJsonLd,
+    buildBreadcrumbJsonLd,
+} from '@/lib/calculatorMeta';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Inflation Calculator | SmartCalc',
-  description: 'Free online inflation calculator. Get accurate results instantly. No sign-up required.',
-  openGraph: {
-    title: 'Inflation Calculator | SmartCalc',
-    description: 'Free online inflation calculator. Get accurate results instantly.',
-    url: 'https://dailysmartcalc.com/finance/inflation',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Inflation Calculator | SmartCalc',
-    description: 'Free online inflation calculator.',
-  },
+const meta = {
+    path: '/finance/inflation',
+    name: 'Inflation Calculator',
+    title: 'Inflation Calculator (Official US CPI Data, 1913-2026)',
+    description:
+        'Calculate the real-dollar value of money between any two years using official Consumer Price Index data going back to 1913. Free, no signup.',
 };
 
+export const metadata: Metadata = buildCalculatorMetadata(meta);
+
 export default function Page() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebApplication',
-            name: 'Inflation Calculator',
-            url: 'https://dailysmartcalc.com/finance/inflation',
-            applicationCategory: 'CalculatorApplication',
-            operatingSystem: 'All',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD'
-            },
-            description: 'Free online inflation calculator.'
-          })
-        }}
-      />
-      <ClientComponent />
-    </>
-  );
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: buildCalculatorJsonLd(meta) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: buildBreadcrumbJsonLd([
+                        { name: 'Home', path: '/' },
+                        { name: 'Finance', path: '/finance' },
+                        { name: meta.name, path: meta.path },
+                    ]),
+                }}
+            />
+            <Breadcrumbs
+                items={[
+                    { name: 'Home', path: '/' },
+                    { name: 'Finance', path: '/finance' },
+                    { name: 'Inflation' },
+                ]}
+            />
+            <ClientComponent />
+        </>
+    );
 }

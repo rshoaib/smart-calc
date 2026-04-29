@@ -1,45 +1,47 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import ClientComponent from './ClientComponent';
+import {
+    buildCalculatorMetadata,
+    buildCalculatorJsonLd,
+    buildBreadcrumbJsonLd,
+} from '@/lib/calculatorMeta';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Auto Loan Calculator with Sales Tax & Trade-In (2026)',
-  description: 'Free auto loan calculator. Generate your exact car payment amortization schedule. Factor in dealership sales tax, trade-in value, and negative equity.',
-  openGraph: {
-    title: 'Auto Loan Calculator with Sales Tax & Trade-In',
-    description: 'Free auto loan calculator. Generate your exact car payment amortization schedule with sales tax and trade-in value.',
-    url: 'https://dailysmartcalc.com/finance/auto-loan',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Auto Loan Calculator',
-    description: 'Calculate your true car payment with sales tax and trade-in value.',
-  },
+const meta = {
+    path: '/finance/auto-loan',
+    name: 'Auto Loan Calculator',
+    title: 'Auto Loan Calculator with Trade-in & Sales Tax (2026)',
+    description:
+        'Calculate your true monthly auto payment including trade-in value, sales tax, and dealer fees. See the full amortization schedule and total interest.',
 };
 
+export const metadata: Metadata = buildCalculatorMetadata(meta);
+
 export default function Page() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebApplication',
-            name: 'Auto Loan Calculator',
-            url: 'https://dailysmartcalc.com/finance/auto-loan',
-            applicationCategory: 'CalculatorApplication',
-            operatingSystem: 'All',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD'
-            },
-            description: 'Free auto loan calculator. Generate your exact car payment amortization schedule. Factor in dealership sales tax, trade-in value, and negative equity.'
-          })
-        }}
-      />
-      <ClientComponent />
-    </>
-  );
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: buildCalculatorJsonLd(meta) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: buildBreadcrumbJsonLd([
+                        { name: 'Home', path: '/' },
+                        { name: 'Finance', path: '/finance' },
+                        { name: meta.name, path: meta.path },
+                    ]),
+                }}
+            />
+            <Breadcrumbs
+                items={[
+                    { name: 'Home', path: '/' },
+                    { name: 'Finance', path: '/finance' },
+                    { name: 'Auto Loan' },
+                ]}
+            />
+            <ClientComponent />
+        </>
+    );
 }

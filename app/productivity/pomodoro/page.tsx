@@ -1,45 +1,47 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import ClientComponent from './ClientComponent';
+import {
+    buildCalculatorMetadata,
+    buildCalculatorJsonLd,
+    buildBreadcrumbJsonLd,
+} from '@/lib/calculatorMeta';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Pomodoro Calculator | SmartCalc',
-  description: 'Free online pomodoro calculator. Get accurate results instantly. No sign-up required.',
-  openGraph: {
-    title: 'Pomodoro Calculator | SmartCalc',
-    description: 'Free online pomodoro calculator. Get accurate results instantly.',
-    url: 'https://dailysmartcalc.com/productivity/pomodoro',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Pomodoro Calculator | SmartCalc',
-    description: 'Free online pomodoro calculator.',
-  },
+const meta = {
+    path: '/productivity/pomodoro',
+    name: 'Pomodoro Timer',
+    title: 'Pomodoro Timer with Custom Intervals',
+    description:
+        'Customizable Pomodoro timer with adjustable focus and break intervals, daily session counts, and audio cues. Built for deep work.',
 };
 
+export const metadata: Metadata = buildCalculatorMetadata(meta);
+
 export default function Page() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebApplication',
-            name: 'Pomodoro Calculator',
-            url: 'https://dailysmartcalc.com/productivity/pomodoro',
-            applicationCategory: 'CalculatorApplication',
-            operatingSystem: 'All',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD'
-            },
-            description: 'Free online pomodoro calculator.'
-          })
-        }}
-      />
-      <ClientComponent />
-    </>
-  );
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: buildCalculatorJsonLd(meta) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: buildBreadcrumbJsonLd([
+                        { name: 'Home', path: '/' },
+                        { name: 'Productivity', path: '/productivity' },
+                        { name: meta.name, path: meta.path },
+                    ]),
+                }}
+            />
+            <Breadcrumbs
+                items={[
+                    { name: 'Home', path: '/' },
+                    { name: 'Productivity', path: '/productivity' },
+                    { name: 'Pomodoro Timer' },
+                ]}
+            />
+            <ClientComponent />
+        </>
+    );
 }

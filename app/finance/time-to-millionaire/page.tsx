@@ -1,45 +1,47 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import ClientComponent from './ClientComponent';
+import {
+    buildCalculatorMetadata,
+    buildCalculatorJsonLd,
+    buildBreadcrumbJsonLd,
+} from '@/lib/calculatorMeta';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Time To Millionaire Calculator | SmartCalc',
-  description: 'Free online time to millionaire calculator. Get accurate results instantly. No sign-up required.',
-  openGraph: {
-    title: 'Time To Millionaire Calculator | SmartCalc',
-    description: 'Free online time to millionaire calculator. Get accurate results instantly.',
-    url: 'https://dailysmartcalc.com/finance/time-to-millionaire',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Time To Millionaire Calculator | SmartCalc',
-    description: 'Free online time to millionaire calculator.',
-  },
+const meta = {
+    path: '/finance/time-to-millionaire',
+    name: 'Time to Millionaire Calculator',
+    title: 'Time to Millionaire Calculator',
+    description:
+        'Calculate exactly how long until your investments reach $1 million given your current savings, monthly contributions, and expected return.',
 };
 
+export const metadata: Metadata = buildCalculatorMetadata(meta);
+
 export default function Page() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebApplication',
-            name: 'Time To Millionaire Calculator',
-            url: 'https://dailysmartcalc.com/finance/time-to-millionaire',
-            applicationCategory: 'CalculatorApplication',
-            operatingSystem: 'All',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD'
-            },
-            description: 'Free online time to millionaire calculator.'
-          })
-        }}
-      />
-      <ClientComponent />
-    </>
-  );
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: buildCalculatorJsonLd(meta) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: buildBreadcrumbJsonLd([
+                        { name: 'Home', path: '/' },
+                        { name: 'Finance', path: '/finance' },
+                        { name: meta.name, path: meta.path },
+                    ]),
+                }}
+            />
+            <Breadcrumbs
+                items={[
+                    { name: 'Home', path: '/' },
+                    { name: 'Finance', path: '/finance' },
+                    { name: 'Time to Millionaire' },
+                ]}
+            />
+            <ClientComponent />
+        </>
+    );
 }

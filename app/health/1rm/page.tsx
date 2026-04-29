@@ -1,45 +1,47 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import ClientComponent from './ClientComponent';
+import {
+    buildCalculatorMetadata,
+    buildCalculatorJsonLd,
+    buildBreadcrumbJsonLd,
+} from '@/lib/calculatorMeta';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: '1RM Calculator | SmartCalc',
-  description: 'Free online 1rm calculator. Get accurate results instantly. No sign-up required.',
-  openGraph: {
-    title: '1RM Calculator | SmartCalc',
-    description: 'Free online 1rm calculator. Get accurate results instantly.',
-    url: 'https://dailysmartcalc.com/health/1rm',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: '1RM Calculator | SmartCalc',
-    description: 'Free online 1rm calculator.',
-  },
+const meta = {
+    path: '/health/1rm',
+    name: '1-Rep Max Calculator',
+    title: '1-Rep Max Calculator (Epley, Brzycki, Lombardi)',
+    description:
+        'Estimate your one-rep max from any rep range using six well-known formulas, including Epley, Brzycki, and Lombardi. See training percentages.',
 };
 
+export const metadata: Metadata = buildCalculatorMetadata(meta);
+
 export default function Page() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebApplication',
-            name: '1RM Calculator',
-            url: 'https://dailysmartcalc.com/health/1rm',
-            applicationCategory: 'CalculatorApplication',
-            operatingSystem: 'All',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD'
-            },
-            description: 'Free online 1rm calculator.'
-          })
-        }}
-      />
-      <ClientComponent />
-    </>
-  );
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: buildCalculatorJsonLd(meta) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: buildBreadcrumbJsonLd([
+                        { name: 'Home', path: '/' },
+                        { name: 'Health', path: '/health' },
+                        { name: meta.name, path: meta.path },
+                    ]),
+                }}
+            />
+            <Breadcrumbs
+                items={[
+                    { name: 'Home', path: '/' },
+                    { name: 'Health', path: '/health' },
+                    { name: '1-Rep Max' },
+                ]}
+            />
+            <ClientComponent />
+        </>
+    );
 }

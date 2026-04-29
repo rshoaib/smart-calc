@@ -7,7 +7,7 @@ date: 2026-04-02
 display_date: "April 2, 2026"
 read_time: 6 min read
 category: Finance
-related_tool_link: /retirement
+related_tool_link: /finance/retirement
 related_tool_name: Free Retirement Calculator
 created_at: "2026-04-02T19:25:26.902869+00:00"
 ---
@@ -15,7 +15,7 @@ When it comes to retirement planning, "How much do I need?" is the million-dolla
 
 The truth is, there is no single "magic number" that works for everyone. The amount you need to save depends entirely on **how you want to live** and **when you plan to stop working**. 
 
-However, you don't have to guess. By understanding a few simple financial models, you can calculate an accurate target for your own lifestyle. In this guide, we'll break down the most reliable rules of thumb and show you how to find your target number using our **[Free Retirement Calculator](/retirement)**.
+However, you don't have to guess. By understanding a few simple financial models, you can calculate an accurate target for your own lifestyle. In this guide, we'll break down the most reliable rules of thumb and show you how to find your target number using our **[Free Retirement Calculator](/finance/retirement)**.
 
 ## The Rule of 25 (The 4% Rule)
 
@@ -77,8 +77,8 @@ The sheer size of a retirement target (often crossing into the millions) can be 
 
 Here is what you should do right now:
 
-1. **Find Your Number:** Use our **[Free Retirement Calculator](/retirement)**. We've built in the complex math for inflation, expected returns, and compound interest. You just enter your current age, savings, and goals, and we'll tell you instantly if you are on track.
+1. **Find Your Number:** Use our **[Free Retirement Calculator](/finance/retirement)**. We've built in the complex math for inflation, expected returns, and compound interest. You just enter your current age, savings, and goals, and we'll tell you instantly if you are on track.
 2. **Capture the Match:** If your employer offers a 401(k) match, contribute enough to get 100% of it. That is free money.
 3. **Automate It:** Set up your investments to pull directly from your paycheck or checking account before you ever see the money. 
 
-The best day to start saving for retirement was 20 years ago. The second best day is today. You'll be amazed at what compound interest can do over the long haul.
+The best day to start saving for retirement was 20 years ago. The second best day is today. You'll be amazed at what compound interest can

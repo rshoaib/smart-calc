@@ -15,14 +15,15 @@ export const metadata: Metadata = {
   },
   description:
     'Free online calculators for mortgage, investment, retirement, BMI, calories, and more. Make smarter financial and health decisions with SmartCalc.',
+  alternates: { canonical: '/' },
   openGraph: {
     siteName: 'SmartCalc',
     title: 'SmartCalc — Free Finance & Health Calculators',
     description:
       'Free online calculators for mortgage, investment, retirement, BMI, calories, and more.',
     type: 'website',
-    url: 'https://dailysmartcalc.com/',
-    images: [{ url: '/og-image.png' }],
+    url: 'https://dailysmartcalc.com',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
     locale: 'en_US',
   },
   twitter: {
@@ -31,6 +32,17 @@ export const metadata: Metadata = {
     description:
       'Free online calculators for mortgage, investment, retirement, BMI, calories, and more.',
     images: ['/og-image.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
   },
   verification: {
     google: 'fEpeczPxriM3Atvnhr1gFjwaJE-d8agZuguG3PpVssY',

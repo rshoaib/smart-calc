@@ -1,45 +1,47 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import ClientComponent from './ClientComponent';
+import {
+    buildCalculatorMetadata,
+    buildCalculatorJsonLd,
+    buildBreadcrumbJsonLd,
+} from '@/lib/calculatorMeta';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Wellness Guide Calculator | SmartCalc',
-  description: 'Free online wellness guide calculator. Get accurate results instantly. No sign-up required.',
-  openGraph: {
-    title: 'Wellness Guide Calculator | SmartCalc',
-    description: 'Free online wellness guide calculator. Get accurate results instantly.',
-    url: 'https://dailysmartcalc.com/health/wellness-guide',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Wellness Guide Calculator | SmartCalc',
-    description: 'Free online wellness guide calculator.',
-  },
+const meta = {
+    path: '/health/wellness-guide',
+    name: 'Total Wellness Optimization Guide',
+    title: 'Total Wellness Optimization Guide',
+    description:
+        'A comprehensive guide to optimizing sleep, nutrition, exercise, and stress. Long-form wellness pillars built on peer-reviewed research.',
 };
 
+export const metadata: Metadata = buildCalculatorMetadata(meta);
+
 export default function Page() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebApplication',
-            name: 'Wellness Guide Calculator',
-            url: 'https://dailysmartcalc.com/health/wellness-guide',
-            applicationCategory: 'CalculatorApplication',
-            operatingSystem: 'All',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD'
-            },
-            description: 'Free online wellness guide calculator.'
-          })
-        }}
-      />
-      <ClientComponent />
-    </>
-  );
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: buildCalculatorJsonLd(meta) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: buildBreadcrumbJsonLd([
+                        { name: 'Home', path: '/' },
+                        { name: 'Health', path: '/health' },
+                        { name: meta.name, path: meta.path },
+                    ]),
+                }}
+            />
+            <Breadcrumbs
+                items={[
+                    { name: 'Home', path: '/' },
+                    { name: 'Health', path: '/health' },
+                    { name: 'Wellness Guide' },
+                ]}
+            />
+            <ClientComponent />
+        </>
+    );
 }

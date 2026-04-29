@@ -1,45 +1,47 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import ClientComponent from './ClientComponent';
+import {
+    buildCalculatorMetadata,
+    buildCalculatorJsonLd,
+    buildBreadcrumbJsonLd,
+} from '@/lib/calculatorMeta';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Meeting Cost Calculator | SmartCalc',
-  description: 'Free online meeting cost calculator. Get accurate results instantly. No sign-up required.',
-  openGraph: {
-    title: 'Meeting Cost Calculator | SmartCalc',
-    description: 'Free online meeting cost calculator. Get accurate results instantly.',
-    url: 'https://dailysmartcalc.com/productivity/meeting-cost',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Meeting Cost Calculator | SmartCalc',
-    description: 'Free online meeting cost calculator.',
-  },
+const meta = {
+    path: '/productivity/meeting-cost',
+    name: 'Meeting Cost Calculator',
+    title: 'Meeting Cost Calculator (Real-Time Burn Rate)',
+    description:
+        'Track the real-time dollar cost of any meeting based on attendee salaries. Watch the meter run during your next 60-minute review.',
 };
 
+export const metadata: Metadata = buildCalculatorMetadata(meta);
+
 export default function Page() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebApplication',
-            name: 'Meeting Cost Calculator',
-            url: 'https://dailysmartcalc.com/productivity/meeting-cost',
-            applicationCategory: 'CalculatorApplication',
-            operatingSystem: 'All',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD'
-            },
-            description: 'Free online meeting cost calculator.'
-          })
-        }}
-      />
-      <ClientComponent />
-    </>
-  );
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: buildCalculatorJsonLd(meta) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: buildBreadcrumbJsonLd([
+                        { name: 'Home', path: '/' },
+                        { name: 'Productivity', path: '/productivity' },
+                        { name: meta.name, path: meta.path },
+                    ]),
+                }}
+            />
+            <Breadcrumbs
+                items={[
+                    { name: 'Home', path: '/' },
+                    { name: 'Productivity', path: '/productivity' },
+                    { name: 'Meeting Cost' },
+                ]}
+            />
+            <ClientComponent />
+        </>
+    );
 }

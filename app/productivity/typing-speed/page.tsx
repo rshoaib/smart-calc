@@ -1,45 +1,47 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import ClientComponent from './ClientComponent';
+import {
+    buildCalculatorMetadata,
+    buildCalculatorJsonLd,
+    buildBreadcrumbJsonLd,
+} from '@/lib/calculatorMeta';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Typing Speed Calculator | SmartCalc',
-  description: 'Free online typing speed calculator. Get accurate results instantly. No sign-up required.',
-  openGraph: {
-    title: 'Typing Speed Calculator | SmartCalc',
-    description: 'Free online typing speed calculator. Get accurate results instantly.',
-    url: 'https://dailysmartcalc.com/productivity/typing-speed',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Typing Speed Calculator | SmartCalc',
-    description: 'Free online typing speed calculator.',
-  },
+const meta = {
+    path: '/productivity/typing-speed',
+    name: 'Typing Speed Test',
+    title: 'Typing Speed Test (WPM and Accuracy)',
+    description:
+        'Measure your typing speed in words per minute and your accuracy percentage in real time. Multiple difficulty levels and a 60-second test.',
 };
 
+export const metadata: Metadata = buildCalculatorMetadata(meta);
+
 export default function Page() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebApplication',
-            name: 'Typing Speed Calculator',
-            url: 'https://dailysmartcalc.com/productivity/typing-speed',
-            applicationCategory: 'CalculatorApplication',
-            operatingSystem: 'All',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD'
-            },
-            description: 'Free online typing speed calculator.'
-          })
-        }}
-      />
-      <ClientComponent />
-    </>
-  );
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: buildCalculatorJsonLd(meta) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: buildBreadcrumbJsonLd([
+                        { name: 'Home', path: '/' },
+                        { name: 'Productivity', path: '/productivity' },
+                        { name: meta.name, path: meta.path },
+                    ]),
+                }}
+            />
+            <Breadcrumbs
+                items={[
+                    { name: 'Home', path: '/' },
+                    { name: 'Productivity', path: '/productivity' },
+                    { name: 'Typing Speed' },
+                ]}
+            />
+            <ClientComponent />
+        </>
+    );
 }

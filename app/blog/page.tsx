@@ -5,8 +5,22 @@ import { buildBlogHeroSvg, type BlogCategory } from '@/lib/blogHeroSvg';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'SmartCalc Blog — Personal Finance & Health Guides',
+  title: 'SmartCalc Blog - Personal Finance & Health Guides',
   description: 'Real stories and practical guides to help you master your money and health. Expert deep-dives on mortgages, investing, and wellness.',
+  alternates: { canonical: '/blog' },
+  openGraph: {
+    title: 'SmartCalc Blog - Personal Finance & Health Guides',
+    description: 'Real stories and practical guides to help you master your money and health.',
+    url: 'https://dailysmartcalc.com/blog',
+    type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SmartCalc Blog',
+    description: 'Personal finance and health guides - written for normal humans.',
+    images: ['/og-image.png'],
+  },
 };
 
 // Re-read content/blog/*.md at most once per minute, so newly added markdown

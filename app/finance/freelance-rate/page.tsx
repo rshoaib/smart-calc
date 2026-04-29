@@ -1,45 +1,47 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import ClientComponent from './ClientComponent';
+import {
+    buildCalculatorMetadata,
+    buildCalculatorJsonLd,
+    buildBreadcrumbJsonLd,
+} from '@/lib/calculatorMeta';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Freelance Rate Calculator | SmartCalc',
-  description: 'Free online freelance rate calculator. Get accurate results instantly. No sign-up required.',
-  openGraph: {
-    title: 'Freelance Rate Calculator | SmartCalc',
-    description: 'Free online freelance rate calculator. Get accurate results instantly.',
-    url: 'https://dailysmartcalc.com/finance/freelance-rate',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Freelance Rate Calculator | SmartCalc',
-    description: 'Free online freelance rate calculator.',
-  },
+const meta = {
+    path: '/finance/freelance-rate',
+    name: 'Freelance Rate Calculator',
+    title: 'Freelance Hourly Rate Calculator (True Take-Home)',
+    description:
+        'Calculate the true hourly rate you need to charge to match a target salary, accounting for taxes, healthcare, retirement, and unbillable hours.',
 };
 
+export const metadata: Metadata = buildCalculatorMetadata(meta);
+
 export default function Page() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebApplication',
-            name: 'Freelance Rate Calculator',
-            url: 'https://dailysmartcalc.com/finance/freelance-rate',
-            applicationCategory: 'CalculatorApplication',
-            operatingSystem: 'All',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD'
-            },
-            description: 'Free online freelance rate calculator.'
-          })
-        }}
-      />
-      <ClientComponent />
-    </>
-  );
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: buildCalculatorJsonLd(meta) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: buildBreadcrumbJsonLd([
+                        { name: 'Home', path: '/' },
+                        { name: 'Finance', path: '/finance' },
+                        { name: meta.name, path: meta.path },
+                    ]),
+                }}
+            />
+            <Breadcrumbs
+                items={[
+                    { name: 'Home', path: '/' },
+                    { name: 'Finance', path: '/finance' },
+                    { name: 'Freelance Rate' },
+                ]}
+            />
+            <ClientComponent />
+        </>
+    );
 }
