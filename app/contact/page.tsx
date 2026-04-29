@@ -15,7 +15,7 @@ export default function Contact() {
     e.preventDefault();
     const mailtoSubject = encodeURIComponent(formData.subject || 'SmartCalc Inquiry');
     const mailtoBody = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`);
-    window.location.href = `mailto:support@dailysmartcalc.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+    window.location.href = `mailto:contact@legalpolicygen.com?subject=${mailtoSubject}&body=${mailtoBody}`;
   };
 
   return (
@@ -42,8 +42,8 @@ export default function Contact() {
               <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
                 For general inquiries and support.
               </p>
-              <a href="mailto:support@dailysmartcalc.com" className="text-primary-600 dark:text-primary-400 font-medium hover:underline">
-                support@dailysmartcalc.com
+              <a href="mailto:contact@legalpolicygen.com" className="text-primary-600 dark:text-primary-400 font-medium hover:underline">
+                contact@legalpolicygen.com
               </a>
             </div>
           </div>
@@ -168,4 +168,3 @@ export default function Contact() {
     </div>
   );
 }
-

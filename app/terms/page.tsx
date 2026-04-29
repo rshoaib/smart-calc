@@ -91,7 +91,7 @@ export default function Terms() {
             If you have any questions about these Terms, please contact us:
           </p>
           <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1 ml-4">
-            <li>Email: <a href="mailto:support@dailysmartcalc.com" className="text-primary-600 dark:text-primary-400 hover:underline">support@dailysmartcalc.com</a></li>
+            <li>Email: <a href="mailto:contact@legalpolicygen.com" className="text-primary-600 dark:text-primary-400 hover:underline">contact@legalpolicygen.com</a></li>
             <li>Website: <a href="https://dailysmartcalc.com/contact" className="text-primary-600 dark:text-primary-400 hover:underline">dailysmartcalc.com/contact</a></li>
           </ul>
         </div>

@@ -105,7 +105,7 @@ export default function Privacy() {
           </ul>
           <p className="mt-2 text-gray-600 dark:text-gray-300">
             To exercise any of these rights, please contact us at{' '}
-            <a href="mailto:support@dailysmartcalc.com" className="text-primary-600 dark:text-primary-400 hover:underline">support@dailysmartcalc.com</a>.
+            <a href="mailto:contact@legalpolicygen.com" className="text-primary-600 dark:text-primary-400 hover:underline">contact@legalpolicygen.com</a>.
           </p>
 
           <h2 className="text-xl font-semibold mt-8 mb-3 text-gray-800 dark:text-gray-200">9. Children's Privacy (COPPA)</h2>
@@ -128,7 +128,7 @@ export default function Privacy() {
             If you have any questions about this Privacy Policy, please contact us:
           </p>
           <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1 ml-4">
-            <li>Email: <a href="mailto:support@dailysmartcalc.com" className="text-primary-600 dark:text-primary-400 hover:underline">support@dailysmartcalc.com</a></li>
+            <li>Email: <a href="mailto:contact@legalpolicygen.com" className="text-primary-600 dark:text-primary-400 hover:underline">contact@legalpolicygen.com</a></li>
             <li>Website: <a href="https://dailysmartcalc.com/contact" className="text-primary-600 dark:text-primary-400 hover:underline">dailysmartcalc.com/contact</a></li>
           </ul>
         </div>
