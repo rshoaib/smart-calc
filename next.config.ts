@@ -47,6 +47,11 @@ const nextConfig: NextConfig = {
                       permanent: true,
             },
             {
+                      source: '/blog/50-30-20-budgeting-rule-guide',
+                      destination: '/finance/budget',
+                      permanent: true,
+            },
+            {
                       source: '/blog/gpa-guide-good-gpa-colleges-employers-2026',
                       destination: '/blog/gpa-calculator-guide',
                       permanent: true,
