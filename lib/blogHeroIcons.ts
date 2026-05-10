@@ -28,6 +28,7 @@ const SLUG_TO_ICON: Record<string, IconKey> = {
     // Finance — investing & compounding
     'how-does-compound-interest-work': 'coins-stack',
     'compound-interest-inflation-monster': 'flame-coins',
+    'how-inflation-erodes-savings-2026': 'flame-coins',
     // Finance — debt
     'debt-payoff-calculator-snowball-avalanche': 'snowball',
     'debt-snowball-vs-avalanche': 'snowball',
@@ -68,6 +69,7 @@ const REGEX_FALLBACKS: Array<[RegExp, IconKey]> = [
     [/mortgage|home-buying|hidden-cost.*home/, 'house'],
     [/auto-loan|car-loan|vehicle/, 'car'],
     [/compound-interest|investing|coin/, 'coins-stack'],
+    [/inflation/, 'flame-coins'],
     [/debt|snowball|avalanche/, 'snowball'],
     [/emergency-fund/, 'shield'],
     [/retirement|retire/, 'hourglass'],
