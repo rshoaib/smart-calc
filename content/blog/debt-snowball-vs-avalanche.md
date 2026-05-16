@@ -93,7 +93,7 @@ Both methods work. Neither works if you keep adding new debt.
 
 While paying off debt:
 - Cut up the credit cards (or freeze them in a block of ice).
-- Build a mini emergency fund ($1,000) so you don't charge the next car repair.
+- Build a mini [emergency fund](/blog/emergency-fund-guide) ($1,000) so you don't charge the next car repair.
 - Track your spending ruthlessly.
 
 [Plan Your Debt Payoff](/finance/debt-payoff)
