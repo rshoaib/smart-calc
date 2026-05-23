@@ -47,6 +47,8 @@ Your lender will usually collect a portion of your annual property taxes every m
 ### Insurance (Homeowners & PMI)
 Like taxes, your lender collects your homeowners insurance premium monthly. Furthermore, if you put down less than 20% on the house, you will likely be forced to pay **Private Mortgage Insurance (PMI)**. PMI protects the lender, not you, in case you default on the loan.
 
+Even after you have PITI nailed down, it's worth remembering the calculator can't capture everything — closing costs, ongoing maintenance, HOA dues, and repairs add up fast. See our breakdown of [the hidden costs of buying a home](/blog/hidden-costs-buying-home-2026) for the line items most monthly-payment estimates leave out.
+
 ## What is an Amortization Schedule?
 
 An **amortization schedule** is a complete, month-by-month table of every single payment you will make over the life of your loan. 
