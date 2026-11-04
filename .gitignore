@@ -40,3 +40,21 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Google API credentials (NEVER commit)
+.gsc-service-account.json
+*-service-account.json
+
+# Cowork Edit-shrink backup artifacts
+*.clean
+
+# scratch / temp files
+*.tmp
+
+# generated SEO report outputs (the /seo-reports/ folder is local-only;
+# audit markdown files like SEO_AUDIT_*.md are tracked individually as
+# historical records and not globbed here on purpose)
+/seo-reports/
+
+# Claude Code worktree metadata
+/.claude/
